@@ -1,0 +1,12 @@
+{
+    "name": "acround/analib.git",
+    "description": "Shared library for home services ant applications",
+    "type": "library",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.1.9"
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
