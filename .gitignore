@@ -24,3 +24,4 @@ demos/
 extras/documentation
 /nbproject/
 .idea
+/composer.lock
