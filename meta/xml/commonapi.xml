@@ -1,0 +1,464 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="AuthAssignment" table="AuthAssignment" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="itemname" propname="Itemname" type="string" class="AuthItem" object="itemname" null="no" title=""/>
+    <identifier dbname="userid" propname="Userid" type="string" length="64" null="no" title=""/>
+    <property dbname="bizrule" propname="Bizrule" type="string" default="null" null="yes" title=""/>
+    <property dbname="data" propname="Data" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="AuthItem" table="AuthItem" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="name" propname="Name" type="string" length="64" null="no" title=""/>
+    <property dbname="type" propname="Type" type="int" length="11" null="no" title=""/>
+    <property dbname="description" propname="Description" type="string" default="null" null="yes" title=""/>
+    <property dbname="bizrule" propname="Bizrule" type="string" default="null" null="yes" title=""/>
+    <property dbname="data" propname="Data" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="AuthItemChild" table="AuthItemChild" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="parent" propname="Parent" type="string" class="AuthItem" object="parent" null="no" title=""/>
+    <identifier dbname="child" propname="Child" type="string" class="AuthItem" object="child" null="no" title=""/>
+  </class>
+  <class name="MRUSOAPSESSION" table="MRU_SOAP_SESSION" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="MRU_SOAP_SESSION_ID" propname="MRUSOAPSESSIONID" type="int" length="11) unsigned" null="no" title=""/>
+    <property dbname="MRU_SOAP_SESSION_SESSION" propname="MRUSOAPSESSIONSESSION" type="string" length="32" null="no" title=""/>
+    <property dbname="MRU_SOAP_SESSION_LOGIN" propname="MRUSOAPSESSIONLOGIN" type="string" length="128" null="no" title=""/>
+    <property dbname="MRU_SOAP_SESSION_STATUS" propname="MRUSOAPSESSIONSTATUS" type="string" length="1" null="no" title=""/>
+    <property dbname="MRU_SOAP_SESSION_NODE" propname="MRUSOAPSESSIONNODE" type="string" length="32" null="no" title=""/>
+  </class>
+  <class name="Account" table="account" title="???????? ?????????????? youmagic" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="account_id" propname="AccountId" type="int" class="Account" object="Account" null="no" title="id ????????"/>
+    <property dbname="account_sip_id" propname="AccountSipId" type="string" class="" length="255" null="no" title="id ????????"/>
+    <property dbname="account_type" propname="AccountType" type="enum" length="'C','A'" default="A" null="no" title=""/>
+  </class>
+  <class name="Account2agent" table="account2agent" title="???????? ????????? youmagic ? ???????." type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="account2agent_id" propname="Account2agentId" type="int" class="Account2agent" object="Account2agent" null="no" title="id"/>
+    <property dbname="account2agent_agent_id" propname="Account2agentAgentId" type="int" class="Agent" object="Account2agentAgent" null="no" title="id ??????"/>
+    <property dbname="account2agent_account_id" propname="Account2agentAccountId" type="int" class="Account" object="Account2agentAccount" null="no" title="id ????????"/>
+    <property dbname="account2agent_type" propname="Account2agentType" type="string" length="1" default="L" null="no" title="?????? ??? ????????"/>
+  </class>
+  <class name="Agent" table="agent" title="??????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title="id"/>
+    <property dbname="agent_login" propname="AgentLogin" type="string" length="128" null="no" title="?????"/>
+    <property dbname="agent_password" propname="AgentPassword" type="string" length="255" null="no" title="??????"/>
+    <property dbname="agent_name" propname="AgentName" type="string" length="255" default="null" null="yes" title="???????????? ??????"/>
+    <property dbname="agent_time_created" propname="AgentTimeCreated" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title=""/>
+    <property dbname="agent_time_update" propname="AgentTimeUpdate" type="Timestamp" default="null" null="yes" title=""/>
+    <property dbname="agent_is_delete" propname="AgentIsDelete" type="int" length="4" default="0" null="no" title=""/>
+    <property dbname="agent_comment" propname="AgentComment" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="Agent2user" table="agent2user" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="agent2user_id" propname="Agent2userId" type="int" class="Agent2user" object="Agent2user" null="no" title=""/>
+    <property dbname="agent2user_user_id" propname="Agent2userUserId" type="int" class="" length="11" null="no" title=""/>
+    <property dbname="agent2user_agent_id" propname="Agent2userAgentId" type="int" class="" length="11" null="no" title=""/>
+    <property dbname="agent2user_agent_time_created" propname="Agent2userAgentTimeCreated" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title="???? ????????"/>
+  </class>
+  <class name="ApiFunction" table="api_function" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="api_function_id" propname="ApiFunctionId" type="int" class="ApiFunction" object="ApiFunction" null="no" title=""/>
+    <property dbname="api_function_name" propname="ApiFunctionName" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="ApiFunction2agent" table="api_function2agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="api_function2agent_id" propname="ApiFunction2agentId" type="int" class="ApiFunction2agent" object="ApiFunction2agent" null="no" title=""/>
+    <property dbname="api_function2agent_aget_id" propname="ApiFunction2agentAgetId" type="int" class="Agent" object="ApiFunction2agentAget" null="no" title=""/>
+    <property dbname="api_function2agent_api_function_id" propname="ApiFunction2agentApiFunctionId" type="int" class="ApiFunction" object="ApiFunction2agentApiFunction" null="no" title=""/>
+  </class>
+  <class name="CacheInsertQueue" table="cache_insert_queue" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="cache_key" propname="CacheKey" type="string" length="255" null="no" title=""/>
+    <identifier dbname="cache_type" propname="CacheType" type="enum" length="'balances','tariffs','call_history','payment_history','usercard'" null="no" title=""/>
+    <property dbname="data_value" propname="DataValue" type="string" length="2048" default="null" null="yes" title=""/>
+  </class>
+  <class name="CacheRoutingTable" table="cache_routing_table" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="type" propname="Type" type="enum" length="'balances','tariffs','call_history','payment_history','usercard'" null="no" title=""/>
+    <property dbname="from" propname="From" type="string" length="32" null="no" title=""/>
+    <property dbname="to" propname="To" type="string" length="32" null="no" title=""/>
+    <property dbname="server_id" propname="ServerId" type="string" class="" length="64" null="no" title=""/>
+    <property dbname="cache_instance_id" propname="CacheInstanceId" type="string" class="" length="64" null="no" title=""/>
+    <property dbname="spot_id" propname="SpotId" type="string" class="" length="64" null="no" title=""/>
+    <property dbname="spot_enabled" propname="SpotEnabled" type="int" length="1" default="1" null="no" title=""/>
+  </class>
+  <class name="CheckCode" table="check_code" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="check_code_id" propname="CheckCodeId" type="int" class="CheckCode" object="CheckCode" null="no" title=""/>
+    <property dbname="check_code_sip_number" propname="CheckCodeSipNumber" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="check_code_phone" propname="CheckCodePhone" type="string" length="64" null="no" title=""/>
+    <property dbname="check_code_code" propname="CheckCodeCode" type="string" length="16" null="no" title=""/>
+    <property dbname="check_code_created" propname="CheckCodeCreated" type="int" length="11" null="no" title=""/>
+  </class>
+  <class name="CongestionControlFunctionLimits" table="congestion_control_function_limits" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="congestion_control_function_limits_id" propname="CongestionControlFunctionLimitsId" type="int" class="CongestionControlFunctionLimits" object="CongestionControlFunctionLimits" null="no" title=""/>
+    <property dbname="congestion_control_function_limits_name" propname="CongestionControlFunctionLimitsName" type="string" class="ApiFunction" object="congestion_control_function_limits_name" null="no" title=""/>
+    <property dbname="congestion_control_function_limits_limit" propname="CongestionControlFunctionLimitsLimit" type="int" length="11) unsigned" null="no" title=""/>
+  </class>
+  <class name="Country2ivrlang" table="country2ivrlang" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="country" propname="Country" type="string" length="10" default="null" null="yes" title=""/>
+    <property dbname="i_lang" propname="ILang" type="string" length="10" default="null" null="yes" title=""/>
+  </class>
+  <class name="FudsRoutingTable" table="fuds_routing_table" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="type" propname="Type" type="enum" length="'u','d','ud'" default="ud" null="yes" title=""/>
+    <property dbname="server_api_base_address" propname="ServerApiBaseAddress" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="server_client_base_address" propname="ServerClientBaseAddress" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="enabled" propname="Enabled" type="int" length="1" default="1" null="yes" title=""/>
+  </class>
+  <class name="LongRequestLastState" table="long_request_last_state" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="state_key" propname="StateKey" type="string" length="255" null="no" title=""/>
+    <property dbname="state_value" propname="StateValue" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="LongRequestLog" table="long_request_log" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="request_id" propname="RequestId" type="int" class="" length="11" default="null" null="yes" title=""/>
+    <property dbname="time" propname="Time" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="server_name" propname="ServerName" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="function_name" propname="FunctionName" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="agent" propname="Agent" type="string" length="128" default="null" null="yes" title=""/>
+    <property dbname="req_time" propname="ReqTime" type="float" default="null" null="yes" title=""/>
+    <property dbname="mem_peak_usage" propname="MemPeakUsage" type="float" default="null" null="yes" title=""/>
+    <property dbname="ru_utime" propname="RuUtime" type="float" default="null" null="yes" title=""/>
+    <property dbname="ru_stime" propname="RuStime" type="float" default="null" null="yes" title=""/>
+    <property dbname="status" propname="Status" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="data" propname="Data" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="ModifiedANumbers" table="modified_a_numbers" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="number_id" propname="NumberId" type="int" class="" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="NumberCategories" table="number_categories" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="number_categories_id" propname="NumberCategoriesId" type="int" class="NumberCategories" object="NumberCategories" null="no" title=""/>
+    <property dbname="number_categories_category_name" propname="NumberCategoriesCategoryName" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="NumberCategoriesRules" table="number_categories_rules" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="number_categories_rules_id" propname="NumberCategoriesRulesId" type="int" class="NumberCategoriesRules" object="NumberCategoriesRules" null="no" title=""/>
+    <property dbname="number_categories_rules_number_categories_id" propname="NumberCategoriesRulesNumberCategoriesId" type="int" class="NumberCategories" object="NumberCategoriesRulesNumberCategories" default="null" null="yes" title=""/>
+    <property dbname="number_categories_rules_rule" propname="NumberCategoriesRulesRule" type="string" length="64" default="null" null="yes" title=""/>
+  </class>
+  <class name="NumberReservation" table="number_reservation" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="number_reservation_id" propname="NumberReservationId" type="int" class="NumberReservation" object="NumberReservation" null="no" title=""/>
+    <property dbname="number_reservation_sip_id" propname="NumberReservationSipId" type="string" class="" length="30" null="no" title=""/>
+    <property dbname="number_reservation_agent_id" propname="NumberReservationAgentId" type="string" class="" length="128" null="no" title=""/>
+    <property dbname="number_reservation_reservation_time" propname="NumberReservationReservationTime" type="int" length="11" null="no" title=""/>
+    <property dbname="number_reservation_reserved_until" propname="NumberReservationReservedUntil" type="int" length="11" null="no" title=""/>
+    <property dbname="number_reservation_additional_info" propname="NumberReservationAdditionalInfo" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="Numbers" table="numbers" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="vendor_batch_id" propname="VendorBatchId" type="int" class="" length="11" default="0" null="no" title=""/>
+    <property dbname="area_code" propname="AreaCode" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="number" propname="Number" type="string" length="30" default="" null="no" title=""/>
+    <property dbname="category_id" propname="CategoryId" type="int" class="NumberCategories" object="Category" null="no" title=""/>
+    <property dbname="reserved" propname="Reserved" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="PaymentTransactions" table="payment_transactions" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="transaction_id" propname="TransactionId" type="string" class="" length="64" null="no" title="Transaction ID"/>
+    <property dbname="info" propname="Info" type="string" length="4096" null="no" title="Transaction info"/>
+  </class>
+  <class name="PhonebookVersion" table="phonebook_version" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="sip_id" propname="SipId" type="string" class="" length="255" null="no" title=""/>
+    <identifier dbname="i_env" propname="IEnv" type="int" length="11" null="no" title=""/>
+    <property dbname="timestamp" propname="Timestamp" type="int" length="11" null="no" title=""/>
+  </class>
+  <class name="Pool" table="pool" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="pool_id" propname="PoolId" type="int" class="Pool" object="Pool" null="no" title="id ????"/>
+    <property dbname="pool_name" propname="PoolName" type="string" length="255" default="" null="no" title="??? ????"/>
+    <property dbname="pool_description" propname="PoolDescription" type="string" length="255" default="" null="yes" title="???????? ????"/>
+    <property dbname="pool_time_created" propname="PoolTimeCreated" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title="???? ????????"/>
+    <property dbname="pool_time_update" propname="PoolTimeUpdate" type="Timestamp" default="0000-00-00 00:00:00" null="no" title="???? ??????????"/>
+    <property dbname="pool_data" propname="PoolData" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="PoolData" table="pool_data" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="pool_data_id" propname="PoolDataId" type="int" class="PoolData" object="PoolData" null="no" title="id ???? ??????"/>
+    <property dbname="pool_data_pool_id" propname="PoolDataPoolId" type="int" class="" length="11" null="no" title="id ????"/>
+    <property dbname="pool_data_sip_id" propname="PoolDataSipId" type="string" class="" length="255" default="null" null="yes" title="sip ????????????? ????????"/>
+    <property dbname="pool_data_time_created" propname="PoolDataTimeCreated" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title="???? ????????"/>
+    <property dbname="pool_data_time_update" propname="PoolDataTimeUpdate" type="Timestamp" default="0000-00-00 00:00:00" null="no" title="???? ??????????"/>
+    <property dbname="pool_data_incognito_type_account" propname="PoolDataIncognitoTypeAccount" type="string" default="null" null="yes" title=""/>
+    <property dbname="pool_data_capacity" propname="PoolDataCapacity" type="int" length="4" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductPlatformMapping" table="product_platform_mapping" title="????? ????????? ? ????????? ??? ??? ????????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="product_id" propname="ProductId" type="int" class="Products" object="Product" null="no" title=""/>
+    <identifier dbname="platform_id" propname="PlatformId" type="int" class="ProductPlatforms" object="Platform" null="no" title=""/>
+  </class>
+  <class name="ProductPlatforms" table="product_platforms" title="?????????, ??? ??????? ???????????? ???????? ????????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11) unsigned" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="alias" propname="Alias" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductVersions" table="product_versions" title="?????? ????????? ???: ????????? ????????? ? ??. ??" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="10) unsigned" null="no" title=""/>
+    <property dbname="version_name" propname="VersionName" type="string" length="45" null="no" title=""/>
+    <property dbname="version_hash" propname="VersionHash" type="int" length="20" null="no" title=""/>
+    <property dbname="product_id" propname="ProductId" type="int" class="Products" object="Product" null="no" title=""/>
+    <property dbname="platform_id" propname="PlatformId" type="int" class="ProductPlatforms" object="Platform" null="no" title=""/>
+    <property dbname="filename" propname="Filename" type="string" length="128" default="null" null="yes" title=""/>
+    <property dbname="status" propname="Status" type="int" length="4" default="0" null="no" title=""/>
+    <property dbname="created_at" propname="CreatedAt" type="Timestamp" default="null" null="yes" title=""/>
+  </class>
+  <class name="Products" table="products" title="???????? ????????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11) unsigned" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProvisioningStorageHlr" table="provisioning_storage_hlr" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="oldimsi" propname="Oldimsi" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="oldmsisdn" propname="Oldmsisdn" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="oldfavnum" propname="Oldfavnum" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="imsi" propname="Imsi" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="msisdn" propname="Msisdn" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="favnum" propname="Favnum" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="operation" propname="Operation" type="string" length="20" null="no" title=""/>
+    <property dbname="loaded" propname="Loaded" type="datetime" null="no" title=""/>
+    <property dbname="status_1" propname="Status1" type="int" length="3) unsigned" null="no" title=""/>
+    <property dbname="status_2" propname="Status2" type="int" length="3) unsigned" null="no" title=""/>
+    <property dbname="status_crbt" propname="StatusCrbt" type="int" length="3) unsigned" default="0" null="no" title=""/>
+    <property dbname="hlr" propname="Hlr" type="int" length="3) unsigned" default="1" null="no" title=""/>
+  </class>
+  <class name="QueueSmsJobs" table="queue_sms_jobs" title="jobs for concrete sms" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="batch" propname="Batch" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="phone_number" propname="PhoneNumber" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="sms_text" propname="SmsText" type="string" default="null" null="yes" title=""/>
+    <property dbname="lock_token" propname="LockToken" type="string" length="32" default="null" null="yes" title=""/>
+    <property dbname="status" propname="Status" type="int" length="1" default="null" null="yes" title=""/>
+    <property dbname="comment" propname="Comment" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="QueueSmsMetadata" table="queue_sms_metadata" title="general information about the task distribution sms" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="owner" propname="Owner" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="create_time" propname="CreateTime" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="status" propname="Status" type="int" length="1" default="null" null="yes" title=""/>
+  </class>
+  <class name="Sipproxytemp" table="sipproxytemp" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <property dbname="msisdn" propname="Msisdn" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="favnum" propname="Favnum" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="imsi" propname="Imsi" type="string" length="50" null="no" title=""/>
+  </class>
+  <class name="SmsSettings" table="sms_settings" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="sms_settings_id" propname="SmsSettingsId" type="int" class="SmsSettings" object="SmsSettings" null="no" title=""/>
+    <property dbname="sms_settings_host" propname="SmsSettingsHost" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="sms_settings_port" propname="SmsSettingsPort" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="sms_settings_login" propname="SmsSettingsLogin" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="sms_settings_password" propname="SmsSettingsPassword" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="sms_settings_name" propname="SmsSettingsName" type="string" length="50" default="null" null="yes" title=""/>
+    <property dbname="sms_settings_active" propname="SmsSettingsActive" type="int" length="1" default="0" null="yes" title=""/>
+  </class>
+  <class name="SoapConnectionPull" table="soap_connection_pull" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="soap_connection_pull_id" propname="SoapConnectionPullId" type="int" class="SoapConnectionPull" object="SoapConnectionPull" null="no" title=""/>
+    <property dbname="soap_connection_pull_session" propname="SoapConnectionPullSession" type="string" length="40" null="no" title=""/>
+    <property dbname="soap_connection_pull_login" propname="SoapConnectionPullLogin" type="string" length="128" null="no" title=""/>
+    <property dbname="soap_connection_pull_status" propname="SoapConnectionPullStatus" type="int" length="11" null="no" title=""/>
+    <property dbname="soap_connection_pull_node" propname="SoapConnectionPullNode" type="string" length="32" null="no" title=""/>
+  </class>
+  <class name="SpikeAuthAssignment" table="spike_auth_assignment" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="itemname" propname="Itemname" type="string" class="SpikeAuthItem" object="itemname" null="no" title=""/>
+    <identifier dbname="userid" propname="Userid" type="string" length="64" null="no" title=""/>
+    <property dbname="bizrule" propname="Bizrule" type="string" default="null" null="yes" title=""/>
+    <property dbname="data" propname="Data" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="SpikeAuthItem" table="spike_auth_item" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="name" propname="Name" type="string" length="64" null="no" title=""/>
+    <property dbname="type" propname="Type" type="int" length="11" null="no" title=""/>
+    <property dbname="description" propname="Description" type="string" default="null" null="yes" title=""/>
+    <property dbname="bizrule" propname="Bizrule" type="string" default="null" null="yes" title=""/>
+    <property dbname="data" propname="Data" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="SpikeAuthItemChild" table="spike_auth_item_child" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="parent" propname="Parent" type="string" class="SpikeAuthItem" object="parent" null="no" title=""/>
+    <identifier dbname="child" propname="Child" type="string" class="SpikeAuthItem" object="child" null="no" title=""/>
+  </class>
+  <class name="SpikeExecutions" table="spike_executions" title="??????? ???????? ???????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="job_id" propname="JobId" type="int" class="SpikeJobs" object="Job" default="null" null="yes" title="???????"/>
+    <property dbname="start_time" propname="StartTime" type="Timestamp" default="null" null="yes" title="????? ?????? ??????????"/>
+    <property dbname="end_time" propname="EndTime" type="Timestamp" default="null" null="yes" title="????? ?????????? ???????"/>
+    <property dbname="memory_usage" propname="MemoryUsage" type="float" length="10,0" default="null" null="yes" title="???????????? ??????"/>
+    <property dbname="status" propname="Status" type="string" length="45" default="null" null="yes" title="??????"/>
+  </class>
+  <class name="SpikeGroupParams" table="spike_group_params" title="??????? ?????????? ????? ?????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title="????????"/>
+    <property dbname="description" propname="Description" type="string" length="128" default="null" null="yes" title="????????"/>
+    <property dbname="group_id" propname="GroupId" type="int" class="SpikeTaskGroups" object="Group" default="null" null="yes" title="??????"/>
+    <property dbname="type" propname="Type" type="string" length="45" default="null" null="yes" title="??? ?????????"/>
+    <property dbname="value" propname="Value" type="string" length="255" default="null" null="yes" title="????????"/>
+    <property dbname="status" propname="Status" type="int" length="4" default="null" null="yes" title="??????? ??????"/>
+  </class>
+  <class name="SpikeJobParams" table="spike_job_params" title="????????? ?????. ???????????? ???????????? ???????? ????????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="job_id" propname="JobId" type="int" class="SpikeJobs" object="Job" default="null" null="yes" title="?????? ?? ??????"/>
+    <property dbname="param_id" propname="ParamId" type="int" class="" length="11" default="null" null="yes" title="????????????? ?????????"/>
+    <property dbname="param_type" propname="ParamType" type="int" length="4" default="null" null="yes" title="??? ?????????: ???????? ??????? (0) ??? ???????? ?????? (1)"/>
+    <property dbname="value" propname="Value" type="string" length="255" default="null" null="yes" title="???????? ????????? ??? ?????????? ???????"/>
+    <property dbname="status" propname="Status" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="SpikeJobs" table="spike_jobs" title="??????? ?????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="task_id" propname="TaskId" type="int" class="SpikeTasks" object="Task" default="null" null="yes" title="?????? ?? ??????"/>
+    <property dbname="cron_schedule" propname="CronSchedule" type="string" length="127" default="null" null="yes" title="??????????? ???????"/>
+    <property dbname="next_execution_time" propname="NextExecutionTime" type="Timestamp" default="null" null="yes" title="????? ?????????? ???????"/>
+    <property dbname="status" propname="Status" type="int" length="4" default="null" null="yes" title="??????? ??????"/>
+    <property dbname="timeout" propname="Timeout" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="lock" propname="Lock" type="int" length="4" default="null" null="yes" title=""/>
+    <property dbname="lock_strategy" propname="LockStrategy" type="int" length="4" default="null" null="yes" title=""/>
+  </class>
+  <class name="SpikeTaskGroups" table="spike_task_groups" title="?????? ?????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="raw_name" propname="RawName" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title="????????"/>
+    <property dbname="description" propname="Description" type="string" length="128" default="null" null="yes" title="????????"/>
+    <property dbname="status" propname="Status" type="int" length="4" default="null" null="yes" title="??????? ??????"/>
+  </class>
+  <class name="SpikeTaskParams" table="spike_task_params" title="??????? ??????????, ??????? ??????? ?????????? ???????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title="????????"/>
+    <property dbname="description" propname="Description" type="string" length="128" default="null" null="yes" title="????????"/>
+    <property dbname="task_id" propname="TaskId" type="int" class="SpikeTasks" object="Task" default="null" null="yes" title="????????????? ??????"/>
+    <property dbname="type" propname="Type" type="string" length="45" default="null" null="yes" title="??? ?????????"/>
+    <property dbname="value" propname="Value" type="string" length="255" default="null" null="yes" title="???????? ?? ?????????, ???? ????"/>
+    <property dbname="status" propname="Status" type="int" length="4" default="null" null="yes" title="??????? ??????"/>
+  </class>
+  <class name="SpikeTasks" table="spike_tasks" title="??????? ???????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="group_id" propname="GroupId" type="int" class="SpikeTaskGroups" object="Group" default="null" null="yes" title="????????????? ?????? ???????"/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title="????????"/>
+    <property dbname="title" propname="Title" type="string" length="128" default="null" null="yes" title=""/>
+    <property dbname="description" propname="Description" type="string" length="128" default="null" null="yes" title="????????"/>
+    <property dbname="status" propname="Status" type="int" length="4" default="0" null="no" title="??????? ??????"/>
+  </class>
+  <class name="SpikeUsers" table="spike_users" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="username" propname="Username" type="string" length="20" default="" null="no" title=""/>
+    <property dbname="password" propname="Password" type="string" length="128" default="" null="no" title=""/>
+    <property dbname="email" propname="Email" type="string" length="128" default="" null="no" title=""/>
+    <property dbname="superuser" propname="Superuser" type="int" length="1" default="0" null="no" title=""/>
+    <property dbname="status" propname="Status" type="int" length="1" default="0" null="yes" title=""/>
+    <property dbname="create_at" propname="CreateAt" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title=""/>
+    <property dbname="lastvisit_at" propname="LastvisitAt" type="Timestamp" default="0000-00-00 00:00:00" null="no" title=""/>
+    <property dbname="password_strategy" propname="PasswordStrategy" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="requires_new_password" propname="RequiresNewPassword" type="string" length="45" default="" null="no" title=""/>
+    <property dbname="salt" propname="Salt" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="first_name" propname="FirstName" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="last_name" propname="LastName" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="TblMigration" table="tbl_migration" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="version" propname="Version" type="string" length="255" null="no" title=""/>
+    <property dbname="apply_time" propname="ApplyTime" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="TmpNumbers" table="tmp_numbers" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="vendor_batch_id" propname="VendorBatchId" type="int" class="" length="11" default="0" null="no" title=""/>
+    <property dbname="area_code" propname="AreaCode" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="number" propname="Number" type="string" length="30" default="" null="no" title=""/>
+    <property dbname="category_id" propname="CategoryId" type="int" class="NumberCategories" object="Category" null="no" title=""/>
+    <property dbname="reserved" propname="Reserved" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="TmpReservedNumbers" table="tmp_reserved_numbers" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="vendor_batch_id" propname="VendorBatchId" type="int" class="" length="11" default="0" null="no" title=""/>
+    <property dbname="area_code" propname="AreaCode" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="number" propname="Number" type="string" length="30" default="" null="no" title=""/>
+    <property dbname="category_id" propname="CategoryId" type="int" class="" length="4) unsigned" null="no" title=""/>
+    <property dbname="reserved" propname="Reserved" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="TypeMapping" table="type_mapping" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="type_mapping_id" propname="TypeMappingId" type="int" class="TypeMapping" object="TypeMapping" null="no" title=""/>
+    <property dbname="type_mapping_name" propname="TypeMappingName" type="string" length="255" null="no" title=""/>
+    <property dbname="type_mapping_vendor_batch_id" propname="TypeMappingVendorBatchId" type="string" class="" length="512" null="no" title="CSS"/>
+    <property dbname="type_mapping_area_code" propname="TypeMappingAreaCode" type="int" length="11) unsigned" null="no" title=""/>
+    <property dbname="type_mapping_category_id" propname="TypeMappingCategoryId" type="int" class="" length="11) unsigned" null="no" title=""/>
+  </class>
+  <class name="TypeMapping2agent" table="type_mapping2agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="type_mapping2agent_id" propname="TypeMapping2agentId" type="int" class="TypeMapping2agent" object="TypeMapping2agent" null="no" title=""/>
+    <property dbname="type_mapping2agent_type_mapping_id" propname="TypeMapping2agentTypeMappingId" type="int" class="TypeMapping" object="TypeMapping2agentTypeMapping" null="no" title=""/>
+    <property dbname="type_mapping2agent_agent_id" propname="TypeMapping2agentAgentId" type="int" class="Agent" object="TypeMapping2agentAgent" null="no" title=""/>
+  </class>
+  <class name="TypeMapping2package" table="type_mapping2package" title="" type="BASE TABLE" collation="latin1_swedish_ci">
+    <identifier dbname="type_mapping2package_id" propname="TypeMapping2packageId" type="int" class="TypeMapping2package" object="TypeMapping2package" null="no" title=""/>
+    <property dbname="type_mapping2package_type_mapping_id" propname="TypeMapping2packageTypeMappingId" type="int" class="TypeMapping" object="TypeMapping2packageTypeMapping" null="no" title=""/>
+    <property dbname="type_mapping2package_package_name" propname="TypeMapping2packagePackageName" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="User" table="user" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="user_id" propname="UserId" type="int" class="User" object="User" null="no" title=""/>
+    <property dbname="user_name" propname="UserName" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="user_login" propname="UserLogin" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="user_password" propname="UserPassword" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="user_email" propname="UserEmail" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="user_role" propname="UserRole" type="string" length="255" null="no" title=""/>
+    <property dbname="user_activkey" propname="UserActivkey" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="user_superuser" propname="UserSuperuser" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="user_status" propname="UserStatus" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="user_time_created" propname="UserTimeCreated" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title=""/>
+    <property dbname="user_time_update" propname="UserTimeUpdate" type="Timestamp" default="0000-00-00 00:00:00" null="no" title=""/>
+    <property dbname="user_is_delete" propname="UserIsDelete" type="string" length="2" default="0" null="no" title=""/>
+  </class>
+  <class name="User2pool" table="user2pool" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="user2pool_id" propname="User2poolId" type="int" class="User2pool" object="User2pool" null="no" title=""/>
+    <property dbname="user2pool_user_id" propname="User2poolUserId" type="int" class="User" object="User2poolUser" null="no" title=""/>
+    <property dbname="user2pool_pool_id" propname="User2poolPoolId" type="int" class="Pool" object="User2poolPool" null="no" title=""/>
+    <property dbname="user2pool_pool_time_created" propname="User2poolPoolTimeCreated" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title="???? ????????"/>
+  </class>
+  <class name="UserParameters" table="user_parameters" title="????????? ???????????? ??? ??????????? " type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="user_parameters_id" propname="UserParametersId" type="int" class="UserParameters" object="UserParameters" null="no" title=""/>
+    <property dbname="user_parameters_agent_id" propname="UserParametersAgentId" type="int" class="Agent" object="UserParametersAgent" null="no" title=""/>
+    <property dbname="user_parameters_account_expiration" propname="UserParametersAccountExpiration" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_reservation" propname="UserParametersReservation" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_billing_model" propname="UserParametersBillingModel" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_sim_calls_number" propname="UserParametersSimCallsNumber" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_min_reserved_funds" propname="UserParametersMinReservedFunds" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_alias_billing_model" propname="UserParametersAliasBillingModel" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_billing_period" propname="UserParametersBillingPeriod" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_credit_limit_rub" propname="UserParametersCreditLimitRub" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_credit_limit_usd" propname="UserParametersCreditLimitUsd" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_credit_limit_eur" propname="UserParametersCreditLimitEur" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_credit_limit_pln" propname="UserParametersCreditLimitPln" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_credit_limit_kgs" propname="UserParametersCreditLimitKgs" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_credit_limit_czk" propname="UserParametersCreditLimitCzk" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_credit_limit_gbp" propname="UserParametersCreditLimitGbp" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_translation_rule_88314" propname="UserParametersTranslationRule88314" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_translation_rule_with_a" propname="UserParametersTranslationRuleWithA" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_reseller" propname="UserParametersReseller" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_routing_plan" propname="UserParametersRoutingPlan" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_product_rub" propname="UserParametersProductRub" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_product_usd" propname="UserParametersProductUsd" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_product_pln" propname="UserParametersProductPln" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_product_eur" propname="UserParametersProductEur" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_product_czk" propname="UserParametersProductCzk" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_product_gbp" propname="UserParametersProductGbp" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_class" propname="UserParametersClass" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_i_time_zone" propname="UserParametersITimeZone" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_language" propname="UserParametersLanguage" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_init_balance_rub" propname="UserParametersInitBalanceRub" type="string" length="255" default="0" null="no" title=""/>
+    <property dbname="user_parameters_init_balance_usd" propname="UserParametersInitBalanceUsd" type="string" length="255" default="0" null="no" title=""/>
+    <property dbname="user_parameters_init_balance_pln" propname="UserParametersInitBalancePln" type="string" length="255" default="0" null="no" title=""/>
+    <property dbname="user_parameters_init_balance_eur" propname="UserParametersInitBalanceEur" type="string" length="255" default="0" null="no" title=""/>
+    <property dbname="user_parameters_init_balance_czk" propname="UserParametersInitBalanceCzk" type="string" length="255" default="0" null="no" title=""/>
+    <property dbname="user_parameters_init_balance_gbp" propname="UserParametersInitBalanceGbp" type="string" length="255" default="0" null="no" title=""/>
+    <property dbname="user_parameters_credit_limit_warning" propname="UserParametersCreditLimitWarning" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_soap_login" propname="UserParametersSoapLogin" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_soap_password" propname="UserParametersSoapPassword" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_soap_token" propname="UserParametersSoapToken" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_soap_wsdl_path" propname="UserParametersSoapWsdlPath" type="string" length="255" default="''" null="no" title=""/>
+    <property dbname="user_parameters_environment_id" propname="UserParametersEnvironmentId" type="int" class="" length="11" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_call_button_product_rub" propname="UserParametersCallButtonProductRub" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_call_button_product_usd" propname="UserParametersCallButtonProductUsd" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_call_button_product_pln" propname="UserParametersCallButtonProductPln" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_call_button_product_eur" propname="UserParametersCallButtonProductEur" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_call_button_product_czk" propname="UserParametersCallButtonProductCzk" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_call_button_product_gbp" propname="UserParametersCallButtonProductGbp" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_credit_limit" propname="UserParametersCreditLimit" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_product" propname="UserParametersProduct" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_init_balance" propname="UserParametersInitBalance" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_callback_agent_callback_server_url" propname="UserParametersCallbackAgentCallbackServerUrl" type="string" length="255" default="https://80.75.132.205:8901/cgi/web/receive.pl" null="no" title=""/>
+    <property dbname="user_parameters_callback_agent_referer" propname="UserParametersCallbackAgentReferer" type="string" length="255" default="https://80.75.132.205:8901/" null="no" title=""/>
+    <property dbname="user_parameters_callback_agent_callback_server_url_new" propname="UserParametersCallbackAgentCallbackServerUrlNew" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_callback_agent_referer_new" propname="UserParametersCallbackAgentRefererNew" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_callback_default_discount" propname="UserParametersCallbackDefaultDiscount" type="int" length="11" default="1" null="no" title=""/>
+    <property dbname="user_parameters_all_account_permission" propname="UserParametersAllAccountPermission" type="int" length="11" default="0" null="yes" title=""/>
+    <property dbname="user_parameters_soap_media_server_wsdl_path" propname="UserParametersSoapMediaServerWsdlPath" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_soap_media_server_domain" propname="UserParametersSoapMediaServerDomain" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_group_product_id" propname="UserParametersGroupProductId" type="string" class="" length="255" default="" null="no" title=""/>
+    <property dbname="user_parameters_test_agent_flag" propname="UserParametersTestAgentFlag" type="int" length="1" default="0" null="yes" title=""/>
+    <property dbname="user_parameters_sms_sender_name" propname="UserParametersSmsSenderName" type="string" length="32" default="MTT" null="no" title=""/>
+    <property dbname="user_parameters_id_fuds" propname="UserParametersIdFuds" type="int" class="FudsRoutingTable" object="user_parameters_id_fuds" null="no" title=""/>
+    <property dbname="user_parameters_profiling" propname="UserParametersProfiling" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="user_parameters_dial_rule_id" propname="UserParametersDialRuleId" type="int" class="" length="11" default="null" null="yes" title=""/>
+  </class>
+</classes>

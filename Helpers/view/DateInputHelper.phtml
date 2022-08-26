@@ -1,0 +1,24 @@
+<?php
+/*
+ * @var $this DateInputHelper
+ */
+$params = $this->getParams();
+if ($this->getId()) {
+    $params['id'] = $this->getId();
+}
+if ($this->getName()) {
+    $params['name'] = $this->getName();
+}
+if ($this->getClass()) {
+    $params['class'] = $this->getClassOut();
+}
+$params['value'] = $this->getDate();
+$params['type']  = 'text';
+$params2         = array();
+foreach ($params as $key => $value) {
+    $params2[] = $key . '="' . $value . '"';
+}
+?>
+<div class="date_input">
+    <input <?= implode(' ', $params2) ?> />
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="AuthFails" table="auth_fails" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="ip" propname="Ip" type="string" length="15" default="" null="no" title=""/>
+    <property dbname="login_user" propname="LoginUser" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="date" propname="Date" type="datetime" null="no" title=""/>
+  </class>
+  <class name="EnvironmentAccess" table="environment_access" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <property dbname="id_user" propname="IdUser" type="int" length="11" null="no" title=""/>
+    <property dbname="id_environment" propname="IdEnvironment" type="int" length="11" null="no" title=""/>
+    <property dbname="password" propname="Password" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="auth_key" propname="AuthKey" type="string" length="12" default="" null="no" title=""/>
+    <property dbname="auth_date" propname="AuthDate" type="datetime" null="no" title=""/>
+  </class>
+  <class name="Environments" table="environments" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="url" propname="Url" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="avalible" propname="Avalible" type="int" length="1" default="1" null="no" title=""/>
+  </class>
+  <class name="Roles" table="roles" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="255" default="" null="no" title=""/>
+  </class>
+  <class name="ServiceAccess" table="service_access" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <property dbname="id_role" propname="IdRole" type="int" length="11" null="no" title=""/>
+    <property dbname="id_service" propname="IdService" type="int" length="11" null="no" title=""/>
+    <property dbname="id_environment" propname="IdEnvironment" type="int" length="11" null="no" title=""/>
+  </class>
+  <class name="Services" table="services" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="email" propname="Email" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="avalible" propname="Avalible" type="int" length="1" default="1" null="no" title=""/>
+  </class>
+  <class name="Users" table="users" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="login" propname="Login" type="string" length="255" default="" null="no" title=""/>
+  </class>
+</classes>

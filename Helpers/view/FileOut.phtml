@@ -1,0 +1,13 @@
+<?php
+
+/* @var $this \analib\Helpers\FileOut */
+header('Content-type: ' . $type);
+if ($this->getAttachment()) {
+    $h = 'Content-disposition: attachment';
+    if (!$name) {
+        $name = time();
+    }
+    $h .= '; filename="' . $name . '"';
+    header($h);
+}
+echo $body;

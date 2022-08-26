@@ -1,0 +1,94 @@
+<?php
+/* @var $this PagesHelper */
+$rows_per_page = isset($rows_per_page) ? $rows_per_page : \analib\Core\Application\Application::me()->get('rows_per_page');
+$PAGER_TOTAL   = isset($PAGER_TOTAL) ? $PAGER_TOTAL : $rows_per_page;
+$PAGER_LIMIT   = isset($PAGER_LIMIT) ? $PAGER_LIMIT : $rows_per_page;
+$PAGER_START   = isset($PAGER_START) ? $PAGER_START : 0;
+$PAGER_URL     = isset($PAGER_URL) ? $PAGER_URL : $_SERVER['REQUEST_URI'];
+
+$num_pages = ceil($PAGER_TOTAL / $PAGER_LIMIT);
+if ($this->allWaysPages() && ($num_pages > 1)) {
+    if ($this->getScript()) {
+        $path = analib\Util\Template::includeTemplate($this->getScript());
+        if (file_exists($path)) {
+            include_once analib\Util\Template::includeTemplate($this->getScript());
+        }
+    }
+    $cur_page = $PAGER_START / $PAGER_LIMIT;
+    if ($num_pages > 10) {
+        $p_start = $cur_page - 5;
+        $p_end   = $cur_page + 5;
+        if ($p_start < 1) {
+            $p_start = 0;
+            $p_end   = $p_start + 10;
+        } else {
+            if ($p_start == 2) {
+                $p_start = $p_start - 1;
+            } elseif ($p_start > 2 && $num_pages != 11) {
+
+            }
+        }
+        if ($p_end >= $num_pages) {
+            $p_start = $num_pages - 10;
+            $p_end   = $num_pages;
+        }
+    } else {
+        $p_start = 0;
+        $p_end   = $num_pages;
+    }
+    if ($PAGER_TOTAL) {
+        ?>
+        <p><strong>Всего: <?= $PAGER_TOTAL ?></strong></p>
+        <?php
+    }
+    ?>
+    <p class="pages">
+        <?php
+        if ($cur_page != 0) {
+            ?>
+            <span class="prev"><button class="pager" href="<?= $PAGER_URL ?>?#page-<?= ($cur_page - 1) * $rows_per_page ?>" rel="prev">&larr;</button></span>
+            <?php
+        }
+        if ($p_start > 1) {
+            ?>
+            <span><button class="pager" href="<?= $PAGER_URL ?>?#page-0" rel="last">1</button></span>
+            <?php
+        }
+        if ($p_start > 2 && $num_pages != 11) {
+            ?>
+            <span><span>&hellip;</span></span>
+            <?php
+        }
+        for ($i = $p_start; $i < $p_end; $i++) {
+            if ($i == $cur_page) {
+                ?>
+                <span><button class="pager" disabled="disabled" href="<?= $PAGER_URL ?>?#page-<?= ($cur_page - 1) * $rows_per_page ?>"><?= ($i + 1) ?></button></span>
+                <?php
+            } else {
+                ?>
+                <span><button class="pager" href="<?= $PAGER_URL ?>?#page-<?= $i * $rows_per_page ?>"><?= ($i + 1) ?></button></span>
+                <?php
+            }
+        }
+
+        if ($cur_page < $num_pages) {
+            if ($num_pages - $p_end > 2) {
+                ?>
+                <span><span>&hellip;</span></span>
+                <?php
+            }
+            if ($p_end < $num_pages) {
+                ?>
+                <span><button class="pager" href="<?= $PAGER_URL ?>?#page-<?= ($num_pages - 1) * $rows_per_page ?>" rel="last"><?= $num_pages ?></button></span>
+                <?php
+            }
+            if ($cur_page < ($num_pages - 1)) {
+                ?>
+                <span class="next"><button class="pager" href="<?= $PAGER_URL ?>?#page-<?= ($cur_page + 1) * $rows_per_page ?>" rel="next">&rarr;</button></span>
+                <?php
+            }
+        }
+        ?>
+    </p>
+    <?php
+}

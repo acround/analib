@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="AuthFail" table="auth_fail" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="ip" propname="Ip" type="string" length="15" default="" null="no" title=""/>
+    <property dbname="user_login" propname="UserLogin" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="date" propname="Date" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title=""/>
+    <property dbname="message" propname="Message" type="string" length="256" default="null" null="yes" title=""/>
+  </class>
+  <class name="Label" table="label" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="available" propname="Available" type="int" length="1" default="1" null="no" title=""/>
+  </class>
+  <class name="LabelAccess" table="label_access" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="user_id" propname="UserId" type="int" class="User" object="User" null="no" title=""/>
+    <property dbname="system_id" propname="SystemId" type="string" class="" length="64" default="" null="yes" title=""/>
+    <property dbname="aname_id" propname="AnameId" type="string" class="" length="64" default="" null="yes" title=""/>
+    <property dbname="aname_voip_number" propname="AnameVoipNumber" type="string" length="15" default="" null="no" title=""/>
+    <property dbname="password" propname="Password" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="auth_key" propname="AuthKey" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="auth_date" propname="AuthDate" type="Timestamp" default="CURRENT_TIMESTAMP" null="yes" title=""/>
+    <property dbname="public_role_id" propname="PublicRoleId" type="int" class="PublicRole" object="PublicRole" null="no" title=""/>
+    <property dbname="bapi_check" propname="BapiCheck" type="Timestamp" default="CURRENT_TIMESTAMP" null="yes" title=""/>
+    <property dbname="status" propname="Status" type="set" length="'not_active','active','test','blocked','no_check'" default="active" null="no" title=""/>
+    <property dbname="access_manager_id" propname="AccessManagerId" type="int" class="Manager" object="AccessManager" default="null" null="yes" title=""/>
+  </class>
+  <class name="Language" table="language" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="code" propname="Code" type="string" length="2" default="" null="no" title=""/>
+  </class>
+  <class name="Manager" table="manager" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="login" propname="Login" type="string" length="255" null="no" title=""/>
+    <property dbname="password" propname="Password" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="Migration" table="migration" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="version" propname="Version" type="string" length="180" null="no" title=""/>
+    <property dbname="apply_time" propname="ApplyTime" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="PasswordRestore" table="password_restore" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="login" propname="Login" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="url" propname="Url" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="label_id" propname="LabelId" type="int" class="Label" object="Label" null="no" title=""/>
+    <property dbname="date" propname="Date" type="Timestamp" default="CURRENT_TIMESTAMP" null="no" title=""/>
+    <property dbname="restore_key" propname="RestoreKey" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="used" propname="Used" type="int" length="1" default="0" null="no" title=""/>
+  </class>
+  <class name="PublicRole" table="public_role" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="role_id" propname="RoleId" type="int" class="Role" object="Role" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="status" propname="Status" type="set" length="'default','admin'" default="null" null="yes" title=""/>
+    <property dbname="label_id" propname="LabelId" type="int" class="Label" object="Label" null="no" title=""/>
+  </class>
+  <class name="Role" table="role" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="255" default="" null="no" title=""/>
+  </class>
+  <class name="Service" table="service" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="available" propname="Available" type="int" length="1" default="1" null="no" title=""/>
+  </class>
+  <class name="ServiceAccess" table="service_access" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="public_role_id" propname="PublicRoleId" type="int" class="PublicRole" object="PublicRole" null="no" title=""/>
+    <identifier dbname="service_id" propname="ServiceId" type="int" class="Service" object="Service" null="no" title=""/>
+    <identifier dbname="label_id" propname="LabelId" type="int" class="Label" object="Label" null="no" title=""/>
+  </class>
+  <class name="User" table="user" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="login" propname="Login" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="language_id" propname="LanguageId" type="int" class="Language" object="Language" null="no" title=""/>
+  </class>
+</classes>

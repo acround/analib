@@ -1,0 +1,55 @@
+<?php
+/* @var $this oopsController */
+$ERROR      = isset($ERROR) ? $ERROR : '';
+$ERROR_CODE = isset($ERROR_CODE) ? $ERROR_CODE : '';
+$ERROR_TYPE = isset($ERROR_TYPE) ? $ERROR_TYPE : '';
+switch ($ERROR_CODE) {
+    case 403:
+        header('HTTP/1.0 403 Forbidden');
+        $action     = $ERROR_CODE;
+        $headerCode = $ERROR_CODE;
+        break;
+    case 404:
+        header('HTTP/1.0 404 Not Found');
+        $action     = $ERROR_CODE;
+        $headerCode = $ERROR_CODE;
+        break;
+    default :
+        $action     = \analib\Core\Application\Application::me()->getActionName();
+        $headerCode = 0;
+}
+if ($this->isFull()) {
+    include analib\Util\Template::includeTemplate('headerError');
+}
+?>
+<script type="text/javascript" src="<?= \analib\Core\Application\Application::makeLink('js/popup.js') ?>"></script>
+<script type="text/javascript">
+    $(function () {
+        var width = $('div.errorMessage').outerWidth();
+        var parentWidth = $('#content').width();
+        var top = 100;
+        var left = (parentWidth - width) / 2;
+        $('div.errorMessage').css('left', left + 'px').css('top', top + 'px');
+    })
+</script>
+<div id="content">
+    <?php
+    $ERROR      = isset($ERROR) ? $ERROR : '';
+    $ERROR_CODE = isset($ERROR_CODE) ? $ERROR_CODE : '';
+    $ERROR_TYPE = isset($ERROR_TYPE) ? $ERROR_TYPE : '';
+    switch ($ERROR_CODE) {
+        case 403:
+        case 404:
+            $action = $ERROR_CODE;
+            \analib\Core\Application\Application::me()->setActionName($action);
+            break;
+        default :
+            $action = \analib\Core\Application\Application::me()->getActionName();
+    }
+    include analib\Util\Template::includeActionTemplate();
+    ?>
+</div>
+<?php
+if ($this->isFull()) {
+    include analib\Util\Template::includeTemplate('footerError');
+}

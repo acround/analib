@@ -1,0 +1,731 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="CHARACTERSETS" table="CHARACTER_SETS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="CHARACTER_SET_NAME" propname="CHARACTERSETNAME" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="DEFAULT_COLLATE_NAME" propname="DEFAULTCOLLATENAME" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="DESCRIPTION" propname="DESCRIPTION" type="string" length="60" default="" null="no" title=""/>
+    <property dbname="MAXLEN" propname="MAXLEN" type="int" length="3" default="0" null="no" title=""/>
+  </class>
+  <class name="COLLATIONS" table="COLLATIONS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="COLLATION_NAME" propname="COLLATIONNAME" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="CHARACTER_SET_NAME" propname="CHARACTERSETNAME" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="ID" propname="ID" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="IS_DEFAULT" propname="ISDEFAULT" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="IS_COMPILED" propname="ISCOMPILED" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="SORTLEN" propname="SORTLEN" type="int" length="3" default="0" null="no" title=""/>
+  </class>
+  <class name="COLLATIONCHARACTERSETAPPLICABILITY" table="COLLATION_CHARACTER_SET_APPLICABILITY" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="COLLATION_NAME" propname="COLLATIONNAME" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="CHARACTER_SET_NAME" propname="CHARACTERSETNAME" type="string" length="32" default="" null="no" title=""/>
+  </class>
+  <class name="COLUMNS" table="COLUMNS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="COLUMN_NAME" propname="COLUMNNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ORDINAL_POSITION" propname="ORDINALPOSITION" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="COLUMN_DEFAULT" propname="COLUMNDEFAULT" type="string" default="null" null="yes" title=""/>
+    <property dbname="IS_NULLABLE" propname="ISNULLABLE" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="DATA_TYPE" propname="DATATYPE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="CHARACTER_MAXIMUM_LENGTH" propname="CHARACTERMAXIMUMLENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="CHARACTER_OCTET_LENGTH" propname="CHARACTEROCTETLENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="NUMERIC_PRECISION" propname="NUMERICPRECISION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="NUMERIC_SCALE" propname="NUMERICSCALE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="DATETIME_PRECISION" propname="DATETIMEPRECISION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="CHARACTER_SET_NAME" propname="CHARACTERSETNAME" type="string" length="32" default="null" null="yes" title=""/>
+    <property dbname="COLLATION_NAME" propname="COLLATIONNAME" type="string" length="32" default="null" null="yes" title=""/>
+    <property dbname="COLUMN_TYPE" propname="COLUMNTYPE" type="string" null="no" title=""/>
+    <property dbname="COLUMN_KEY" propname="COLUMNKEY" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="EXTRA" propname="EXTRA" type="string" length="30" default="" null="no" title=""/>
+    <property dbname="PRIVILEGES" propname="PRIVILEGES" type="string" length="80" default="" null="no" title=""/>
+    <property dbname="COLUMN_COMMENT" propname="COLUMNCOMMENT" type="string" length="1024" default="" null="no" title=""/>
+    <property dbname="GENERATION_EXPRESSION" propname="GENERATIONEXPRESSION" type="string" null="no" title=""/>
+  </class>
+  <class name="COLUMNPRIVILEGES" table="COLUMN_PRIVILEGES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="GRANTEE" propname="GRANTEE" type="string" length="81" default="" null="no" title=""/>
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="COLUMN_NAME" propname="COLUMNNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="PRIVILEGE_TYPE" propname="PRIVILEGETYPE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="IS_GRANTABLE" propname="ISGRANTABLE" type="string" length="3" default="" null="no" title=""/>
+  </class>
+  <class name="ENGINES" table="ENGINES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="ENGINE" propname="ENGINE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="SUPPORT" propname="SUPPORT" type="string" length="8" default="" null="no" title=""/>
+    <property dbname="COMMENT" propname="COMMENT" type="string" length="80" default="" null="no" title=""/>
+    <property dbname="TRANSACTIONS" propname="TRANSACTIONS" type="string" length="3" default="null" null="yes" title=""/>
+    <property dbname="XA" propname="XA" type="string" length="3" default="null" null="yes" title=""/>
+    <property dbname="SAVEPOINTS" propname="SAVEPOINTS" type="string" length="3" default="null" null="yes" title=""/>
+  </class>
+  <class name="EVENTS" table="EVENTS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="EVENT_CATALOG" propname="EVENTCATALOG" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="EVENT_SCHEMA" propname="EVENTSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="EVENT_NAME" propname="EVENTNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="DEFINER" propname="DEFINER" type="string" length="93" default="" null="no" title=""/>
+    <property dbname="TIME_ZONE" propname="TIMEZONE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="EVENT_BODY" propname="EVENTBODY" type="string" length="8" default="" null="no" title=""/>
+    <property dbname="EVENT_DEFINITION" propname="EVENTDEFINITION" type="string" null="no" title=""/>
+    <property dbname="EVENT_TYPE" propname="EVENTTYPE" type="string" length="9" default="" null="no" title=""/>
+    <property dbname="EXECUTE_AT" propname="EXECUTEAT" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="INTERVAL_VALUE" propname="INTERVALVALUE" type="string" length="256" default="null" null="yes" title=""/>
+    <property dbname="INTERVAL_FIELD" propname="INTERVALFIELD" type="string" length="18" default="null" null="yes" title=""/>
+    <property dbname="SQL_MODE" propname="SQLMODE" type="string" length="8192" default="" null="no" title=""/>
+    <property dbname="STARTS" propname="STARTS" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="ENDS" propname="ENDS" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="STATUS" propname="STATUS" type="string" length="18" default="" null="no" title=""/>
+    <property dbname="ON_COMPLETION" propname="ONCOMPLETION" type="string" length="12" default="" null="no" title=""/>
+    <property dbname="CREATED" propname="CREATED" type="datetime" default="0000-00-00 00:00:00" null="no" title=""/>
+    <property dbname="LAST_ALTERED" propname="LASTALTERED" type="datetime" default="0000-00-00 00:00:00" null="no" title=""/>
+    <property dbname="LAST_EXECUTED" propname="LASTEXECUTED" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="EVENT_COMMENT" propname="EVENTCOMMENT" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ORIGINATOR" propname="ORIGINATOR" type="int" length="10" default="0" null="no" title=""/>
+    <property dbname="CHARACTER_SET_CLIENT" propname="CHARACTERSETCLIENT" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="COLLATION_CONNECTION" propname="COLLATIONCONNECTION" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="DATABASE_COLLATION" propname="DATABASECOLLATION" type="string" length="32" default="" null="no" title=""/>
+  </class>
+  <class name="FILES" table="FILES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="FILE_ID" propname="FILEID" type="int" length="4" default="0" null="no" title=""/>
+    <property dbname="FILE_NAME" propname="FILENAME" type="string" length="4000" default="null" null="yes" title=""/>
+    <property dbname="FILE_TYPE" propname="FILETYPE" type="string" length="20" default="" null="no" title=""/>
+    <property dbname="TABLESPACE_NAME" propname="TABLESPACENAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="LOGFILE_GROUP_NAME" propname="LOGFILEGROUPNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="LOGFILE_GROUP_NUMBER" propname="LOGFILEGROUPNUMBER" type="int" length="4" default="null" null="yes" title=""/>
+    <property dbname="ENGINE" propname="ENGINE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="FULLTEXT_KEYS" propname="FULLTEXTKEYS" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="DELETED_ROWS" propname="DELETEDROWS" type="int" length="4" default="null" null="yes" title=""/>
+    <property dbname="UPDATE_COUNT" propname="UPDATECOUNT" type="int" length="4" default="null" null="yes" title=""/>
+    <property dbname="FREE_EXTENTS" propname="FREEEXTENTS" type="int" length="4" default="null" null="yes" title=""/>
+    <property dbname="TOTAL_EXTENTS" propname="TOTALEXTENTS" type="int" length="4" default="null" null="yes" title=""/>
+    <property dbname="EXTENT_SIZE" propname="EXTENTSIZE" type="int" length="4" default="0" null="no" title=""/>
+    <property dbname="INITIAL_SIZE" propname="INITIALSIZE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="MAXIMUM_SIZE" propname="MAXIMUMSIZE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="AUTOEXTEND_SIZE" propname="AUTOEXTENDSIZE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="CREATION_TIME" propname="CREATIONTIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="LAST_UPDATE_TIME" propname="LASTUPDATETIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="LAST_ACCESS_TIME" propname="LASTACCESSTIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="RECOVER_TIME" propname="RECOVERTIME" type="int" length="4" default="null" null="yes" title=""/>
+    <property dbname="TRANSACTION_COUNTER" propname="TRANSACTIONCOUNTER" type="int" length="4" default="null" null="yes" title=""/>
+    <property dbname="VERSION" propname="VERSION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="ROW_FORMAT" propname="ROWFORMAT" type="string" length="10" default="null" null="yes" title=""/>
+    <property dbname="TABLE_ROWS" propname="TABLEROWS" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="AVG_ROW_LENGTH" propname="AVGROWLENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="DATA_LENGTH" propname="DATALENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="MAX_DATA_LENGTH" propname="MAXDATALENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="INDEX_LENGTH" propname="INDEXLENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="DATA_FREE" propname="DATAFREE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="CREATE_TIME" propname="CREATETIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="UPDATE_TIME" propname="UPDATETIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="CHECK_TIME" propname="CHECKTIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="CHECKSUM" propname="CHECKSUM" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="STATUS" propname="STATUS" type="string" length="20" default="" null="no" title=""/>
+    <property dbname="EXTRA" propname="EXTRA" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="GLOBALSTATUS" table="GLOBAL_STATUS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="VARIABLE_NAME" propname="VARIABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="VARIABLE_VALUE" propname="VARIABLEVALUE" type="string" length="1024" default="null" null="yes" title=""/>
+  </class>
+  <class name="GLOBALVARIABLES" table="GLOBAL_VARIABLES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="VARIABLE_NAME" propname="VARIABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="VARIABLE_VALUE" propname="VARIABLEVALUE" type="string" length="1024" default="null" null="yes" title=""/>
+  </class>
+  <class name="KEYCOLUMNUSAGE" table="KEY_COLUMN_USAGE" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="CONSTRAINT_CATALOG" propname="CONSTRAINTCATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="CONSTRAINT_SCHEMA" propname="CONSTRAINTSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="CONSTRAINT_NAME" propname="CONSTRAINTNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="COLUMN_NAME" propname="COLUMNNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ORDINAL_POSITION" propname="ORDINALPOSITION" type="int" length="10" default="0" null="no" title=""/>
+    <property dbname="POSITION_IN_UNIQUE_CONSTRAINT" propname="POSITIONINUNIQUECONSTRAINT" type="int" length="10" default="null" null="yes" title=""/>
+    <property dbname="REFERENCED_TABLE_SCHEMA" propname="REFERENCEDTABLESCHEMA" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="REFERENCED_TABLE_NAME" propname="REFERENCEDTABLENAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="REFERENCED_COLUMN_NAME" propname="REFERENCEDCOLUMNNAME" type="string" length="64" default="null" null="yes" title=""/>
+  </class>
+  <class name="OPTIMIZERTRACE" table="OPTIMIZER_TRACE" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="QUERY" propname="QUERY" type="string" null="no" title=""/>
+    <property dbname="TRACE" propname="TRACE" type="string" null="no" title=""/>
+    <property dbname="MISSING_BYTES_BEYOND_MAX_MEM_SIZE" propname="MISSINGBYTESBEYONDMAXMEMSIZE" type="int" length="20" default="0" null="no" title=""/>
+    <property dbname="INSUFFICIENT_PRIVILEGES" propname="INSUFFICIENTPRIVILEGES" type="int" length="1" default="0" null="no" title=""/>
+  </class>
+  <class name="PARAMETERS" table="PARAMETERS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="SPECIFIC_CATALOG" propname="SPECIFICCATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="SPECIFIC_SCHEMA" propname="SPECIFICSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="SPECIFIC_NAME" propname="SPECIFICNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ORDINAL_POSITION" propname="ORDINALPOSITION" type="int" length="21" default="0" null="no" title=""/>
+    <property dbname="PARAMETER_MODE" propname="PARAMETERMODE" type="string" length="5" default="null" null="yes" title=""/>
+    <property dbname="PARAMETER_NAME" propname="PARAMETERNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="DATA_TYPE" propname="DATATYPE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="CHARACTER_MAXIMUM_LENGTH" propname="CHARACTERMAXIMUMLENGTH" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="CHARACTER_OCTET_LENGTH" propname="CHARACTEROCTETLENGTH" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="NUMERIC_PRECISION" propname="NUMERICPRECISION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="NUMERIC_SCALE" propname="NUMERICSCALE" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="DATETIME_PRECISION" propname="DATETIMEPRECISION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="CHARACTER_SET_NAME" propname="CHARACTERSETNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="COLLATION_NAME" propname="COLLATIONNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="DTD_IDENTIFIER" propname="DTDIDENTIFIER" type="string" null="no" title=""/>
+    <property dbname="ROUTINE_TYPE" propname="ROUTINETYPE" type="string" length="9" default="" null="no" title=""/>
+  </class>
+  <class name="PARTITIONS" table="PARTITIONS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="PARTITION_NAME" propname="PARTITIONNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="SUBPARTITION_NAME" propname="SUBPARTITIONNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="PARTITION_ORDINAL_POSITION" propname="PARTITIONORDINALPOSITION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="SUBPARTITION_ORDINAL_POSITION" propname="SUBPARTITIONORDINALPOSITION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="PARTITION_METHOD" propname="PARTITIONMETHOD" type="string" length="18" default="null" null="yes" title=""/>
+    <property dbname="SUBPARTITION_METHOD" propname="SUBPARTITIONMETHOD" type="string" length="12" default="null" null="yes" title=""/>
+    <property dbname="PARTITION_EXPRESSION" propname="PARTITIONEXPRESSION" type="string" default="null" null="yes" title=""/>
+    <property dbname="SUBPARTITION_EXPRESSION" propname="SUBPARTITIONEXPRESSION" type="string" default="null" null="yes" title=""/>
+    <property dbname="PARTITION_DESCRIPTION" propname="PARTITIONDESCRIPTION" type="string" default="null" null="yes" title=""/>
+    <property dbname="TABLE_ROWS" propname="TABLEROWS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="AVG_ROW_LENGTH" propname="AVGROWLENGTH" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DATA_LENGTH" propname="DATALENGTH" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="MAX_DATA_LENGTH" propname="MAXDATALENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="INDEX_LENGTH" propname="INDEXLENGTH" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DATA_FREE" propname="DATAFREE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="CREATE_TIME" propname="CREATETIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="UPDATE_TIME" propname="UPDATETIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="CHECK_TIME" propname="CHECKTIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="CHECKSUM" propname="CHECKSUM" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="PARTITION_COMMENT" propname="PARTITIONCOMMENT" type="string" length="80" default="" null="no" title=""/>
+    <property dbname="NODEGROUP" propname="NODEGROUP" type="string" length="12" default="" null="no" title=""/>
+    <property dbname="TABLESPACE_NAME" propname="TABLESPACENAME" type="string" length="64" default="null" null="yes" title=""/>
+  </class>
+  <class name="PLUGINS" table="PLUGINS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="PLUGIN_NAME" propname="PLUGINNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="PLUGIN_VERSION" propname="PLUGINVERSION" type="string" length="20" default="" null="no" title=""/>
+    <property dbname="PLUGIN_STATUS" propname="PLUGINSTATUS" type="string" length="10" default="" null="no" title=""/>
+    <property dbname="PLUGIN_TYPE" propname="PLUGINTYPE" type="string" length="80" default="" null="no" title=""/>
+    <property dbname="PLUGIN_TYPE_VERSION" propname="PLUGINTYPEVERSION" type="string" length="20" default="" null="no" title=""/>
+    <property dbname="PLUGIN_LIBRARY" propname="PLUGINLIBRARY" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="PLUGIN_LIBRARY_VERSION" propname="PLUGINLIBRARYVERSION" type="string" length="20" default="null" null="yes" title=""/>
+    <property dbname="PLUGIN_AUTHOR" propname="PLUGINAUTHOR" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="PLUGIN_DESCRIPTION" propname="PLUGINDESCRIPTION" type="string" default="null" null="yes" title=""/>
+    <property dbname="PLUGIN_LICENSE" propname="PLUGINLICENSE" type="string" length="80" default="null" null="yes" title=""/>
+    <property dbname="LOAD_OPTION" propname="LOADOPTION" type="string" length="64" default="" null="no" title=""/>
+  </class>
+  <class name="PROCESSLIST" table="PROCESSLIST" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="ID" propname="ID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="USER" propname="USER" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="HOST" propname="HOST" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="DB" propname="DB" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="COMMAND" propname="COMMAND" type="string" length="16" default="" null="no" title=""/>
+    <property dbname="TIME" propname="TIME" type="int" length="7" default="0" null="no" title=""/>
+    <property dbname="STATE" propname="STATE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="INFO" propname="INFO" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="PROFILING" table="PROFILING" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="QUERY_ID" propname="QUERYID" type="int" length="20" default="0" null="no" title=""/>
+    <property dbname="SEQ" propname="SEQ" type="int" length="20" default="0" null="no" title=""/>
+    <property dbname="STATE" propname="STATE" type="string" length="30" default="" null="no" title=""/>
+    <property dbname="DURATION" propname="DURATION" type="float" length="9,6" default="0.000000" null="no" title=""/>
+    <property dbname="CPU_USER" propname="CPUUSER" type="float" length="9,6" default="null" null="yes" title=""/>
+    <property dbname="CPU_SYSTEM" propname="CPUSYSTEM" type="float" length="9,6" default="null" null="yes" title=""/>
+    <property dbname="CONTEXT_VOLUNTARY" propname="CONTEXTVOLUNTARY" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="CONTEXT_INVOLUNTARY" propname="CONTEXTINVOLUNTARY" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="BLOCK_OPS_IN" propname="BLOCKOPSIN" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="BLOCK_OPS_OUT" propname="BLOCKOPSOUT" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="MESSAGES_SENT" propname="MESSAGESSENT" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="MESSAGES_RECEIVED" propname="MESSAGESRECEIVED" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="PAGE_FAULTS_MAJOR" propname="PAGEFAULTSMAJOR" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="PAGE_FAULTS_MINOR" propname="PAGEFAULTSMINOR" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="SWAPS" propname="SWAPS" type="int" length="20" default="null" null="yes" title=""/>
+    <property dbname="SOURCE_FUNCTION" propname="SOURCEFUNCTION" type="string" length="30" default="null" null="yes" title=""/>
+    <property dbname="SOURCE_FILE" propname="SOURCEFILE" type="string" length="20" default="null" null="yes" title=""/>
+    <property dbname="SOURCE_LINE" propname="SOURCELINE" type="int" length="20" default="null" null="yes" title=""/>
+  </class>
+  <class name="REFERENTIALCONSTRAINTS" table="REFERENTIAL_CONSTRAINTS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="CONSTRAINT_CATALOG" propname="CONSTRAINTCATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="CONSTRAINT_SCHEMA" propname="CONSTRAINTSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="CONSTRAINT_NAME" propname="CONSTRAINTNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="UNIQUE_CONSTRAINT_CATALOG" propname="UNIQUECONSTRAINTCATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="UNIQUE_CONSTRAINT_SCHEMA" propname="UNIQUECONSTRAINTSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="UNIQUE_CONSTRAINT_NAME" propname="UNIQUECONSTRAINTNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="MATCH_OPTION" propname="MATCHOPTION" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="UPDATE_RULE" propname="UPDATERULE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="DELETE_RULE" propname="DELETERULE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="REFERENCED_TABLE_NAME" propname="REFERENCEDTABLENAME" type="string" length="64" default="" null="no" title=""/>
+  </class>
+  <class name="ROUTINES" table="ROUTINES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="SPECIFIC_NAME" propname="SPECIFICNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ROUTINE_CATALOG" propname="ROUTINECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="ROUTINE_SCHEMA" propname="ROUTINESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ROUTINE_NAME" propname="ROUTINENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ROUTINE_TYPE" propname="ROUTINETYPE" type="string" length="9" default="" null="no" title=""/>
+    <property dbname="DATA_TYPE" propname="DATATYPE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="CHARACTER_MAXIMUM_LENGTH" propname="CHARACTERMAXIMUMLENGTH" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="CHARACTER_OCTET_LENGTH" propname="CHARACTEROCTETLENGTH" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="NUMERIC_PRECISION" propname="NUMERICPRECISION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="NUMERIC_SCALE" propname="NUMERICSCALE" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="DATETIME_PRECISION" propname="DATETIMEPRECISION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="CHARACTER_SET_NAME" propname="CHARACTERSETNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="COLLATION_NAME" propname="COLLATIONNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="DTD_IDENTIFIER" propname="DTDIDENTIFIER" type="string" default="null" null="yes" title=""/>
+    <property dbname="ROUTINE_BODY" propname="ROUTINEBODY" type="string" length="8" default="" null="no" title=""/>
+    <property dbname="ROUTINE_DEFINITION" propname="ROUTINEDEFINITION" type="string" default="null" null="yes" title=""/>
+    <property dbname="EXTERNAL_NAME" propname="EXTERNALNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="EXTERNAL_LANGUAGE" propname="EXTERNALLANGUAGE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="PARAMETER_STYLE" propname="PARAMETERSTYLE" type="string" length="8" default="" null="no" title=""/>
+    <property dbname="IS_DETERMINISTIC" propname="ISDETERMINISTIC" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="SQL_DATA_ACCESS" propname="SQLDATAACCESS" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="SQL_PATH" propname="SQLPATH" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="SECURITY_TYPE" propname="SECURITYTYPE" type="string" length="7" default="" null="no" title=""/>
+    <property dbname="CREATED" propname="CREATED" type="datetime" default="0000-00-00 00:00:00" null="no" title=""/>
+    <property dbname="LAST_ALTERED" propname="LASTALTERED" type="datetime" default="0000-00-00 00:00:00" null="no" title=""/>
+    <property dbname="SQL_MODE" propname="SQLMODE" type="string" length="8192" default="" null="no" title=""/>
+    <property dbname="ROUTINE_COMMENT" propname="ROUTINECOMMENT" type="string" null="no" title=""/>
+    <property dbname="DEFINER" propname="DEFINER" type="string" length="93" default="" null="no" title=""/>
+    <property dbname="CHARACTER_SET_CLIENT" propname="CHARACTERSETCLIENT" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="COLLATION_CONNECTION" propname="COLLATIONCONNECTION" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="DATABASE_COLLATION" propname="DATABASECOLLATION" type="string" length="32" default="" null="no" title=""/>
+  </class>
+  <class name="SCHEMATA" table="SCHEMATA" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="CATALOG_NAME" propname="CATALOGNAME" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="SCHEMA_NAME" propname="SCHEMANAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="DEFAULT_CHARACTER_SET_NAME" propname="DEFAULTCHARACTERSETNAME" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="DEFAULT_COLLATION_NAME" propname="DEFAULTCOLLATIONNAME" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="SQL_PATH" propname="SQLPATH" type="string" length="512" default="null" null="yes" title=""/>
+  </class>
+  <class name="SCHEMAPRIVILEGES" table="SCHEMA_PRIVILEGES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="GRANTEE" propname="GRANTEE" type="string" length="81" default="" null="no" title=""/>
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="PRIVILEGE_TYPE" propname="PRIVILEGETYPE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="IS_GRANTABLE" propname="ISGRANTABLE" type="string" length="3" default="" null="no" title=""/>
+  </class>
+  <class name="SESSIONSTATUS" table="SESSION_STATUS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="VARIABLE_NAME" propname="VARIABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="VARIABLE_VALUE" propname="VARIABLEVALUE" type="string" length="1024" default="null" null="yes" title=""/>
+  </class>
+  <class name="SESSIONVARIABLES" table="SESSION_VARIABLES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="VARIABLE_NAME" propname="VARIABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="VARIABLE_VALUE" propname="VARIABLEVALUE" type="string" length="1024" default="null" null="yes" title=""/>
+  </class>
+  <class name="STATISTICS" table="STATISTICS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="NON_UNIQUE" propname="NONUNIQUE" type="int" length="1" default="0" null="no" title=""/>
+    <property dbname="INDEX_SCHEMA" propname="INDEXSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="INDEX_NAME" propname="INDEXNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="SEQ_IN_INDEX" propname="SEQININDEX" type="int" length="2" default="0" null="no" title=""/>
+    <property dbname="COLUMN_NAME" propname="COLUMNNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="COLLATION" propname="COLLATION" type="string" length="1" default="null" null="yes" title=""/>
+    <property dbname="CARDINALITY" propname="CARDINALITY" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="SUB_PART" propname="SUBPART" type="int" length="3" default="null" null="yes" title=""/>
+    <property dbname="PACKED" propname="PACKED" type="string" length="10" default="null" null="yes" title=""/>
+    <property dbname="NULLABLE" propname="NULLABLE" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="INDEX_TYPE" propname="INDEXTYPE" type="string" length="16" default="" null="no" title=""/>
+    <property dbname="COMMENT" propname="COMMENT" type="string" length="16" default="null" null="yes" title=""/>
+    <property dbname="INDEX_COMMENT" propname="INDEXCOMMENT" type="string" length="1024" default="" null="no" title=""/>
+  </class>
+  <class name="TABLES" table="TABLES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_TYPE" propname="TABLETYPE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ENGINE" propname="ENGINE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="VERSION" propname="VERSION" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="ROW_FORMAT" propname="ROWFORMAT" type="string" length="10" default="null" null="yes" title=""/>
+    <property dbname="TABLE_ROWS" propname="TABLEROWS" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="AVG_ROW_LENGTH" propname="AVGROWLENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="DATA_LENGTH" propname="DATALENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="MAX_DATA_LENGTH" propname="MAXDATALENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="INDEX_LENGTH" propname="INDEXLENGTH" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="DATA_FREE" propname="DATAFREE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="AUTO_INCREMENT" propname="AUTOINCREMENT" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="CREATE_TIME" propname="CREATETIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="UPDATE_TIME" propname="UPDATETIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="CHECK_TIME" propname="CHECKTIME" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="TABLE_COLLATION" propname="TABLECOLLATION" type="string" length="32" default="null" null="yes" title=""/>
+    <property dbname="CHECKSUM" propname="CHECKSUM" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="CREATE_OPTIONS" propname="CREATEOPTIONS" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="TABLE_COMMENT" propname="TABLECOMMENT" type="string" length="2048" default="" null="no" title=""/>
+  </class>
+  <class name="TABLESPACES" table="TABLESPACES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLESPACE_NAME" propname="TABLESPACENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ENGINE" propname="ENGINE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLESPACE_TYPE" propname="TABLESPACETYPE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="LOGFILE_GROUP_NAME" propname="LOGFILEGROUPNAME" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="EXTENT_SIZE" propname="EXTENTSIZE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="AUTOEXTEND_SIZE" propname="AUTOEXTENDSIZE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="MAXIMUM_SIZE" propname="MAXIMUMSIZE" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="NODEGROUP_ID" propname="NODEGROUPID" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="TABLESPACE_COMMENT" propname="TABLESPACECOMMENT" type="string" length="2048" default="null" null="yes" title=""/>
+  </class>
+  <class name="TABLECONSTRAINTS" table="TABLE_CONSTRAINTS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="CONSTRAINT_CATALOG" propname="CONSTRAINTCATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="CONSTRAINT_SCHEMA" propname="CONSTRAINTSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="CONSTRAINT_NAME" propname="CONSTRAINTNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="CONSTRAINT_TYPE" propname="CONSTRAINTTYPE" type="string" length="64" default="" null="no" title=""/>
+  </class>
+  <class name="TABLEPRIVILEGES" table="TABLE_PRIVILEGES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="GRANTEE" propname="GRANTEE" type="string" length="81" default="" null="no" title=""/>
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="PRIVILEGE_TYPE" propname="PRIVILEGETYPE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="IS_GRANTABLE" propname="ISGRANTABLE" type="string" length="3" default="" null="no" title=""/>
+  </class>
+  <class name="TRIGGERS" table="TRIGGERS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TRIGGER_CATALOG" propname="TRIGGERCATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TRIGGER_SCHEMA" propname="TRIGGERSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TRIGGER_NAME" propname="TRIGGERNAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="EVENT_MANIPULATION" propname="EVENTMANIPULATION" type="string" length="6" default="" null="no" title=""/>
+    <property dbname="EVENT_OBJECT_CATALOG" propname="EVENTOBJECTCATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="EVENT_OBJECT_SCHEMA" propname="EVENTOBJECTSCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="EVENT_OBJECT_TABLE" propname="EVENTOBJECTTABLE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="ACTION_ORDER" propname="ACTIONORDER" type="int" length="4" default="0" null="no" title=""/>
+    <property dbname="ACTION_CONDITION" propname="ACTIONCONDITION" type="string" default="null" null="yes" title=""/>
+    <property dbname="ACTION_STATEMENT" propname="ACTIONSTATEMENT" type="string" null="no" title=""/>
+    <property dbname="ACTION_ORIENTATION" propname="ACTIONORIENTATION" type="string" length="9" default="" null="no" title=""/>
+    <property dbname="ACTION_TIMING" propname="ACTIONTIMING" type="string" length="6" default="" null="no" title=""/>
+    <property dbname="ACTION_REFERENCE_OLD_TABLE" propname="ACTIONREFERENCEOLDTABLE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="ACTION_REFERENCE_NEW_TABLE" propname="ACTIONREFERENCENEWTABLE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="ACTION_REFERENCE_OLD_ROW" propname="ACTIONREFERENCEOLDROW" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="ACTION_REFERENCE_NEW_ROW" propname="ACTIONREFERENCENEWROW" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="CREATED" propname="CREATED" type="datetime" length="2" default="null" null="yes" title=""/>
+    <property dbname="SQL_MODE" propname="SQLMODE" type="string" length="8192" default="" null="no" title=""/>
+    <property dbname="DEFINER" propname="DEFINER" type="string" length="93" default="" null="no" title=""/>
+    <property dbname="CHARACTER_SET_CLIENT" propname="CHARACTERSETCLIENT" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="COLLATION_CONNECTION" propname="COLLATIONCONNECTION" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="DATABASE_COLLATION" propname="DATABASECOLLATION" type="string" length="32" default="" null="no" title=""/>
+  </class>
+  <class name="USERPRIVILEGES" table="USER_PRIVILEGES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="GRANTEE" propname="GRANTEE" type="string" length="81" default="" null="no" title=""/>
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="PRIVILEGE_TYPE" propname="PRIVILEGETYPE" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="IS_GRANTABLE" propname="ISGRANTABLE" type="string" length="3" default="" null="no" title=""/>
+  </class>
+  <class name="VIEWS" table="VIEWS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_CATALOG" propname="TABLECATALOG" type="string" length="512" default="" null="no" title=""/>
+    <property dbname="TABLE_SCHEMA" propname="TABLESCHEMA" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="64" default="" null="no" title=""/>
+    <property dbname="VIEW_DEFINITION" propname="VIEWDEFINITION" type="string" null="no" title=""/>
+    <property dbname="CHECK_OPTION" propname="CHECKOPTION" type="string" length="8" default="" null="no" title=""/>
+    <property dbname="IS_UPDATABLE" propname="ISUPDATABLE" type="string" length="3" default="" null="no" title=""/>
+    <property dbname="DEFINER" propname="DEFINER" type="string" length="93" default="" null="no" title=""/>
+    <property dbname="SECURITY_TYPE" propname="SECURITYTYPE" type="string" length="7" default="" null="no" title=""/>
+    <property dbname="CHARACTER_SET_CLIENT" propname="CHARACTERSETCLIENT" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="COLLATION_CONNECTION" propname="COLLATIONCONNECTION" type="string" length="32" default="" null="no" title=""/>
+  </class>
+  <class name="INNODBLOCKS" table="INNODB_LOCKS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="lock_id" propname="LockId" type="string" class="" length="81" default="" null="no" title=""/>
+    <property dbname="lock_trx_id" propname="LockTrxId" type="string" class="" length="18" default="" null="no" title=""/>
+    <property dbname="lock_mode" propname="LockMode" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="lock_type" propname="LockType" type="string" length="32" default="" null="no" title=""/>
+    <property dbname="lock_table" propname="LockTable" type="string" length="1024" default="" null="no" title=""/>
+    <property dbname="lock_index" propname="LockIndex" type="string" length="1024" default="null" null="yes" title=""/>
+    <property dbname="lock_space" propname="LockSpace" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="lock_page" propname="LockPage" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="lock_rec" propname="LockRec" type="int" length="21) unsigned" default="null" null="yes" title=""/>
+    <property dbname="lock_data" propname="LockData" type="string" length="8192" default="null" null="yes" title=""/>
+  </class>
+  <class name="INNODBTRX" table="INNODB_TRX" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="trx_id" propname="TrxId" type="string" class="" length="18" default="" null="no" title=""/>
+    <property dbname="trx_state" propname="TrxState" type="string" length="13" default="" null="no" title=""/>
+    <property dbname="trx_started" propname="TrxStarted" type="datetime" default="0000-00-00 00:00:00" null="no" title=""/>
+    <property dbname="trx_requested_lock_id" propname="TrxRequestedLockId" type="string" class="" length="81" default="null" null="yes" title=""/>
+    <property dbname="trx_wait_started" propname="TrxWaitStarted" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="trx_weight" propname="TrxWeight" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_mysql_thread_id" propname="TrxMysqlThreadId" type="int" class="" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_query" propname="TrxQuery" type="string" length="1024" default="null" null="yes" title=""/>
+    <property dbname="trx_operation_state" propname="TrxOperationState" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="trx_tables_in_use" propname="TrxTablesInUse" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_tables_locked" propname="TrxTablesLocked" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_lock_structs" propname="TrxLockStructs" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_lock_memory_bytes" propname="TrxLockMemoryBytes" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_rows_locked" propname="TrxRowsLocked" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_rows_modified" propname="TrxRowsModified" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_concurrency_tickets" propname="TrxConcurrencyTickets" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_isolation_level" propname="TrxIsolationLevel" type="string" length="16" default="" null="no" title=""/>
+    <property dbname="trx_unique_checks" propname="TrxUniqueChecks" type="int" length="1" default="0" null="no" title=""/>
+    <property dbname="trx_foreign_key_checks" propname="TrxForeignKeyChecks" type="int" length="1" default="0" null="no" title=""/>
+    <property dbname="trx_last_foreign_key_error" propname="TrxLastForeignKeyError" type="string" length="256" default="null" null="yes" title=""/>
+    <property dbname="trx_adaptive_hash_latched" propname="TrxAdaptiveHashLatched" type="int" length="1" default="0" null="no" title=""/>
+    <property dbname="trx_adaptive_hash_timeout" propname="TrxAdaptiveHashTimeout" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="trx_is_read_only" propname="TrxIsReadOnly" type="int" length="1" default="0" null="no" title=""/>
+    <property dbname="trx_autocommit_non_locking" propname="TrxAutocommitNonLocking" type="int" length="1" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBSYSDATAFILES" table="INNODB_SYS_DATAFILES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="SPACE" propname="SPACE" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="PATH" propname="PATH" type="string" length="4000" default="" null="no" title=""/>
+  </class>
+  <class name="INNODBFTCONFIG" table="INNODB_FT_CONFIG" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="KEY" propname="KEY" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="VALUE" propname="VALUE" type="string" length="193" default="" null="no" title=""/>
+  </class>
+  <class name="INNODBSYSVIRTUAL" table="INNODB_SYS_VIRTUAL" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_ID" propname="TABLEID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="POS" propname="POS" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="BASE_POS" propname="BASEPOS" type="int" length="11) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBCMP" table="INNODB_CMP" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="page_size" propname="PageSize" type="int" length="5" default="0" null="no" title=""/>
+    <property dbname="compress_ops" propname="CompressOps" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="compress_ops_ok" propname="CompressOpsOk" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="compress_time" propname="CompressTime" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="uncompress_ops" propname="UncompressOps" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="uncompress_time" propname="UncompressTime" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBFTBEINGDELETED" table="INNODB_FT_BEING_DELETED" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="DOC_ID" propname="DOCID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBCMPRESET" table="INNODB_CMP_RESET" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="page_size" propname="PageSize" type="int" length="5" default="0" null="no" title=""/>
+    <property dbname="compress_ops" propname="CompressOps" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="compress_ops_ok" propname="CompressOpsOk" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="compress_time" propname="CompressTime" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="uncompress_ops" propname="UncompressOps" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="uncompress_time" propname="UncompressTime" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBCMPPERINDEX" table="INNODB_CMP_PER_INDEX" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="database_name" propname="DatabaseName" type="string" length="192" default="" null="no" title=""/>
+    <property dbname="table_name" propname="TableName" type="string" length="192" default="" null="no" title=""/>
+    <property dbname="index_name" propname="IndexName" type="string" length="192" default="" null="no" title=""/>
+    <property dbname="compress_ops" propname="CompressOps" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="compress_ops_ok" propname="CompressOpsOk" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="compress_time" propname="CompressTime" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="uncompress_ops" propname="UncompressOps" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="uncompress_time" propname="UncompressTime" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBCMPMEMRESET" table="INNODB_CMPMEM_RESET" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="page_size" propname="PageSize" type="int" length="5" default="0" null="no" title=""/>
+    <property dbname="buffer_pool_instance" propname="BufferPoolInstance" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="pages_used" propname="PagesUsed" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="pages_free" propname="PagesFree" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="relocation_ops" propname="RelocationOps" type="int" length="21" default="0" null="no" title=""/>
+    <property dbname="relocation_time" propname="RelocationTime" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBFTDELETED" table="INNODB_FT_DELETED" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="DOC_ID" propname="DOCID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBBUFFERPAGELRU" table="INNODB_BUFFER_PAGE_LRU" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="POOL_ID" propname="POOLID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="LRU_POSITION" propname="LRUPOSITION" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="SPACE" propname="SPACE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGE_NUMBER" propname="PAGENUMBER" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGE_TYPE" propname="PAGETYPE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="FLUSH_TYPE" propname="FLUSHTYPE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="FIX_COUNT" propname="FIXCOUNT" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="IS_HASHED" propname="ISHASHED" type="string" length="3" default="null" null="yes" title=""/>
+    <property dbname="NEWEST_MODIFICATION" propname="NEWESTMODIFICATION" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="OLDEST_MODIFICATION" propname="OLDESTMODIFICATION" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="ACCESS_TIME" propname="ACCESSTIME" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="1024" default="null" null="yes" title=""/>
+    <property dbname="INDEX_NAME" propname="INDEXNAME" type="string" length="1024" default="null" null="yes" title=""/>
+    <property dbname="NUMBER_RECORDS" propname="NUMBERRECORDS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DATA_SIZE" propname="DATASIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="COMPRESSED_SIZE" propname="COMPRESSEDSIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="COMPRESSED" propname="COMPRESSED" type="string" length="3" default="null" null="yes" title=""/>
+    <property dbname="IO_FIX" propname="IOFIX" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="IS_OLD" propname="ISOLD" type="string" length="3" default="null" null="yes" title=""/>
+    <property dbname="FREE_PAGE_CLOCK" propname="FREEPAGECLOCK" type="int" length="21) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBLOCKWAITS" table="INNODB_LOCK_WAITS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="requesting_trx_id" propname="RequestingTrxId" type="string" class="" length="18" default="" null="no" title=""/>
+    <property dbname="requested_lock_id" propname="RequestedLockId" type="string" class="" length="81" default="" null="no" title=""/>
+    <property dbname="blocking_trx_id" propname="BlockingTrxId" type="string" class="" length="18" default="" null="no" title=""/>
+    <property dbname="blocking_lock_id" propname="BlockingLockId" type="string" class="" length="81" default="" null="no" title=""/>
+  </class>
+  <class name="INNODBTEMPTABLEINFO" table="INNODB_TEMP_TABLE_INFO" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_ID" propname="TABLEID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NAME" propname="NAME" type="string" length="202" default="null" null="yes" title=""/>
+    <property dbname="N_COLS" propname="NCOLS" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="SPACE" propname="SPACE" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="PER_TABLE_TABLESPACE" propname="PERTABLETABLESPACE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="IS_COMPRESSED" propname="ISCOMPRESSED" type="string" length="64" default="null" null="yes" title=""/>
+  </class>
+  <class name="INNODBSYSINDEXES" table="INNODB_SYS_INDEXES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="INDEX_ID" propname="INDEXID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NAME" propname="NAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="TABLE_ID" propname="TABLEID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="TYPE" propname="TYPE" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="N_FIELDS" propname="NFIELDS" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="PAGE_NO" propname="PAGENO" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="SPACE" propname="SPACE" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="MERGE_THRESHOLD" propname="MERGETHRESHOLD" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBSYSTABLES" table="INNODB_SYS_TABLES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_ID" propname="TABLEID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NAME" propname="NAME" type="string" length="655" default="" null="no" title=""/>
+    <property dbname="FLAG" propname="FLAG" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="N_COLS" propname="NCOLS" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="SPACE" propname="SPACE" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="FILE_FORMAT" propname="FILEFORMAT" type="string" length="10" default="null" null="yes" title=""/>
+    <property dbname="ROW_FORMAT" propname="ROWFORMAT" type="string" length="12" default="null" null="yes" title=""/>
+    <property dbname="ZIP_PAGE_SIZE" propname="ZIPPAGESIZE" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="SPACE_TYPE" propname="SPACETYPE" type="string" length="10" default="null" null="yes" title=""/>
+  </class>
+  <class name="INNODBSYSFIELDS" table="INNODB_SYS_FIELDS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="INDEX_ID" propname="INDEXID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NAME" propname="NAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="POS" propname="POS" type="int" length="11) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBCMPPERINDEXRESET" table="INNODB_CMP_PER_INDEX_RESET" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="database_name" propname="DatabaseName" type="string" length="192" default="" null="no" title=""/>
+    <property dbname="table_name" propname="TableName" type="string" length="192" default="" null="no" title=""/>
+    <property dbname="index_name" propname="IndexName" type="string" length="192" default="" null="no" title=""/>
+    <property dbname="compress_ops" propname="CompressOps" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="compress_ops_ok" propname="CompressOpsOk" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="compress_time" propname="CompressTime" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="uncompress_ops" propname="UncompressOps" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="uncompress_time" propname="UncompressTime" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBBUFFERPAGE" table="INNODB_BUFFER_PAGE" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="POOL_ID" propname="POOLID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="BLOCK_ID" propname="BLOCKID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="SPACE" propname="SPACE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGE_NUMBER" propname="PAGENUMBER" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGE_TYPE" propname="PAGETYPE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="FLUSH_TYPE" propname="FLUSHTYPE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="FIX_COUNT" propname="FIXCOUNT" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="IS_HASHED" propname="ISHASHED" type="string" length="3" default="null" null="yes" title=""/>
+    <property dbname="NEWEST_MODIFICATION" propname="NEWESTMODIFICATION" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="OLDEST_MODIFICATION" propname="OLDESTMODIFICATION" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="ACCESS_TIME" propname="ACCESSTIME" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="TABLE_NAME" propname="TABLENAME" type="string" length="1024" default="null" null="yes" title=""/>
+    <property dbname="INDEX_NAME" propname="INDEXNAME" type="string" length="1024" default="null" null="yes" title=""/>
+    <property dbname="NUMBER_RECORDS" propname="NUMBERRECORDS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DATA_SIZE" propname="DATASIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="COMPRESSED_SIZE" propname="COMPRESSEDSIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGE_STATE" propname="PAGESTATE" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="IO_FIX" propname="IOFIX" type="string" length="64" default="null" null="yes" title=""/>
+    <property dbname="IS_OLD" propname="ISOLD" type="string" length="3" default="null" null="yes" title=""/>
+    <property dbname="FREE_PAGE_CLOCK" propname="FREEPAGECLOCK" type="int" length="21) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBFTDEFAULTSTOPWORD" table="INNODB_FT_DEFAULT_STOPWORD" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="value" propname="Value" type="string" length="18" default="" null="no" title=""/>
+  </class>
+  <class name="INNODBFTINDEXTABLE" table="INNODB_FT_INDEX_TABLE" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="WORD" propname="WORD" type="string" length="337" default="" null="no" title=""/>
+    <property dbname="FIRST_DOC_ID" propname="FIRSTDOCID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="LAST_DOC_ID" propname="LASTDOCID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DOC_COUNT" propname="DOCCOUNT" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DOC_ID" propname="DOCID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="POSITION" propname="POSITION" type="int" length="21) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBFTINDEXCACHE" table="INNODB_FT_INDEX_CACHE" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="WORD" propname="WORD" type="string" length="337" default="" null="no" title=""/>
+    <property dbname="FIRST_DOC_ID" propname="FIRSTDOCID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="LAST_DOC_ID" propname="LASTDOCID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DOC_COUNT" propname="DOCCOUNT" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DOC_ID" propname="DOCID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="POSITION" propname="POSITION" type="int" length="21) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBSYSTABLESPACES" table="INNODB_SYS_TABLESPACES" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="SPACE" propname="SPACE" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="NAME" propname="NAME" type="string" length="655" default="" null="no" title=""/>
+    <property dbname="FLAG" propname="FLAG" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="FILE_FORMAT" propname="FILEFORMAT" type="string" length="10" default="null" null="yes" title=""/>
+    <property dbname="ROW_FORMAT" propname="ROWFORMAT" type="string" length="22" default="null" null="yes" title=""/>
+    <property dbname="PAGE_SIZE" propname="PAGESIZE" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="ZIP_PAGE_SIZE" propname="ZIPPAGESIZE" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="SPACE_TYPE" propname="SPACETYPE" type="string" length="10" default="null" null="yes" title=""/>
+    <property dbname="FS_BLOCK_SIZE" propname="FSBLOCKSIZE" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="FILE_SIZE" propname="FILESIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="ALLOCATED_SIZE" propname="ALLOCATEDSIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBMETRICS" table="INNODB_METRICS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="NAME" propname="NAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="SUBSYSTEM" propname="SUBSYSTEM" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="COUNT" propname="COUNT" type="int" length="21" default="0" null="no" title=""/>
+    <property dbname="MAX_COUNT" propname="MAXCOUNT" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="MIN_COUNT" propname="MINCOUNT" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="AVG_COUNT" propname="AVGCOUNT" type="float" default="null" null="yes" title=""/>
+    <property dbname="COUNT_RESET" propname="COUNTRESET" type="int" length="21" default="0" null="no" title=""/>
+    <property dbname="MAX_COUNT_RESET" propname="MAXCOUNTRESET" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="MIN_COUNT_RESET" propname="MINCOUNTRESET" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="AVG_COUNT_RESET" propname="AVGCOUNTRESET" type="float" default="null" null="yes" title=""/>
+    <property dbname="TIME_ENABLED" propname="TIMEENABLED" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="TIME_DISABLED" propname="TIMEDISABLED" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="TIME_ELAPSED" propname="TIMEELAPSED" type="int" length="21" default="null" null="yes" title=""/>
+    <property dbname="TIME_RESET" propname="TIMERESET" type="datetime" default="null" null="yes" title=""/>
+    <property dbname="STATUS" propname="STATUS" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="TYPE" propname="TYPE" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="COMMENT" propname="COMMENT" type="string" length="193" default="" null="no" title=""/>
+  </class>
+  <class name="INNODBSYSFOREIGNCOLS" table="INNODB_SYS_FOREIGN_COLS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="ID" propname="ID" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="FOR_COL_NAME" propname="FORCOLNAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="REF_COL_NAME" propname="REFCOLNAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="POS" propname="POS" type="int" length="11) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBCMPMEM" table="INNODB_CMPMEM" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="page_size" propname="PageSize" type="int" length="5" default="0" null="no" title=""/>
+    <property dbname="buffer_pool_instance" propname="BufferPoolInstance" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="pages_used" propname="PagesUsed" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="pages_free" propname="PagesFree" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="relocation_ops" propname="RelocationOps" type="int" length="21" default="0" null="no" title=""/>
+    <property dbname="relocation_time" propname="RelocationTime" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBBUFFERPOOLSTATS" table="INNODB_BUFFER_POOL_STATS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="POOL_ID" propname="POOLID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="POOL_SIZE" propname="POOLSIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="FREE_BUFFERS" propname="FREEBUFFERS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="DATABASE_PAGES" propname="DATABASEPAGES" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="OLD_DATABASE_PAGES" propname="OLDDATABASEPAGES" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="MODIFIED_DATABASE_PAGES" propname="MODIFIEDDATABASEPAGES" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PENDING_DECOMPRESS" propname="PENDINGDECOMPRESS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PENDING_READS" propname="PENDINGREADS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PENDING_FLUSH_LRU" propname="PENDINGFLUSHLRU" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PENDING_FLUSH_LIST" propname="PENDINGFLUSHLIST" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGES_MADE_YOUNG" propname="PAGESMADEYOUNG" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGES_NOT_MADE_YOUNG" propname="PAGESNOTMADEYOUNG" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGES_MADE_YOUNG_RATE" propname="PAGESMADEYOUNGRATE" type="float" default="0" null="no" title=""/>
+    <property dbname="PAGES_MADE_NOT_YOUNG_RATE" propname="PAGESMADENOTYOUNGRATE" type="float" default="0" null="no" title=""/>
+    <property dbname="NUMBER_PAGES_READ" propname="NUMBERPAGESREAD" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NUMBER_PAGES_CREATED" propname="NUMBERPAGESCREATED" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NUMBER_PAGES_WRITTEN" propname="NUMBERPAGESWRITTEN" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="PAGES_READ_RATE" propname="PAGESREADRATE" type="float" default="0" null="no" title=""/>
+    <property dbname="PAGES_CREATE_RATE" propname="PAGESCREATERATE" type="float" default="0" null="no" title=""/>
+    <property dbname="PAGES_WRITTEN_RATE" propname="PAGESWRITTENRATE" type="float" default="0" null="no" title=""/>
+    <property dbname="NUMBER_PAGES_GET" propname="NUMBERPAGESGET" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="HIT_RATE" propname="HITRATE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="YOUNG_MAKE_PER_THOUSAND_GETS" propname="YOUNGMAKEPERTHOUSANDGETS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NOT_YOUNG_MAKE_PER_THOUSAND_GETS" propname="NOTYOUNGMAKEPERTHOUSANDGETS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NUMBER_PAGES_READ_AHEAD" propname="NUMBERPAGESREADAHEAD" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NUMBER_READ_AHEAD_EVICTED" propname="NUMBERREADAHEADEVICTED" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="READ_AHEAD_RATE" propname="READAHEADRATE" type="float" default="0" null="no" title=""/>
+    <property dbname="READ_AHEAD_EVICTED_RATE" propname="READAHEADEVICTEDRATE" type="float" default="0" null="no" title=""/>
+    <property dbname="LRU_IO_TOTAL" propname="LRUIOTOTAL" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="LRU_IO_CURRENT" propname="LRUIOCURRENT" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="UNCOMPRESS_TOTAL" propname="UNCOMPRESSTOTAL" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="UNCOMPRESS_CURRENT" propname="UNCOMPRESSCURRENT" type="int" length="21) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBSYSCOLUMNS" table="INNODB_SYS_COLUMNS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_ID" propname="TABLEID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NAME" propname="NAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="POS" propname="POS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="MTYPE" propname="MTYPE" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="PRTYPE" propname="PRTYPE" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="LEN" propname="LEN" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBSYSFOREIGN" table="INNODB_SYS_FOREIGN" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="ID" propname="ID" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="FOR_NAME" propname="FORNAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="REF_NAME" propname="REFNAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="N_COLS" propname="NCOLS" type="int" length="11) unsigned" default="0" null="no" title=""/>
+    <property dbname="TYPE" propname="TYPE" type="int" length="11) unsigned" default="0" null="no" title=""/>
+  </class>
+  <class name="INNODBSYSTABLESTATS" table="INNODB_SYS_TABLESTATS" title="" type="SYSTEM VIEW" collation="utf8_general_ci">
+    <property dbname="TABLE_ID" propname="TABLEID" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="NAME" propname="NAME" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="STATS_INITIALIZED" propname="STATSINITIALIZED" type="string" length="193" default="" null="no" title=""/>
+    <property dbname="NUM_ROWS" propname="NUMROWS" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="CLUST_INDEX_SIZE" propname="CLUSTINDEXSIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="OTHER_INDEX_SIZE" propname="OTHERINDEXSIZE" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="MODIFIED_COUNTER" propname="MODIFIEDCOUNTER" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="AUTOINC" propname="AUTOINC" type="int" length="21) unsigned" default="0" null="no" title=""/>
+    <property dbname="REF_COUNT" propname="REFCOUNT" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+</classes>

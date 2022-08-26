@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="ApifonicaSip" table="apifonica_sip" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="login" propname="Login" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="sip" propname="Sip" type="string" length="64" default="" null="no" title=""/>
+  </class>
+  <class name="IvrInfo" table="ivr_info" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="melody" propname="Melody" type="string" length="255" default="" null="no" title=""/>
+    <property dbname="language" propname="Language" type="string" length="2" default="en" null="no" title=""/>
+    <property dbname="login" propname="Login" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="Migration" table="migration" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="version" propname="Version" type="string" length="180" null="no" title=""/>
+    <property dbname="apply_time" propname="ApplyTime" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+</classes>

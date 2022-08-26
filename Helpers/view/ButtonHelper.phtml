@@ -1,0 +1,94 @@
+<?php
+/* @var $this analib\Helpers\ButtonHelper */
+if ($this->getType()) {
+    $type = $this->getType();
+} else {
+    $type = analib\Helpers\ButtonHelper::TYPE_BUTTON;
+}
+$status = $this->getStatus();
+if ($status) {
+    $class  = analib\Helpers\ButtonHelper::$typeList[analib\Helpers\ButtonHelper::TYPE_DEFAULT];
+    $status = analib\Helpers\ButtonHelper::$statusList[$status];
+    switch ($type) {
+        case analib\Helpers\ButtonHelper::TYPE_SUBMIT:
+            $ttype = 'submit';
+            break;
+        case analib\Helpers\ButtonHelper::TYPE_RESET:
+            $ttype = 'reset';
+            break;
+        case analib\Helpers\ButtonHelper::TYPE_BUTTON:
+            $ttype = 'button';
+            break;
+    }
+} else {
+    $class = isset(analib\Helpers\ButtonHelper::$typeList[$type]) ? analib\Helpers\ButtonHelper::$typeList[$type] : analib\Helpers\ButtonHelper::$typeList[analib\Helpers\ButtonHelper::TYPE_BUTTON];
+    switch ($type) {
+        case analib\Helpers\ButtonHelper::TYPE_SUBMIT:
+            $ttype = 'submit';
+            break;
+        case analib\Helpers\ButtonHelper::TYPE_RESET:
+            $ttype = 'reset';
+            break;
+        case analib\Helpers\ButtonHelper::TYPE_BUTTON:
+            $ttype = 'button';
+            break;
+        default :
+            $ttype = 'button';
+    }
+
+    if ($this->getSkin()) {
+        $class = analib\Helpers\ButtonHelper::$typeList[$this->getSkin()];
+    }
+}
+
+$params  = $this->getParams();
+$classes = $this->getClass();
+
+if ($this->getId()) {
+    $params['id'] = $this->getId();
+}
+if ($this->getName()) {
+    $params['name'] = $this->getName();
+}
+if ($this->getConfirm()) {
+    $params['confirm'] = $this->getConfirm();
+}
+if ($this->getClick()) {
+    $params['onclick'] = $this->getClick();
+}
+if ($this->getValue()) {
+    $params['value'] = $this->getValue();
+}
+if ($this->isDisable()) {
+    $params['disabled'] = 'disabled';
+    if (!in_array('button-disabled', $classes)) {
+        $classes[] = 'button-disabled';
+    }
+}
+$params['type'] = $ttype;
+
+$params2 = array();
+foreach ($params as $key => $value) {
+    $params2[] = $key . '="' . $value . '"';
+}
+if (count($params2)) {
+    $paramsOut = ' ' . implode(' ', $params2);
+} else {
+    $paramsOut = '';
+}
+
+if ($classes) {
+    $classExt = ' ' . implode(' ', $classes);
+} else {
+    $classExt = '';
+}
+?>
+<span class="button-wrapper<?= $classExt ?>"><span class="button-<?= $class ?>-l"> </span><span class="button-<?= $class ?>-r"> </span><?php
+    if ($this->getStatus()) {
+        $status = analib\Helpers\ButtonHelper::$statusList[$this->getStatus()];
+        ?><span class="<?= $status ?>"> </span><?php
+    }
+    if ($this->getClass()) {
+        $class .= ' ' . implode(' ', $this->getClass());
+    }
+    ?><button class="button-<?= $class ?><?= $this->getStatus() ? ' status' : '' ?>" <?= $paramsOut ?>><?= $caption ?></button></span>

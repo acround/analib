@@ -1,0 +1,408 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="Agent" table="agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title=""/>
+    <property dbname="operator_id" propname="OperatorId" type="int" class="Operator" object="Operator" null="no" title=""/>
+    <property dbname="agent_login" propname="AgentLogin" type="string" length="255" null="no" title=""/>
+    <property dbname="agent_password" propname="AgentPassword" type="string" length="255" null="no" title=""/>
+    <property dbname="agent_name" propname="AgentName" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="linkable" propname="Linkable" type="int" length="1" default="0" null="no" title=""/>
+  </class>
+  <class name="AlsErrors" table="als_errors" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="level" propname="Level" type="string" length="128" default="null" null="yes" title=""/>
+    <property dbname="category" propname="Category" type="string" length="128" default="null" null="yes" title=""/>
+    <property dbname="logtime" propname="Logtime" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="message" propname="Message" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="ApiAction2agent" table="api_action2agent" title="???????? ??????????? ??? ??????????? ??????? ??? ??????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="action2agent_id" propname="Action2agentId" type="int" class="" length="11" null="no" title="UID"/>
+    <property dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" default="null" null="yes" title="UID ??????"/>
+    <property dbname="api_action_id" propname="ApiActionId" type="int" class="ApiActions" object="ApiAction" default="null" null="yes" title="UID ????????"/>
+    <property dbname="api_trigger_id" propname="ApiTriggerId" type="int" class="ApiTriggers" object="ApiTrigger" default="null" null="yes" title="UID ???????"/>
+  </class>
+  <class name="ApiAction2agentSettings" table="api_action2agent_settings" title="????????? ?????????? ???????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="action2agent_id" propname="Action2agentId" type="int" class="ApiAction2agent" object="Action2agent" null="no" title="UID"/>
+    <property dbname="http_uri" propname="HttpUri" type="string" default="null" null="yes" title="????? ?????????? ??????? ?? HTTP"/>
+    <property dbname="http_method" propname="HttpMethod" type="string" length="32" default="null" null="yes" title="????? ?????????? POST/GET"/>
+  </class>
+  <class name="ApiActions" table="api_actions" title="?????????? ????????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="api_action_id" propname="ApiActionId" type="int" class="" length="11" null="no" title="UID"/>
+    <property dbname="api_action_name" propname="ApiActionName" type="string" length="64" default="null" null="yes" title="??? ????????"/>
+    <property dbname="description" propname="Description" type="string" length="256" default="null" null="yes" title="???????? ????????"/>
+    <property dbname="php_class_name" propname="PhpClassName" type="string" length="32" default="null" null="yes" title="??? php ??????"/>
+  </class>
+  <class name="ApiAsyncTask" table="api_async_task" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="task_id" propname="TaskId" type="string" class="" length="32" null="no" title=""/>
+    <property dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title=""/>
+    <property dbname="agent_login" propname="AgentLogin" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="task_function" propname="TaskFunction" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="task_function_uri" propname="TaskFunctionUri" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="task_result" propname="TaskResult" type="string" default="null" null="yes" title=""/>
+    <property dbname="task_callback" propname="TaskCallback" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="task_status" propname="TaskStatus" type="enum" length="'not_started','ready','error','in_progress'" default="not_started" null="no" title=""/>
+    <property dbname="created_at" propname="CreatedAt" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="updated_at" propname="UpdatedAt" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="finished_at" propname="FinishedAt" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="task_params" propname="TaskParams" type="string" null="no" title=""/>
+  </class>
+  <class name="ApiFunction" table="api_function" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="api_function_id" propname="ApiFunctionId" type="int" class="ApiFunction" object="ApiFunction" null="no" title=""/>
+    <property dbname="api_function_area" propname="ApiFunctionArea" type="string" length="15" default="null" null="yes" title=""/>
+    <property dbname="api_function_name" propname="ApiFunctionName" type="string" length="255" null="no" title=""/>
+    <property dbname="api_function_version" propname="ApiFunctionVersion" type="string" length="5" null="no" title=""/>
+  </class>
+  <class name="ApiFunction2agent" table="api_function2agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="api_function2agent_id" propname="ApiFunction2agentId" type="int" class="ApiFunction2agent" object="ApiFunction2agent" null="no" title=""/>
+    <property dbname="api_function2agent_agent_id" propname="ApiFunction2agentAgentId" type="int" class="Agent" object="ApiFunction2agentAgent" null="no" title=""/>
+    <property dbname="api_function2agent_api_function_id" propname="ApiFunction2agentApiFunctionId" type="int" class="ApiFunction" object="ApiFunction2agentApiFunction" null="no" title=""/>
+  </class>
+  <class name="ApiTriggers" table="api_triggers" title="?????????? ???????" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="api_trigger_id" propname="ApiTriggerId" type="int" class="" length="11" null="no" title="UID"/>
+    <property dbname="api_trigger_name" propname="ApiTriggerName" type="string" length="64" default="null" null="yes" title="???????? ???????"/>
+    <property dbname="description" propname="Description" type="string" length="256" default="null" null="yes" title="???????? ???????"/>
+    <property dbname="php_class_name" propname="PhpClassName" type="string" length="32" default="null" null="yes" title="??? php ??????"/>
+  </class>
+  <class name="ApplicationCapiQueries" table="application_capi_queries" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="level" propname="Level" type="string" length="128" default="null" null="yes" title=""/>
+    <property dbname="category" propname="Category" type="string" length="128" default="null" null="yes" title=""/>
+    <property dbname="logtime" propname="Logtime" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="message" propname="Message" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="ArchivedCustomer" table="archived_customer" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="archived_customer_id" propname="ArchivedCustomerId" type="int" class="ArchivedCustomer" object="ArchivedCustomer" null="no" title=""/>
+    <property dbname="archived_customer_name" propname="ArchivedCustomerName" type="string" length="255" null="no" title=""/>
+    <property dbname="archived_customer_login" propname="ArchivedCustomerLogin" type="string" length="255" null="no" title=""/>
+    <property dbname="archived_customer_operator_signer_id" propname="ArchivedCustomerOperatorSignerId" type="int" class="" length="11" default="null" null="yes" title=""/>
+    <property dbname="archived_customer_timestamp" propname="ArchivedCustomerTimestamp" type="int" length="11" null="no" title=""/>
+    <property dbname="archived_customer_agent_id" propname="ArchivedCustomerAgentId" type="int" class="" length="2" default="null" null="yes" title=""/>
+  </class>
+  <class name="BackendAuthAssignment" table="backend_AuthAssignment" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="itemname" propname="Itemname" type="string" class="BackendAuthItem" object="ArchivedCustomerAgent" null="no" title=""/>
+    <identifier dbname="userid" propname="Userid" type="string" length="64" null="no" title=""/>
+    <property dbname="bizrule" propname="Bizrule" type="string" default="null" null="yes" title=""/>
+    <property dbname="data" propname="Data" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="BackendAuthItem" table="backend_AuthItem" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="name" propname="Name" type="string" length="64" null="no" title=""/>
+    <property dbname="type" propname="Type" type="int" length="11" null="no" title=""/>
+    <property dbname="description" propname="Description" type="string" default="null" null="yes" title=""/>
+    <property dbname="bizrule" propname="Bizrule" type="string" default="null" null="yes" title=""/>
+    <property dbname="data" propname="Data" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="BackendAuthItemChild" table="backend_AuthItemChild" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="parent" propname="Parent" type="string" class="BackendAuthItem" object="ArchivedCustomerAgent" null="no" title=""/>
+    <identifier dbname="child" propname="Child" type="string" class="BackendAuthItem" object="ArchivedCustomerAgent" null="no" title=""/>
+  </class>
+  <class name="BackendSession" table="backend_session" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="string" length="32" null="no" title=""/>
+    <property dbname="expire" propname="Expire" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="data" propname="Data" type="blob" default="null" null="yes" title=""/>
+  </class>
+  <class name="BackendUsers" table="backend_users" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="user_id" propname="UserId" type="int" class="" length="11" null="no" title=""/>
+    <property dbname="user_login" propname="UserLogin" type="string" length="255" null="no" title=""/>
+    <property dbname="user_password" propname="UserPassword" type="string" length="255" null="no" title=""/>
+    <property dbname="user_name" propname="UserName" type="string" length="255" null="no" title=""/>
+    <property dbname="user_lastname" propname="UserLastname" type="string" length="255" null="no" title=""/>
+    <property dbname="user_email" propname="UserEmail" type="string" length="255" null="no" title=""/>
+    <property dbname="user_last_login" propname="UserLastLogin" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="user_role" propname="UserRole" type="string" length="255" default="user" null="no" title=""/>
+  </class>
+  <class name="Bundle2customer" table="bundle2customer" title="" type="BASE TABLE" collation="utf8_unicode_ci">
+    <identifier dbname="bundle2customer_id" propname="Bundle2customerId" type="int" class="Bundle2customer" object="Bundle2customer" null="no" title=""/>
+    <property dbname="bundle2customer_customer_id" propname="Bundle2customerCustomerId" type="int" class="Customer" object="Bundle2customerCustomer" null="no" title=""/>
+    <property dbname="bundle2customer_bundle_id" propname="Bundle2customerBundleId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="bundle2customer_status" propname="Bundle2customerStatus" type="int" length="11" default="0" null="yes" title=""/>
+    <property dbname="bundle2customer_buy" propname="Bundle2customerBuy" type="int" length="11" default="0" null="yes" title=""/>
+    <property dbname="bundle2customer_create_timestamp" propname="Bundle2customerCreateTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="bundle2customer_new_bundle_id" propname="Bundle2customerNewBundleId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="bundle2customer_change_timestamp" propname="Bundle2customerChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Callback2agent" table="callback2agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="sip_id" propname="SipId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title=""/>
+  </class>
+  <class name="CapiAgent" table="capi_agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="capi_agent_id" propname="CapiAgentId" type="int" class="CapiAgent" object="CapiAgent" null="no" title=""/>
+    <property dbname="capi_agent_login" propname="CapiAgentLogin" type="string" length="255" null="no" title=""/>
+    <property dbname="capi_agent_password" propname="CapiAgentPassword" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="Customer" table="customer" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="customer_id" propname="CustomerId" type="int" class="Customer" object="Customer" null="no" title=""/>
+    <property dbname="customer_name" propname="CustomerName" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="customer_login" propname="CustomerLogin" type="string" length="255" null="no" title=""/>
+    <property dbname="operator_signer_id" propname="OperatorSignerId" type="int" class="Signer" object="OperatorSigner" default="null" null="yes" title=""/>
+  </class>
+  <class name="Customer2agent" table="customer2agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="customer2agent_id" propname="Customer2agentId" type="int" class="Customer2agent" object="Customer2agent" null="no" title=""/>
+    <property dbname="customer2agent_agent_id" propname="Customer2agentAgentId" type="int" class="Agent" object="Customer2agentAgent" null="no" title=""/>
+    <property dbname="customer2agent_customer_id" propname="Customer2agentCustomerId" type="int" class="Customer" object="Customer2agentCustomer" null="no" title=""/>
+  </class>
+  <class name="CustomerDirectionDiscounts" table="customer_direction_discounts" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="customer_id" propname="CustomerId" type="int" class="Customer" object="Customer" null="no" title=""/>
+    <property dbname="data" propname="Data" type="string" default="null" null="yes" title=""/>
+  </class>
+  <class name="CustomerEquipInstallAddr" table="customer_equip_install_addr" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="customer_id" propname="CustomerId" type="int" class="Customer" object="Customer" null="no" title=""/>
+    <property dbname="number_area" propname="NumberArea" type="string" length="255" null="no" title=""/>
+    <property dbname="addr" propname="Addr" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="CustomerLog" table="customer_log" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="customer_log_id" propname="CustomerLogId" type="int" class="CustomerLog" object="CustomerLog" null="no" title=""/>
+    <property dbname="customer_login" propname="CustomerLogin" type="string" length="255" null="no" title=""/>
+    <property dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title=""/>
+    <property dbname="level" propname="Level" type="string" length="25" null="no" title=""/>
+    <property dbname="content" propname="Content" type="string" default="null" null="yes" title=""/>
+    <property dbname="tag" propname="Tag" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="timestamp" propname="Timestamp" type="int" length="11" null="no" title=""/>
+    <property dbname="customer_log_customer_id" propname="CustomerLogCustomerId" type="int" class="Customer" object="CustomerLogCustomer" null="no" title=""/>
+  </class>
+  <class name="DelayedCallback" table="delayed_callback" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="delayed_callback_id" propname="DelayedCallbackId" type="int" class="DelayedCallback" object="DelayedCallback" null="no" title=""/>
+    <property dbname="delayed_callback_agent_id" propname="DelayedCallbackAgentId" type="int" class="Agent" object="DelayedCallbackAgent" null="no" title=""/>
+    <property dbname="delayed_callback_sip_id" propname="DelayedCallbackSipId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="delayed_callback_a_number" propname="DelayedCallbackANumber" type="string" length="255" null="no" title=""/>
+    <property dbname="delayed_callback_b_number" propname="DelayedCallbackBNumber" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="delayed_callback_status" propname="DelayedCallbackStatus" type="enum" length="'not_started','ready','error'" default="not_started" null="no" title=""/>
+    <property dbname="delayed_callback_create_timestamp" propname="DelayedCallbackCreateTimestamp" type="int" length="11" null="no" title=""/>
+    <property dbname="delayed_callback_make_timestamp" propname="DelayedCallbackMakeTimestamp" type="int" length="11" null="no" title=""/>
+    <property dbname="delayed_callback_finish_timestamp" propname="DelayedCallbackFinishTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="delayed_callback_is_new_version" propname="DelayedCallbackIsNewVersion" type="int" length="1" default="0" null="no" title=""/>
+  </class>
+  <class name="Discount2packages" table="discount2packages" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="discount2packages_id" propname="Discount2packagesId" type="int" class="Discount2packages" object="Discount2packages" null="no" title=""/>
+    <property dbname="discount_name" propname="DiscountName" type="string" length="32" null="no" title=""/>
+    <property dbname="currency" propname="Currency" type="string" length="3" null="no" title=""/>
+    <property dbname="package_type_name" propname="PackageTypeName" type="string" class="PackageType" object="Discount2packages" null="no" title=""/>
+  </class>
+  <class name="DiscountPlan2bundle" table="discount_plan2bundle" title="" type="BASE TABLE" collation="utf8_unicode_ci">
+    <identifier dbname="discount_plan2bundle_id" propname="DiscountPlan2bundleId" type="int" class="DiscountPlan2bundle" object="DiscountPlan2bundle" null="no" title=""/>
+    <property dbname="discount_plan2bundle_bundle_id" propname="DiscountPlan2bundleBundleId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="discount_plan2bundle_discount_plan_name" propname="DiscountPlan2bundleDiscountPlanName" type="string" length="255" null="no" title=""/>
+    <property dbname="discount_plan2bundle_free_out_minutes_count" propname="DiscountPlan2bundleFreeOutMinutesCount" type="int" length="11" null="no" title=""/>
+    <property dbname="discount_plan2bundle_free_in_minutes_count" propname="DiscountPlan2bundleFreeInMinutesCount" type="int" length="11" null="no" title=""/>
+    <property dbname="discount_plan2bundle_free_out_messages_count" propname="DiscountPlan2bundleFreeOutMessagesCount" type="int" length="11" null="no" title=""/>
+  </class>
+  <class name="DocumentArchive" table="document_archive" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="create_timestamp" propname="CreateTimestamp" type="int" length="20) unsigned" null="no" title=""/>
+    <property dbname="content_hash" propname="ContentHash" type="string" length="40" null="no" title=""/>
+    <property dbname="filename" propname="Filename" type="string" length="255" null="no" title=""/>
+    <property dbname="docname" propname="Docname" type="string" length="255" null="no" title=""/>
+    <property dbname="doctype" propname="Doctype" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="format" propname="Format" type="string" length="10" default="null" null="yes" title=""/>
+    <property dbname="subscriber" propname="Subscriber" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="creator" propname="Creator" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="docdate" propname="Docdate" type="date" default="null" null="yes" title=""/>
+    <property dbname="numbers" propname="Numbers" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="status" propname="Status" type="enum" length="'not_applicable','not_signed','signed'" default="null" null="yes" title=""/>
+    <property dbname="customer_id" propname="CustomerId" type="int" class="Customer" object="Customer" null="no" title=""/>
+    <property dbname="size" propname="Size" type="int" length="11" null="no" title=""/>
+    <property dbname="store_mode" propname="StoreMode" type="enum" length="'temporary','permanent'" default="temporary" null="no" title=""/>
+    <property dbname="sa_number" propname="SaNumber" type="int" length="11" default="0" null="yes" title=""/>
+  </class>
+  <class name="Migration" table="migration" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="version" propname="Version" type="string" length="255" null="no" title=""/>
+    <property dbname="apply_time" propname="ApplyTime" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="MigrationBatchEntity" table="migration_batch_entity" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="migration_batch_entity_id" propname="MigrationBatchEntityId" type="int" class="MigrationBatchEntity" object="MigrationBatchEntity" null="no" title=""/>
+    <property dbname="migration_batch_entity_batch_name" propname="MigrationBatchEntityBatchName" type="string" length="255" null="no" title=""/>
+    <property dbname="migration_batch_entity_entity_unique_hash" propname="MigrationBatchEntityEntityUniqueHash" type="string" length="32" null="no" title=""/>
+    <property dbname="migration_batch_entity_status" propname="MigrationBatchEntityStatus" type="int" length="11" null="no" title=""/>
+    <property dbname="migration_batch_entity_last_modified" propname="MigrationBatchEntityLastModified" type="int" length="11" default="0" null="yes" title=""/>
+    <property dbname="migration_batch_entity_param1" propname="MigrationBatchEntityParam1" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="migration_batch_entity_param2" propname="MigrationBatchEntityParam2" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="migration_batch_entity_param3" propname="MigrationBatchEntityParam3" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="migration_batch_entity_param4" propname="MigrationBatchEntityParam4" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="Operator" table="operator" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="operator_id" propname="OperatorId" type="int" class="Operator" object="Operator" null="no" title=""/>
+    <property dbname="operator_name" propname="OperatorName" type="string" length="255" null="no" title=""/>
+    <property dbname="capi_agent_id" propname="CapiAgentId" type="int" class="CapiAgent" object="CapiAgent" null="no" title=""/>
+  </class>
+  <class name="Package" table="package" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="package_id" propname="PackageId" type="int" class="Package" object="Package" null="no" title=""/>
+    <property dbname="customer_id" propname="CustomerId" type="int" class="Customer" object="Customer" null="no" title=""/>
+    <property dbname="package_type_id" propname="PackageTypeId" type="int" class="PackageType" object="PackageType" null="no" title=""/>
+    <property dbname="subscription_date" propname="SubscriptionDate" type="date" null="no" title=""/>
+  </class>
+  <class name="PackageType" table="package_type" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="package_type_id" propname="PackageTypeId" type="int" class="PackageType" object="PackageType" null="no" title=""/>
+    <property dbname="package_type_name" propname="PackageTypeName" type="string" length="16" null="no" title=""/>
+    <property dbname="extensions" propname="Extensions" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="call_recording" propname="CallRecording" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="free_minutes" propname="FreeMinutes" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="local_did" propname="LocalDid" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="pbx" propname="Pbx" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="premium_callback" propname="PremiumCallback" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="Product" table="product" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="product_id" propname="ProductId" type="int" class="Product" object="Product" null="no" title=""/>
+    <property dbname="product_name" propname="ProductName" type="string" length="255" null="no" title=""/>
+    <property dbname="product_title" propname="ProductTitle" type="string" length="255" null="no" title=""/>
+    <property dbname="product_description" propname="ProductDescription" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="product_class" propname="ProductClass" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="Product2customer" table="product2customer" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="product2customer_id" propname="Product2customerId" type="int" class="Product2customer" object="Product2customer" null="no" title=""/>
+    <property dbname="product2customer_customer_id" propname="Product2customerCustomerId" type="int" class="Customer" object="Product2customerCustomer" null="no" title=""/>
+    <property dbname="product2customer_product_id" propname="Product2customerProductId" type="int" class="Product" object="Product2customerProduct" null="no" title=""/>
+    <property dbname="product2customer_status" propname="Product2customerStatus" type="int" length="11" default="0" null="yes" title=""/>
+    <property dbname="product2customer_create_timestamp" propname="Product2customerCreateTimestamp" type="int" length="11" null="no" title=""/>
+    <property dbname="product2customer_delete_timestamp" propname="Product2customerDeleteTimestamp" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="product2customer_buy_status" propname="Product2customerBuyStatus" type="int" length="11" default="0" null="yes" title=""/>
+    <property dbname="product2customer_quarantine_status" propname="Product2customerQuarantineStatus" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="Product2customerVpbx" table="product2customer_vpbx" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="product2customer_vpbx_product2customer_id" propname="Product2customerVpbxProduct2customerId" type="int" class="Product2customer" object="Product2customerVpbxProduct2customer" null="no" title=""/>
+    <property dbname="product2customer_vpbx_tariff_id" propname="Product2customerVpbxTariffId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="product2customer_vpbx_new_tariff_id" propname="Product2customerVpbxNewTariffId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="product2customer_vpbx_tariff_change_timestamp" propname="Product2customerVpbxTariffChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Resource" table="resource" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="resource_id" propname="ResourceId" type="int" class="Resource" object="Resource" null="no" title=""/>
+    <property dbname="resource_name" propname="ResourceName" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource_class" propname="ResourceClass" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="Resource2service" table="resource2service" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="resource2service_id" propname="Resource2serviceId" type="int" class="Resource2service" object="Resource2service" null="no" title=""/>
+    <property dbname="resource2service_product_id" propname="Resource2serviceProductId" type="int" class="Product2customer" object="Resource2serviceProduct" default="null" null="yes" title=""/>
+    <property dbname="resource2service_resource_id" propname="Resource2serviceResourceId" type="int" class="Resource" object="Resource2serviceResource" null="no" title=""/>
+    <property dbname="resource2service_service2customer_id" propname="Resource2serviceService2customerId" type="int" class="Service2customer" object="Resource2serviceService2customer" null="no" title=""/>
+    <property dbname="resource2service_create_timestamp" propname="Resource2serviceCreateTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Resource2serviceCallback" table="resource2service_callback" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="resource2service_callback_resource2service_id" propname="Resource2serviceCallbackResource2serviceId" type="int" class="Resource2service" object="Resource2serviceCallbackResource2service" null="no" title=""/>
+    <property dbname="resource2service_callback_account_id" propname="Resource2serviceCallbackAccountId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_callback_tariff_id" propname="Resource2serviceCallbackTariffId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_callback_new_tariff_id" propname="Resource2serviceCallbackNewTariffId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_callback_tariff_change_timestamp" propname="Resource2serviceCallbackTariffChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Resource2serviceDef" table="resource2service_def" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="resource2service_def_resource2service_id" propname="Resource2serviceDefResource2serviceId" type="int" class="Resource2service" object="Resource2serviceDefResource2service" null="no" title=""/>
+    <property dbname="resource2service_def_account_id" propname="Resource2serviceDefAccountId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_def_tariff_id" propname="Resource2serviceDefTariffId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_def_new_tariff_id" propname="Resource2serviceDefNewTariffId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_def_tariff_change_timestamp" propname="Resource2serviceDefTariffChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Resource2serviceDid" table="resource2service_did" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <property dbname="resource2service_did_resource2service_id" propname="Resource2serviceDidResource2serviceId" type="int" class="Resource2service" object="Resource2serviceDidResource2service" null="no" title=""/>
+    <identifier dbname="resource2service_did_account_id" propname="Resource2serviceDidAccountId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_did_tariff_id" propname="Resource2serviceDidTariffId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_did_new_tariff_id" propname="Resource2serviceDidNewTariffId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_did_tariff_change_timestamp" propname="Resource2serviceDidTariffChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Resource2serviceDiskspace" table="resource2service_diskspace" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="resource2service_diskspace_resource2service_id" propname="Resource2serviceDiskspaceResource2serviceId" type="int" class="Resource2service" object="Resource2serviceDiskspaceResource2service" null="no" title=""/>
+    <property dbname="resource2service_diskspace_tariff_id" propname="Resource2serviceDiskspaceTariffId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_diskspace_new_tariff_id" propname="Resource2serviceDiskspaceNewTariffId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_diskspace_tariff_change_timestamp" propname="Resource2serviceDiskspaceTariffChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Resource2serviceFree" table="resource2service_free" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <property dbname="resource2service_free_resource2service_id" propname="Resource2serviceFreeResource2serviceId" type="int" class="Resource2service" object="Resource2serviceFreeResource2service" null="no" title=""/>
+    <identifier dbname="resource2service_free_account_id" propname="Resource2serviceFreeAccountId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_free_tariff_id" propname="Resource2serviceFreeTariffId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_free_new_tariff_id" propname="Resource2serviceFreeNewTariffId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_free_tariff_change_timestamp" propname="Resource2serviceFreeTariffChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Resource2serviceIncomingSms" table="resource2service_incoming_sms" title="" type="BASE TABLE" collation="utf8_unicode_ci">
+    <identifier dbname="resource2service_incoming_sms_resource2service_id" propname="Resource2serviceIncomingSmsResource2serviceId" type="int" class="Resource2service" object="Resource2serviceIncomingSmsResource2service" null="no" title=""/>
+    <property dbname="resource2service_incoming_sms_number" propname="Resource2serviceIncomingSmsNumber" type="string" length="255" null="no" title=""/>
+    <property dbname="resource2service_incoming_sms_tariff_id" propname="Resource2serviceIncomingSmsTariffId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_incoming_sms_new_tariff_id" propname="Resource2serviceIncomingSmsNewTariffId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_incoming_sms_tariff_change_timestamp" propname="Resource2serviceIncomingSmsTariffChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="resource2service_incoming_sms_account_sid" propname="Resource2serviceIncomingSmsAccountSid" type="string" length="255" null="no" title=""/>
+    <property dbname="resource2service_incoming_sms_account_token" propname="Resource2serviceIncomingSmsAccountToken" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="Resource2serviceSms" table="resource2service_sms" title="" type="BASE TABLE" collation="utf8_unicode_ci">
+    <identifier dbname="resource2service_sms_resource2service_id" propname="Resource2serviceSmsResource2serviceId" type="int" class="Resource2service" object="Resource2serviceSmsResource2service" null="no" title=""/>
+    <property dbname="resource2service_sms_name" propname="Resource2serviceSmsName" type="string" length="255" null="no" title=""/>
+    <property dbname="resource2service_sms_new_name" propname="Resource2serviceSmsNewName" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_sms_status" propname="Resource2serviceSmsStatus" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_sms_new_status" propname="Resource2serviceSmsNewStatus" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_sms_name_change_timestamp" propname="Resource2serviceSmsNameChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="resource2service_sms_account_token" propname="Resource2serviceSmsAccountToken" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_sms_account_sid" propname="Resource2serviceSmsAccountSid" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="Resource2serviceVoip" table="resource2service_voip" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <property dbname="resource2service_voip_resource2service_id" propname="Resource2serviceVoipResource2serviceId" type="int" class="Resource2service" object="Resource2serviceVoipResource2service" null="no" title=""/>
+    <identifier dbname="resource2service_voip_account_id" propname="Resource2serviceVoipAccountId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_voip_tariff_id" propname="Resource2serviceVoipTariffId" type="string" class="" length="255" null="no" title=""/>
+    <property dbname="resource2service_voip_new_tariff_id" propname="Resource2serviceVoipNewTariffId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="resource2service_voip_tariff_change_timestamp" propname="Resource2serviceVoipTariffChangeTimestamp" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="resource2service_voip_number_type" propname="Resource2serviceVoipNumberType" type="enum" length="'INT-NET','IP-STATIC'" default="INT-NET" null="no" title=""/>
+  </class>
+  <class name="SendingMessage" table="sending_message" title="" type="BASE TABLE" collation="utf8_unicode_ci">
+    <identifier dbname="message_id" propname="MessageId" type="int" class="" length="11" null="no" title=""/>
+    <property dbname="sms_sending_id" propname="SmsSendingId" type="int" class="SmsSending" object="SmsSending" null="no" title=""/>
+    <property dbname="text" propname="Text" type="string" null="no" title=""/>
+    <property dbname="phone" propname="Phone" type="string" length="255" null="no" title=""/>
+    <property dbname="email" propname="Email" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="sms_id" propname="SmsId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="email_id" propname="EmailId" type="string" class="" length="255" default="null" null="yes" title=""/>
+    <property dbname="status_sms" propname="StatusSms" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="status_email" propname="StatusEmail" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="sms_send_info" propname="SmsSendInfo" type="string" default="null" null="yes" title=""/>
+    <property dbname="sms_count" propname="SmsCount" type="int" length="11" default="1" null="yes" title=""/>
+    <property dbname="sms_count_error" propname="SmsCountError" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="status_time" propname="StatusTime" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Service" table="service" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="service_id" propname="ServiceId" type="int" class="Service" object="Service" null="no" title=""/>
+    <property dbname="service_name" propname="ServiceName" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="service_class" propname="ServiceClass" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="Service2customer" table="service2customer" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="service2customer_id" propname="Service2customerId" type="int" class="Service2customer" object="Service2customer" null="no" title=""/>
+    <property dbname="service2customer_product_id" propname="Service2customerProductId" type="int" class="Product2customer" object="Service2customerProduct" default="null" null="yes" title=""/>
+    <property dbname="service2customer_customer_id" propname="Service2customerCustomerId" type="int" class="Customer" object="Service2customerCustomer" null="no" title=""/>
+    <property dbname="service2customer_service_id" propname="Service2customerServiceId" type="int" class="Service" object="Service2customerService" null="no" title=""/>
+    <property dbname="service2customer_blocked" propname="Service2customerBlocked" type="int" length="11" default="0" null="no" title=""/>
+  </class>
+  <class name="Signer" table="signer" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="fio" propname="Fio" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="fio_rod" propname="FioRod" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="fio_short" propname="FioShort" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="fio_short_rod" propname="FioShortRod" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="position" propname="Position" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="position_rod" propname="PositionRod" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="department" propname="Department" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="department_rod" propname="DepartmentRod" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="legal_basis" propname="LegalBasis" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="Signer2agent" table="signer2agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="signer_id" propname="SignerId" type="int" class="Signer" object="Signer" null="no" title=""/>
+    <property dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title=""/>
+  </class>
+  <class name="SipIdPrefixes" table="sip_id_prefixes" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="prefix_id" propname="PrefixId" type="int" class="" length="11" null="no" title=""/>
+    <property dbname="prefix_name" propname="PrefixName" type="string" length="64" null="no" title=""/>
+    <property dbname="prefix_desc" propname="PrefixDesc" type="string" length="64" null="no" title=""/>
+    <property dbname="prefix_template" propname="PrefixTemplate" type="string" length="64" null="no" title=""/>
+  </class>
+  <class name="SmsSending" table="sms_sending" title="" type="BASE TABLE" collation="utf8_unicode_ci">
+    <identifier dbname="sms_sending_id" propname="SmsSendingId" type="int" class="SmsSending" object="SmsSending" null="no" title=""/>
+    <property dbname="customer_id" propname="CustomerId" type="int" class="Customer" object="Customer" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="255" null="no" title=""/>
+    <property dbname="sms_alfa_name_id" propname="SmsAlfaNameId" type="int" class="Resource2serviceSms" object="SmsAlfaName" default="null" null="yes" title=""/>
+    <property dbname="sms_alfa_name" propname="SmsAlfaName" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="start_time" propname="StartTime" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="status" propname="Status" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="translit" propname="Translit" type="int" length="11" default="0" null="no" title=""/>
+    <property dbname="price" propname="Price" type="float" default="null" null="yes" title=""/>
+  </class>
+  <class name="Vat" table="vat" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="vat_id" propname="VatId" type="int" class="Vat" object="Vat" null="no" title=""/>
+    <property dbname="vat_country" propname="VatCountry" type="string" length="2" null="no" title=""/>
+    <property dbname="vat_percent" propname="VatPercent" type="int" length="3" null="no" title=""/>
+    <property dbname="vat_eu" propname="VatEu" type="int" length="1" default="0" null="yes" title=""/>
+    <property dbname="vat_include_tax" propname="VatIncludeTax" type="int" length="11" default="0" null="yes" title=""/>
+  </class>
+</classes>

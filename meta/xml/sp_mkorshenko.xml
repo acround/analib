@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="Agent" table="agent" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="AgentCharacteristic" table="agent_characteristic" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="AgentCharacteristicValue" table="agent_characteristic_value" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title=""/>
+    <property dbname="agent_characteristic_id" propname="AgentCharacteristicId" type="int" class="AgentCharacteristic" object="AgentCharacteristic" null="no" title=""/>
+    <property dbname="value" propname="Value" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="BundleProductOffering" table="bundle_product_offering" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_bundle_id" propname="ProductBundleId" type="int" class="ProductBundle" object="ProductBundle" null="no" title=""/>
+    <property dbname="product_id" propname="ProductId" type="int" class="Product" object="Product" null="no" title=""/>
+    <property dbname="product_offering_id" propname="ProductOfferingId" type="int" class="ProductOffering" object="ProductOffering" null="no" title=""/>
+    <property dbname="product_specification_characteristic_id" propname="ProductSpecificationCharacteristicId" type="int" class="ProductSpecificationCharacteristic" object="ProductSpecificationCharacteristic" default="null" null="yes" title=""/>
+    <property dbname="value" propname="Value" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="Migration" table="migration" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="version" propname="Version" type="string" length="180" null="no" title=""/>
+    <property dbname="apply_time" propname="ApplyTime" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="Product" table="product" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_specifications_id" propname="ProductSpecificationsId" type="int" class="ProductSpecification" object="ProductSpecifications" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="description" propname="Description" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="href" propname="Href" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductAttribute" table="product_attribute" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_id" propname="ProductId" type="int" class="Product" object="Product" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="100" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductBundle" table="product_bundle" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_id" propname="ProductId" type="int" class="Product" object="Product" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="description" propname="Description" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title=""/>
+  </class>
+  <class name="ProductBundleTransfer" table="product_bundle_transfer" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="is_new_customer" propname="IsNewCustomer" type="int" length="11" default="0" null="yes" title=""/>
+    <property dbname="old_product_bundle_id" propname="OldProductBundleId" type="int" class="ProductBundle" object="OldProductBundle" default="null" null="yes" title=""/>
+    <property dbname="new_product_bundle_id" propname="NewProductBundleId" type="int" class="ProductBundle" object="NewProductBundle" default="null" null="yes" title=""/>
+    <property dbname="product_bundle_transfer_segment_id" propname="ProductBundleTransferSegmentId" type="int" class="ProductBundleTransferSegment" object="ProductBundleTransferSegment" default="null" null="yes" title=""/>
+    <property dbname="time_start" propname="TimeStart" type="int" length="11" default="null" null="yes" title=""/>
+    <property dbname="time_end" propname="TimeEnd" type="int" length="11" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductBundleTransferSegment" table="product_bundle_transfer_segment" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="255" null="no" title=""/>
+  </class>
+  <class name="ProductOffering" table="product_offering" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_id" propname="ProductId" type="int" class="Product" object="Product" null="no" title=""/>
+    <property dbname="agent_id" propname="AgentId" type="int" class="Agent" object="Agent" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="100" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductOfferingCondition" table="product_offering_condition" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_offering_rule_id" propname="ProductOfferingRuleId" type="int" class="ProductOfferingRule" object="ProductOfferingRule" null="no" title=""/>
+    <property dbname="product_specification_characteristic_id" propname="ProductSpecificationCharacteristicId" type="int" class="ProductSpecificationCharacteristic" object="ProductSpecificationCharacteristic" null="no" title=""/>
+    <property dbname="value" propname="Value" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="operator" propname="Operator" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductOfferingPrice" table="product_offering_price" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_offering_rule_id" propname="ProductOfferingRuleId" type="int" class="ProductOfferingRule" object="ProductOfferingRule" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="255" default="null" null="yes" title=""/>
+    <property dbname="description" propname="Description" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductOfferingPriceComponent" table="product_offering_price_component" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_offering_price_id" propname="ProductOfferingPriceId" type="int" class="ProductOfferingPrice" object="ProductOfferingPrice" null="no" title=""/>
+    <property dbname="product_offering_price_component_type_id" propname="ProductOfferingPriceComponentTypeId" type="int" class="ProductOfferingPriceComponentType" object="ProductOfferingPriceComponentType" null="no" title=""/>
+    <property dbname="value" propname="Value" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductOfferingPriceComponentType" table="product_offering_price_component_type" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="description" propname="Description" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductOfferingRule" table="product_offering_rule" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="description" propname="Description" type="string" length="255" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductOfferingToProductOfferingRule" table="product_offering_to_product_offering_rule" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="product_offering_id" propname="ProductOfferingId" type="int" class="ProductOffering" object="ProductOffering" null="no" title=""/>
+    <identifier dbname="product_offering_rule_id" propname="ProductOfferingRuleId" type="int" class="ProductOfferingRule" object="ProductOfferingRule" null="no" title=""/>
+    <property dbname="product_offering_attribute_id" propname="ProductOfferingAttributeId" type="int" class="ProductAttribute" object="ProductOfferingAttribute" null="no" title=""/>
+  </class>
+  <class name="ProductSpecification" table="product_specification" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="description" propname="Description" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductSpecificationCharacteristic" table="product_specification_characteristic" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="description" propname="Description" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductSpecificationCharacteristicValue" table="product_specification_characteristic_value" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="product_specification_characteristic_id" propname="ProductSpecificationCharacteristicId" type="int" class="ProductSpecificationCharacteristic" object="ProductSpecificationCharacteristic" null="no" title=""/>
+    <property dbname="value" propname="Value" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="valueType" propname="ValueType" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="valueFrom" propname="ValueFrom" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="valueTo" propname="ValueTo" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="rangeInterval" propname="RangeInterval" type="string" length="45" default="null" null="yes" title=""/>
+    <property dbname="regex" propname="Regex" type="string" length="45" default="null" null="yes" title=""/>
+  </class>
+  <class name="ProductSpecificationToProductSpecificationCharacteristic" table="product_specification_to_product_specification_characteristic" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="product_specification_id" propname="ProductSpecificationId" type="int" class="ProductSpecification" object="ProductSpecification" null="no" title=""/>
+    <identifier dbname="product_specification_characteristic_id" propname="ProductSpecificationCharacteristicId" type="int" class="ProductSpecificationCharacteristic" object="ProductSpecificationCharacteristic" null="no" title=""/>
+  </class>
+</classes>

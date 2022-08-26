@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classes>
+
+    <class name="agent">
+        <field name="id" dbname="AGENT_ID,ID" />
+        <field name="name" dbname="NAME" />
+        <field name="shortName" dbname="SHORTNAME" />
+        <field name="incorporation" dbname="INCORPORATION" />
+        <field name="addr" dbname="YUR_ADR" />
+        <field name="mail" dbname="MAIL_ADR" />
+        <field name="email" dbname="EMAIL" />
+        <field name="phone" dbname="PHONE" />
+        <field name="fax" dbname="FAX" />
+        <field name="inn" dbname="INN" />
+        <field name="kpp" dbname="KPP" />
+        <field name="requisite" dbname="BANK_REQUISITE" />
+        <field name="hostname" dbname="HOSTNAME" />
+        <field name="adminHostname" dbname="ADM_HOSTNAME" />
+        <field name="fundChoosingRule" dbname="FUND_CHOOSING_RULE" />
+        <field name="agentSoftName" dbname="AGENT_SOFT_NAME" />
+        <field name="highSuperUserRule" dbname="HIGH_SUPERUSER_ROLE" />
+        <field name="smsConf" dbname="SMS_CONF" />
+    </class>
+
+    <class name="fund">
+        <field name="id" dbname="FUND_ID" />
+        <field name="name" dbname="FUND_NAME" />
+        <field name="shortName" dbname="SHORTNAME" />
+        <field name="address" dbname="YUR_ADR" />
+        <field name="mail" dbname="MAIL_ADR" />
+        <field name="email" dbname="EMAIL" />
+        <field name="phone" dbname="PHONE" />
+        <field name="fax" dbname="FAX" />
+        <field name="inn" dbname="INN" />
+        <field name="kpp" dbname="KPP" />
+        <field name="rs" dbname="RS" />
+        <field name="ks" dbname="KS" />
+        <field name="bankOfRs" dbname="BANK_OF_RS" />
+        <field name="bik" dbname="BIK" />
+        <field name="softName" dbname="SOFT_NAZV" />
+        <field name="smsSender" dbname="SMS_SENDER" />
+        <field name="reportsName" dbname="NAME_FOR_REPORTS" />
+        <field name="isNpf" dbname="IS_NPF" type="boolean" />
+        <field name="isUk" dbname="IS_UK" type="boolean" />
+    </class>
+
+    <class name="org">
+        <field name="id" dbname="ORG_ID" />
+        <field name="name" dbname="NAME" />
+        <field name="shortName" dbname="SHORTNAME" />
+        <field name="fundId" dbname="FUND_ID" class="fund" />
+        <field name="parentOrgId" dbname="PARENT_ORG_ID" class="org" />
+        <field name="agentId" dbname="AGENT_ID" class="agent" />
+        <field name="transId" dbname="TRANS_ID" class="transferagent" />
+        <field name="organId" dbname="ORGAN_ID" />
+        <field name="regionId" dbname="REGION_ID" class="region" />
+        <field name="incorporation" dbname="INCORPORATION" />
+        <field name="addr" dbname="YUR_ADR" />
+        <field name="mail" dbname="MAIL_ADR" />
+        <field name="phone" dbname="PHONE" />
+        <field name="fax" dbname="FAX" />
+        <field name="email" dbname="EMAIL" />
+        <field name="inn" dbname="INN" />
+        <field name="kpp" dbname="KPP" />
+        <field name="requisite" dbname="BANK_REQUISITE" />
+        <field name="codeDepPfr" dbname="CODE_DEP_PFR" />
+        <field name="noOrgJournal" dbname="NO_ORG_JOURNAL" />
+        <field name="noTa" dbname="NO_TA" />
+        <field name="agentCode" dbname="AGENT_CODE" />
+        <field name="fundChoosingRule" dbname="FUND_CHOOSING_RULE" />
+    </class>
+
+    <class name="person">
+        <field name="id" dbname="PERSON_ID" />
+        <field name="name" dbname="FULLNAME" />
+        <field name="lastName" dbname="FIO1" />
+        <field name="firstName" dbname="FIO2" />
+        <field name="secondName" dbname="FIO3" />
+        <field name="login" dbname="LOG" />
+        <field name="password" dbname="PASS" />
+        <field name="agentId" dbname="AGENT_ID" class="agent" />
+        <field name="phone" dbname="PHONE" />
+        <field name="email" dbname="EMAIL" />
+        <field name="orgId" dbname="ORG_ID" class="org" />
+        <field name="status" dbname="PERSON_STATUS" />
+    </class>
+
+    <class name="representative">
+        <field name="id" dbname="FULL_REPR_ID" />
+        <field name="name" dbname="REPR_NAME" />
+        <field name="lastName" dbname="REPR_FIO1" />
+        <field name="firstName" dbname="REPR_FIO2" />
+        <field name="secondName" dbname="REPR_FIO3" />
+        <field name="agentId" dbname="AGENT_ID" class="agent" />
+        <field name="status" dbname="REPR_STATUS" />
+        <field name="orgId" dbname="ORG_ID_FROM" class="org" />
+        <field name="genetiveName" dbname="NAME_RODIT_PADEG" />
+        <field name="sexId" dbname="SEX_ID" />
+        <field name="dover" dbname="DOVERENNOST" />
+        <field name="doverName" dbname="DOVERENNOST_DATE" />
+        <field name="doverNumber" dbname="DOVERENNOST_NUMBER" />
+    </class>
+
+    <class name="transferagent">
+        <field name="id" dbname="TRANS_ID" />
+        <field name="name" dbname="NAME" />
+        <field name="shortName" dbname="SHORTNAME" />
+        <field name="incorporation" dbname="INCORPORATION" />
+        <field name="addr" dbname="YUR_ADR" />
+        <field name="mail" dbname="MAIL_ADR" />
+        <field name="email" dbname="EMAIL" />
+        <field name="phone" dbname="PHONE" />
+        <field name="fax" dbname="FAX" />
+        <field name="inn" dbname="INN" />
+        <field name="kpp" dbname="KPP" />
+        <field name="requisite" dbname="BANK_REQUISITE" />
+        <field name="reqNumber" dbname="REG_NO" />
+        <field name="dogNumber" dbname="DOG_NO" />
+        <field name="dogDate" dbname="DOG_DATE" />
+        <field name="dogFrom" dbname="DOG_FROM" />
+        <field name="description" dbname="DESCR" />
+        <field name="transSchemeId" dbname="TRANSSCHEMEID" />
+        <field name="seqNoJournalRec" dbname="SEQNOJOURNALREG" />
+        <field name="organId" dbname="ORGAN_ID" class="org" />
+        <field name="organName" dbname="ORGAN_NAME" />
+    </class>
+
+</classes>

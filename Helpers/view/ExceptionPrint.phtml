@@ -1,0 +1,55 @@
+<?php
+/* @var $this \analib\Helpers\ExceptionPrint */
+/* @var $e analib\Core\Exceptions\BaseException */
+$e = $this->getVariable(\analib\Helpers\ExceptionPrint::NAME);
+if (!($e instanceof analib\Core\Exceptions\BaseException)) {
+    throw new \analib\Core\Exceptions\SystemException('Unknown exception');
+}
+$trace       = $e->getTrace();
+$traceString = array();
+foreach ($trace as $k => $line) {
+//		if (isset($line['function']) && ($line['function'] == 'error2Exception')) continue;
+    $traceString[] = '<tr><td style="background-color: white;">#' .
+        (count($trace) - $k) . '</td><td style="background-color: white;">' .
+        (isset($line['file']) ? $line['file'] : '') . '</td><td style="background-color: white;">' .
+        (isset($line['line']) ? $line['line'] : '') . '</td><td style="background-color: white;">' .
+        (isset($line['function']) ? $line['function'] : '') . '</td><td style="background-color: white;">' .
+        (isset($line['class']) ? $line['class'] : '') . '</td></tr>';
+}
+?>
+<table class="debug_error" style="background-color: gray;border-spacing: 2px;"><tbody>
+        <tr><th colspan="14" style="background-color: #eee;">Exception</th></tr>
+        <tr><td colspan="14" style="background-color: #eee;"><?= get_class($e) ?>: <?= $e->getMessage() ?> (Code:<?= $e->getCode() ?>)</td></tr>
+        <? ?>
+        <tr><th colspan="14" style="background-color: #eee;">Tracestring</th></tr>
+        <tr><td colspan="14" style="background-color: white;"><pre>[<?= $e->getMessage() ?>] in:<br /><?= $e->getTraceAsString() ?></pre></td></tr>
+        <? ?>
+        <tr><th colspan="14" style="background-color: #eee;"><h3>Trace</h3></th></tr>
+        <tr>
+            <th style="background-color: #eee;">Level</th>
+            <th style="background-color: #eee;">File</th>
+            <th style="background-color: #eee;">Line</th>
+            <th style="background-color: #eee;">Function</th>
+            <th style="background-color: #eee;">Class</th>
+        </tr>
+        <?= implode("\n", $traceString) ?>
+    </tbody></table>
+<h3>$_POST</h3>
+<pre>
+    <?php print_r($_POST) ?>
+</pre>
+<h3>$_GET</h3>
+<pre>
+    <?php print_r($_GET) ?>
+</pre>
+<h3>$_FILES</h3>
+<pre>
+    <?php print_r($_FILES) ?>
+</pre>
+<h3>Session</h3>
+<pre>
+    <?php print_r(analib\Util\Session::getAll()) ?>
+</pre>
+<h3>Application</h3>
+<?php
+echo Application::me();

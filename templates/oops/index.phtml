@@ -1,0 +1,12 @@
+<?php
+/* @var $this oopsController */
+?>
+<h1 id="contentTitle"><?= $this->getActionTitle() ?></h1>
+<div class="errorMessage">
+    <pre>
+        <?= $ERROR ?>
+    </pre>
+    <p><strong>���:</strong> <em><?= $ERROR_CODE ?></em></p>
+    <p><strong>���:</strong> <em><?= $ERROR_TYPE ?></em></p>
+    <p class="center"><button type="button" onclick="history.go(-1);">�����</button></p>
+</div>

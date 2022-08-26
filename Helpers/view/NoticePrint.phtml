@@ -1,0 +1,36 @@
+<?php
+/* @var $this NoticePrint */
+$notice = $this->getVariable(analib\Helpers\NoticePrint::NAME);
+if (count($notice)) {
+    if (\analib\Core\Application\Application::me()->getDebug()) {
+        ?>
+        <table class="debug_notice">
+            <tbody>
+                <tr>
+                    <th>Time</th>
+                    <th>Message</th>
+                    <th>Code</th>
+                </tr>
+                <?php
+                /* @var $this NoticePrint */
+                foreach ($notice as $value) {
+                    ?>
+                    <tr>
+                        <td><?= date('Y-m-d H:i:s', $value['time']) ?></td>
+                        <td><?= $value['message'] ?></td>
+                        <td><?= $value['code'] ?></td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
+        </table>
+        <?php
+    } else {
+        foreach ($this->getVariable(analib\Helpers\NoticePrint::NAME) as $value) {
+            ?>
+            <p><?= $value['message'] ?></p>
+            <?php
+        }
+    }
+}

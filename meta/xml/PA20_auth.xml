@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="AccessEnviroment" table="access_enviroment" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="user_id" propname="UserId" type="int" class="User" object="User" null="no" title=""/>
+    <property dbname="enviroment_id" propname="EnviromentId" type="int" class="Enviroment" object="Enviroment" null="no" title=""/>
+    <property dbname="password" propname="Password" type="string" length="32" null="no" title=""/>
+    <property dbname="role_id" propname="RoleId" type="int" class="Role" object="Role" null="no" title=""/>
+  </class>
+  <class name="AccessService" table="access_service" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="role_id" propname="RoleId" type="int" class="Role" object="Role" null="no" title=""/>
+    <property dbname="service_id" propname="ServiceId" type="int" class="Service" object="Service" null="no" title=""/>
+    <property dbname="enviroment_id" propname="EnviromentId" type="int" class="Enviroment" object="Enviroment" null="no" title=""/>
+  </class>
+  <class name="Enviroment" table="enviroment" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="32" null="no" title=""/>
+  </class>
+  <class name="Role" table="role" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="16" null="no" title=""/>
+    <property dbname="decription" propname="Decription" type="string" length="256" null="no" title=""/>
+  </class>
+  <class name="Service" table="service" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="name" propname="Name" type="string" length="64" null="no" title=""/>
+  </class>
+  <class name="User" table="user" title="" type="BASE TABLE" collation="utf8_general_ci">
+    <identifier dbname="id" propname="Id" type="int" length="11" null="no" title=""/>
+    <property dbname="login" propname="Login" type="string" length="256" null="no" title=""/>
+  </class>
+</classes>
