@@ -172,7 +172,10 @@ class PhotoRenamer
                 }
                 if ($newName) {
                     foreach ($row['ext'] as $ext => $file) {
-                        $out[$file['file']] = $newName . '.' . $ext;
+                        $out[$file['file']] = [
+                            'folder' => $row['exif']['date'],
+                            'file' => $newName . '.' . $ext,
+                        ];
                     }
                 }
             }
@@ -180,20 +183,23 @@ class PhotoRenamer
         self::$fileList = $out;
     }
 
-    private static function fileRenamer($dirName)
+    private static function fileRenamer($dirName, $folders)
     {
+        print_r(self::$fileList);
         foreach (self::$fileList as $oldName => $newName) {
-            if ($oldName !== $newName) {
-                if (file_exists($dirName . DIRECTORY_SEPARATOR . $newName)) {
+            $folder = $folders ? ($newName['folder'] . DIRECTORY_SEPARATOR) : '';
+            if ($oldName !== $newName['file']) {
+                $newFullName = $folders ? ( $folder. $newName['file']) : $newName['file'];
+                if (file_exists($dirName . DIRECTORY_SEPARATOR . $newFullName)) {
                     $fileIndex = 0;
-                    $fileName = FileUtils::getName($newName);
-                    $fileExt = FileUtils::getExtension($newName);
+                    $fileName = FileUtils::getName($newName['file']);
+                    $fileExt = FileUtils::getExtension($newName['file']);
                     $rename = true;
                     $fullName = '';
                     do {
                         $fileIndex++;
-                        $file = $fileName . '_(' . $fileIndex . ').' . $fileExt;
-                        if ($file == $newName) {
+                        $file = $folder . $fileName . '_(' . $fileIndex . ').' . $fileExt;
+                        if ($file == $newName['file']) {
                             $rename = false;
                             echo $oldName . '==>> does not need to rename' . "\n";
                             continue;
@@ -201,12 +207,18 @@ class PhotoRenamer
                         $fullName = $dirName . DIRECTORY_SEPARATOR . $file;
                     } while (file_exists($fullName));
                     if ($rename) {
-                        echo $oldName . '==>>' . $newName . "\n";
+                        if ($folders && !file_exists($dirName . DIRECTORY_SEPARATOR . $newName['folder'])) {
+                            mkdir($dirName . DIRECTORY_SEPARATOR . $newName['folder']);
+                        }
+                        echo $oldName . ' ==>> ' . $file . "\n";
                         rename($dirName . DIRECTORY_SEPARATOR . $oldName, $fullName);
                     }
                 } else {
-                    echo $oldName . '==>>' . $newName . "\n";
-                    rename($dirName . DIRECTORY_SEPARATOR . $oldName, $dirName . DIRECTORY_SEPARATOR . $newName);
+                    echo $oldName . ' ==>> ' . $newFullName . "\n";
+                    if ($folders && !file_exists($dirName . DIRECTORY_SEPARATOR . $newName['folder'])) {
+                        mkdir($dirName . DIRECTORY_SEPARATOR . $newName['folder']);
+                    }
+                    rename($dirName . DIRECTORY_SEPARATOR . $oldName, $dirName . DIRECTORY_SEPARATOR . $newFullName);
                 }
             } else {
                 echo $oldName . '==>> does not need to rename' . "\n";
@@ -214,12 +226,11 @@ class PhotoRenamer
         }
     }
 
-    public static function exec($dirName)
+    public static function exec($dirName, $folders = false)
     {
         self::getFileList($dirName);
         self::prepareFileList($dirName);
         self::makeListToRename();
-        self::fileRenamer($dirName);
+        self::fileRenamer($dirName, $folders);
     }
-
 }
