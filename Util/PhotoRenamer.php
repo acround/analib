@@ -19,6 +19,7 @@ class PhotoRenamer
     const IPTC_TIME = '2#060';
     const DATE_PATTERN = '/([\d]{8})/i';
     const TIME_PATTERN = '/([\d]{6})/i';
+    const DATE_PATTERN2 = '/([\d]{4}-[\d]{2}-[\d]{2})/i';
 
     static $finfo;
     static private $fileList;
@@ -56,6 +57,16 @@ class PhotoRenamer
             preg_match_all(self::TIME_PATTERN, $file, $match);
             $time = $match[0][1];
         }
+        if (!$date) {
+            $ctr = preg_match_all(self::DATE_PATTERN2, $file, $match);
+            if ($ctr && isset($match[0]) && $match[0]) {
+                $date = $match[0][0];
+                preg_match_all(self::TIME_PATTERN, $file, $match);
+                $time = $match[0][0];
+            }
+        } else {
+            var_dump([$ctr, $match]);
+        }
         return [$date, $time];
     }
 
@@ -64,89 +75,91 @@ class PhotoRenamer
         $fileList = self::$fileList;
         $out = [];
         foreach ($fileList as $file) {
-            $mime = finfo_file(self::getFinfo(), $dirName . DIRECTORY_SEPARATOR . $file, FILEINFO_MIME_TYPE);
-            $fileName = FileUtils::getName($file);
-            $fileExt = FileUtils::getExtension($file);
-            if (!isset($out[$fileName])) {
-                $out[$fileName] = [
-                    'jpeg' => false,
-                    'video' => false,
-                    'exif' => null,
-                    'ext' => []
-                ];
-            }
-            if ($mime == 'image/jpeg') {
-                $out[$fileName]['jpeg'] = true;
-                $fullName = $dirName . DIRECTORY_SEPARATOR . $file;
-                $iptcData = [];
-                $date = $time = null;
-                $exif = null;
-                $info = null;
-                try {
-                    $exif = exif_read_data($fullName, 0, true);
-                    getimagesize($fullName, $info);
-                } catch (Exception $e) {
+            try {
+                $mime = finfo_file(self::getFinfo(), $dirName . DIRECTORY_SEPARATOR . $file, FILEINFO_MIME_TYPE);
+                $fileName = FileUtils::getName($file);
+                $fileExt = FileUtils::getExtension($file);
+                if (!isset($out[$fileName])) {
+                    $out[$fileName] = [
+                        'jpeg' => false,
+                        'video' => false,
+                        'exif' => null,
+                        'ext' => []
+                    ];
+                }
+                if ($mime == 'image/jpeg') {
+                    $out[$fileName]['jpeg'] = true;
+                    $fullName = $dirName . DIRECTORY_SEPARATOR . $file;
+                    $iptcData = [];
+                    $date = $time = null;
+                    $exif = null;
+                    $info = null;
+                    try {
+                        $exif = exif_read_data($fullName, 0, true);
+                        getimagesize($fullName, $info);
+                    } catch (Exception $e) {
+                        list($date, $time) = self::getInfoFromFileName($file);
+                        if ($date) {
+                            list($date, $time) = self::getInfoFromFileName($file);
+                        } else {
+                            echo $file . " - Renaming has been failed\n";
+                        }
+                    }
+                    if (isset($info['APP13']) && $iptc = iptcparse($info['APP13'])) {
+                        foreach ($iptc as $key => $tag) {
+                            if (count($tag) == 1) {
+                                $iptcData[$key] = $tag[0];
+                            } else {
+                                $iptcData[$key] = $tag;
+                            }
+                        }
+                    }
+                    // Date
+                    if (isset($exif['EXIF']['DateTimeOriginal'])) {
+                        $dateTime = explode(' ', $exif['EXIF']['DateTimeOriginal']);
+                        if (count($dateTime) > 1) {
+                            $date = str_replace(':', '-', $dateTime[0]);
+                            $time = str_replace(':', '', $dateTime[1]);
+                        }
+                    }
+                    if (!$date) {
+                        if (isset($iptcData[self::IPTC_DATE]) && strlen($iptcData[self::IPTC_DATE]) == 8) {
+                            $date = substr($iptcData[self::IPTC_DATE], 0, 4) . '-' . substr($iptcData[self::IPTC_DATE], 4, 2) . '-' . substr($iptcData[self::IPTC_DATE], 6, 2);
+                        }
+                        if (isset($iptcData[self::IPTC_TIME])) {
+                            $time = (strlen($iptcData[self::IPTC_TIME]) == 6) ?
+                                $iptcData[self::IPTC_TIME] :
+                                substr($iptcData[self::IPTC_TIME], 0, 6);
+                        }
+                    }
+
+                    $out[$fileName]['exif'] = [
+                        'date' => $date,
+                        'time' => $time,
+                        'head' => $iptcData[self::IPTC_HEADLINE] ?? null,
+                        'title' => $iptcData[self::IPTC_TITLE] ?? null,
+                    ];
+                } elseif (explode('/', $mime)[0] == 'video') {
+                    $out[$fileName]['video'] = true;
                     list($date, $time) = self::getInfoFromFileName($file);
                     if ($date) {
-                        list($date, $time) = self::getInfoFromFileName($file);
+                        $out[$fileName]['exif'] = [
+                            'date' => $date,
+                            'time' => $time,
+                            'head' => null,
+                            'title' => null,
+                        ];
                     } else {
                         echo $file . " - Renaming has been failed\n";
                     }
                 }
-                if (isset($info['APP13']) && $iptc = iptcparse($info['APP13'])) {
-                    foreach ($iptc as $key => $tag) {
-                        if (count($tag) == 1) {
-                            $iptcData[$key] = $tag[0];
-                        } else {
-                            $iptcData[$key] = $tag;
-                        }
-                    }
-                }
-                // Date
-                if (isset($exif['EXIF']['DateTimeOriginal'])) {
-                    $dateTime = explode(' ', $exif['EXIF']['DateTimeOriginal']);
-                    if (count($dateTime) > 1) {
-                        $date = str_replace(':', '-', $dateTime[0]);
-                        $time = str_replace(':', '', $dateTime[1]);
-                    }
-                }
-                if (!$date) {
-                    if (isset($iptcData[self::IPTC_DATE]) && strlen($iptcData[self::IPTC_DATE]) == 8) {
-                        $date = substr($iptcData[self::IPTC_DATE], 0, 4) . '-' . substr($iptcData[self::IPTC_DATE], 4, 2) . '-' . substr($iptcData[self::IPTC_DATE], 6, 2);
-                    }
-                    if (isset($iptcData[self::IPTC_TIME])) {
-                        if (strlen($iptcData[self::IPTC_TIME]) == 6) {
-                            $time = $iptcData[self::IPTC_TIME];
-                        } else {
-                            $time = substr($iptcData[self::IPTC_TIME], 0, 6);
-                        }
-                    }
-                }
-
-                $out[$fileName]['exif'] = [
-                    'date' => $date,
-                    'time' => $time,
-                    'head' => $iptcData[self::IPTC_HEADLINE] ?? null,
-                    'title' => $iptcData[self::IPTC_TITLE] ?? null,
+                $out[$fileName]['ext'][strtolower($fileExt)] = [
+                    'file' => $file,
+                    'mime' => $mime,
                 ];
-            } elseif (explode('/', $mime)[0] == 'video') {
-                $out[$fileName]['video'] = true;
-                list($date, $time) = self::getInfoFromFileName($file);
-                if ($date) {
-                    $out[$fileName]['exif'] = [
-                        'date' => $date,
-                        'time' => $time,
-                        'head' => null,
-                        'title' => null,
-                    ];
-                } else {
-                    echo $file . " - Renaming has been failed\n";
-                }
+            } catch (Exception $ex) {
+                echo $file . ' - ' . $ex->getMessage() . "\n";
             }
-            $out[$fileName]['ext'][strtolower($fileExt)] = [
-                'file' => $file,
-                'mime' => $mime,
-            ];
         }
         self::$fileList = $out;
     }
@@ -188,8 +201,8 @@ class PhotoRenamer
         print_r(self::$fileList);
         foreach (self::$fileList as $oldName => $newName) {
             $folder = $folders ? ($newName['folder'] . DIRECTORY_SEPARATOR) : '';
-            if ($oldName !== $newName['file']) {
-                $newFullName = $folders ? ( $folder. $newName['file']) : $newName['file'];
+            if ($folder || ($oldName !== $newName['file'])) {
+                $newFullName = $folders ? ( $folder . $newName['file']) : $newName['file'];
                 if (file_exists($dirName . DIRECTORY_SEPARATOR . $newFullName)) {
                     $fileIndex = 0;
                     $fileName = FileUtils::getName($newName['file']);
@@ -199,7 +212,7 @@ class PhotoRenamer
                     do {
                         $fileIndex++;
                         $file = $folder . $fileName . '_(' . $fileIndex . ').' . $fileExt;
-                        if ($file == $newName['file']) {
+                        if ($file == $folder . $newName['file']) {
                             $rename = false;
                             echo $oldName . '==>> does not need to rename' . "\n";
                             continue;
