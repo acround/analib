@@ -25,3 +25,4 @@ extras/documentation
 /nbproject/
 .idea
 /composer.lock
+.vscode

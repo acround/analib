@@ -1,6 +1,6 @@
 <?php
 
-require_once ANALIB_DIR_LIB . DIRECTORY_SEPARATOR . 'constants.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'constants.php';
 require_once ANALIB_DIR_LIB_EXCEPTIONS . DIRECTORY_SEPARATOR . 'BaseException' . ANALIB_EXT_EXCEPTION;
 require_once ANALIB_DIR_LIB_EXCEPTIONS . DIRECTORY_SEPARATOR . 'NotFoundException' . ANALIB_EXT_EXCEPTION;
 require_once ANALIB_DIR_LIB_EXCEPTIONS . DIRECTORY_SEPARATOR . 'ClassNotFoundException' . ANALIB_EXT_EXCEPTION;
