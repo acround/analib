@@ -78,7 +78,7 @@ abstract class InputHelper extends BaseHelper
 
     /**
      *
-     * @param string $class
+     * @param string|array $class
      * @return InputHelper
      */
     public function setClass($class)
@@ -93,7 +93,7 @@ abstract class InputHelper extends BaseHelper
 
     /**
      *
-     * @param type $class
+     * @param string|null $class
      * @return InputHelper
      */
     public function dropClass($class = null)
@@ -122,7 +122,7 @@ abstract class InputHelper extends BaseHelper
 
     /**
      *
-     * @param strinf $name
+     * @param string $name
      * @param string $value
      * @return InputHelper
      */

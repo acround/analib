@@ -21,7 +21,7 @@ class FB2Sequence implements ArrayAccess
      * @param array $values
      * @return FB2Sequence
      */
-    public static function create(array $values = null)
+    public static function create(?array $values = null)
     {
         $r = new self();
         if (isset($values['name'])) {
@@ -83,12 +83,12 @@ class FB2Sequence implements ArrayAccess
         return '';
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return ($offset === 'name') || ($offset === 'number');
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         switch ($offset) {
             case 'name':
@@ -100,26 +100,28 @@ class FB2Sequence implements ArrayAccess
         }
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         switch ($offset) {
             case 'name':
                 $this->setName($value);
+                break;
             case 'number':
-                return $this->setNumber($value);
+                $this->setNumber($value);
+                break;
         }
-        return $this;
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         switch ($offset) {
             case 'name':
                 $this->setName('');
+                break;
             case 'number':
-                return $this->setNumber('');
+                $this->setNumber('');
+                break;
         }
-        return $this;
     }
 
 }

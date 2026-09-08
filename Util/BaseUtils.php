@@ -37,9 +37,9 @@ class BaseUtils extends StaticFactory
     /**
      *
      * @param array $array
-     * @param string $idField
+     * @param mixed $selectedId
      * @param string $valueField
-     * @param int $checked
+     * @param string $idField
      */
     public static function array2Li(array $array, $selectedId = null, $valueField = 'NAME', $idField = 'ID')
     {

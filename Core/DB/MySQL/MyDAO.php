@@ -24,7 +24,7 @@ class MyDAO extends DAO
 
     static private string $dbName;
     static private string $charset;
-    static private mysqli $connect;
+    static private ?mysqli $connect = null;
     static private array $instances;
     protected string $modelName;
     protected string $tableName;

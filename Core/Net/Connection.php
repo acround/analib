@@ -39,11 +39,11 @@ class Connection
 
     /**
      *
-     * @return \api\v1\components\Connection
+     * @return Connection
      */
-    public static function create()
+    public static function create($url, $login = null, $password = null)
     {
-        return new Connection();
+        return new self($url, $login, $password);
     }
 
     public function getErrno()

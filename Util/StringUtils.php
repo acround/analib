@@ -64,7 +64,7 @@ class StringUtils extends StaticFactory
         $numbers    = '0123456789';
         $letnums    = $bigLetters . $numbers;
         $flag       = PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE;
-        $r          = preg_split('/([A-Z0-9])/', $text, null, $flag);
+        $r          = preg_split('/([A-Z0-9])/', $text, -1, $flag);
         $i          = 0;
         $splits     = array();
         while ($i < count($r)) {

@@ -36,7 +36,7 @@ abstract class BaseButtonHelper extends InputHelper
 
     /**
      *
-     * @param boolean $disabled
+     * @param boolean $enabled
      * @return BaseButtonHelper
      */
     public function enable($enabled = true)

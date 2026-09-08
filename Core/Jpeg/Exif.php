@@ -25,7 +25,7 @@ class Exif
     private function checkExif()
     {
         if (!$this->exif) {
-            $exif       = exif_read_data($this->filename, 0, true);
+            $exif       = exif_read_data($this->filename, null, true);
             if (isset($exif['EXIF']))
                 $this->exif = $exif['EXIF'];
         }

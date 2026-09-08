@@ -165,6 +165,7 @@ class OraModelBuilder
         foreach ($this->packages as $package) {
             echo 'Package ' . $package->getName() . ":\n";
             $fileOutName = $this->out . DIRECTORY_SEPARATOR . $package->getName() . '.class.php';
+            $procList = [];
             file_put_contents($fileOutName, $package->dump($procList));
             echo "\tProcedure " . implode("\n\tProcedure ", $procList) . "\n";
         }

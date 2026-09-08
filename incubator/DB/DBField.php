@@ -11,7 +11,7 @@ class DBField implements DialectString
 {
 
     private string $name;
-    private string $table;
+    private ?string $table;
 
     public function __construct($name, $table = null)
     {
@@ -27,6 +27,16 @@ class DBField implements DialectString
     public static function create($name, $table = null)
     {
         return new self($name, $table);
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getTable()
+    {
+        return $this->table;
     }
 
     public function toDialectString(SQLDialect $dialect)

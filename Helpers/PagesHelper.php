@@ -19,7 +19,7 @@ class PagesHelper extends BaseHelper
     public static function create($total = 0, $limit = 0, $start = 0)
     {
         /* @var $helper PagesHelper */
-        $helper = self();
+        $helper = new self();
         $helper->
             setVariable('PAGER_TOTAL', $total)->
             setVariable('PAGER_LIMIT', $limit)->

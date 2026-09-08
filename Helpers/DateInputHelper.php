@@ -21,13 +21,14 @@ class DateInputHelper extends InputHelper
 
     public static function create($date = null)
     {
-        $helper = new self($date);
+        $helper = new self();
+        $helper->setDate($date);
         return $helper->masked()->noFutureDate();
     }
 
     /**
      *
-     * @param type $date
+     * @param string $date
      * @return DateInputHelper
      */
     public function setDate($date)

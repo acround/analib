@@ -49,7 +49,7 @@ class Autoload
     /**
      *
      * @param string $folder
-     * @return \Autoload
+     * @return Autoload
      */
     public function addFolder($folder)
     {
@@ -66,14 +66,14 @@ class Autoload
     /**
      *
      * @param string $folder
-     * @return \Autoload
+     * @return Autoload
      */
     public function delFolder($folder)
     {
         if (is_string($folder) && file_exists($folder) && is_dir($folder)) {
             $pathArray = array_unique($this->getPathArray());
             $index     = array_search($folder, $pathArray);
-            if (index !== false) {
+            if ($index !== false) {
                 unset($pathArray[$index]);
                 $this->setPathArray($pathArray);
             }

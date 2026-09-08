@@ -68,7 +68,7 @@ class jpegRenamer
     public static function getDateByExif($filename)
     {
         if (self::isImage($filename)) {
-            $exif = exif_read_data($filename, 0, true);
+            $exif = exif_read_data($filename, null, true);
             if (isset($exif['EXIF']['DateTimeOriginal'])) {
                 $dateTime = explode(' ', $exif['EXIF']['DateTimeOriginal']);
                 $date = str_replace(':', '-', $dateTime[0]);
@@ -149,7 +149,7 @@ class jpegRenamer
                 continue;
             }
             if (is_dir($currentDirName . DIRECTORY_SEPARATOR . $fileName)) {
-                scanDirImageRename($workDirName, $date, $suffix, $fileName, $outDir);
+                $this->scanDirImageRename($workDirName, $date, $suffix, $fileName, $outDir);
             } else {
                 $fileInfo = finfo_file($finfo, $currentDirName . DIRECTORY_SEPARATOR . $fileName, FILEINFO_MIME_TYPE);
                 $infoSplit = explode('/', $fileInfo);
@@ -165,7 +165,7 @@ class jpegRenamer
             while (strlen($number) < 3) {
                 $number = '0' . $number;
             }
-            $newName = $dirFileName . '.' . $number . '.' . getExtension1($name);
+            $newName = $dirFileName . '.' . $number . '.' . self::getExtension($name);
             switch (self::$settings['mode']) {
                 case self::MODE_COPY:
                     copy($currentDirName . DIRECTORY_SEPARATOR . $name, $outDir . DIRECTORY_SEPARATOR . $newName);

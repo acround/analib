@@ -9,9 +9,9 @@ namespace analib\Core\DB;
  */
 class Resource extends BaseResource
 {
-    protected id $id;
+    protected int $id = 0;
 
-    public function getId(): id
+    public function getId(): int
     {
         return $this->id;
     }

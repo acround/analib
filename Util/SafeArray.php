@@ -25,7 +25,7 @@ class SafeArray implements \ArrayAccess
     /**
      *
      * @param array $array
-     * @return \SafeArray
+     * @return SafeArray
      */
     public function init(array $array = array())
     {
@@ -36,8 +36,8 @@ class SafeArray implements \ArrayAccess
     /**
      *
      * @param string $name
-     * @param type $value
-     * @return \SafeArray
+     * @param mixed $value
+     * @return SafeArray
      */
     public function set($name, $value)
     {
@@ -54,12 +54,12 @@ class SafeArray implements \ArrayAccess
         }
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->array[$offset]);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         if (isset($this->array[$offset])) {
             return $this->array[$offset];
@@ -68,12 +68,12 @@ class SafeArray implements \ArrayAccess
         }
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->array[$offset] = $value;
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         if (isset($this->array[$offset])) {
             unset($this->array[$offset]);

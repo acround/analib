@@ -26,12 +26,12 @@ class Application
     const ANALIB_EXT_JS = '.js';
 
     /**
-     * @var Application
+     * @var Application|null
      */
     static protected $instance;
 
     /**
-     * @var IRouterInterface
+     * @var IRouterInterface|null
      */
     static protected $router;
 
@@ -229,7 +229,7 @@ class Application
      * @param array $addressRow
      * @return Application
      */
-    public function setAddressRow(array $addressRow = null)
+    public function setAddressRow(?array $addressRow = null)
     {
         $this->addressRow = $addressRow;
         return $this;
@@ -246,7 +246,7 @@ class Application
 
     /**
      *
-     * @return string
+     * @return string|null
      */
     public function getAddressElement($number = 0)
     {
@@ -301,7 +301,7 @@ class Application
      * @param array|null $getParams
      * @return Application
      */
-    public function setGetParams(array $getParams = null)
+    public function setGetParams(?array $getParams = null)
     {
         $this->getParams = $getParams;
         return $this;
@@ -355,7 +355,7 @@ class Application
      * @param array $postParams
      * @return Application
      */
-    public function setPostParams(array $postParams = null)
+    public function setPostParams(?array $postParams = null)
     {
         $this->postParams = $postParams;
         return $this;
@@ -570,7 +570,7 @@ class Application
      * @param string $anchor
      * @return string
      */
-    public static function makeUrl($controller = null, $action = null, array $params = null, $anchor = null)
+    public static function makeUrl($controller = null, $action = null, ?array $params = null, $anchor = null)
     {
         return
             self::me()->
@@ -587,7 +587,7 @@ class Application
      * @param string $anchor
      * @return string
      */
-    public static function makeAbsUrl($controller = null, $action = null, array $params = null, $anchor = null)
+    public static function makeAbsUrl($controller = null, $action = null, ?array $params = null, $anchor = null)
     {
         return self::me()->get('protocol') .
             '://' .

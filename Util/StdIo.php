@@ -43,7 +43,7 @@ class StdIo
      */
     public static function askLn($request = '')
     {
-        self::putLn($request) . "\n";
+        self::putLn($request);
         $response = trim(fgets(STDIN));
         return $response;
     }
@@ -52,7 +52,7 @@ class StdIo
      *
      * @param string $request
      * @param array $list
-     * @return string
+     * @return string|null
      */
     public static function askChoice($request, array $list)
     {

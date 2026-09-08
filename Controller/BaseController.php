@@ -3,6 +3,7 @@
 namespace analib\Controller;
 
 use analib\Core\Application\Application;
+use analib\Core\Exceptions\BaseException;
 use analib\Util\Template;
 
 /**
@@ -138,7 +139,7 @@ abstract class BaseController
 
     /**
      *
-     * @return Form
+     * @return \analib\Core\Form\Form
      */
     public function getForm()
     {

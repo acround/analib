@@ -29,8 +29,8 @@ class SelectQuery extends SQLQuery
 
     /**
      *
-     * @param type $field
-     * @param type $alias
+     * @param string $field
+     * @param string|null $alias
      * @return SelectQuery
      */
     public function get($field, $alias = null)
@@ -44,7 +44,7 @@ class SelectQuery extends SQLQuery
 
     /**
      *
-     * @param type $table
+     * @param string $table
      * @return SelectQuery
      */
     public function from($table, $alias = null)
@@ -69,9 +69,9 @@ class SelectQuery extends SQLQuery
     /**
      *
      * @param SQLDialect $dialect
-     * @return type
+     * @return string
      */
-    public function toDialectString(SQLDialect $dialect = null)
+    public function toDialectString(?SQLDialect $dialect = null)
     {
         $out = 'SELECT';
         $get = array();
@@ -90,13 +90,13 @@ class SelectQuery extends SQLQuery
         if (count($this->table)) {
             $from = array();
             foreach ($this->table as $table)
-                if ($table['name'] instanceof DBTable) {
+                if ($dialect && $table['name'] instanceof DBTable) {
                     if ($table['alias']) {
                         $table['name']->setAlias($table['alias']);
                     }
                     $from[] = $table['name']->toDialectString($dialect);
                 } else {
-                    if ($field['alias']) {
+                    if ($table['alias']) {
                         $from[] = $table['name'] . ' AS ' . $table['alias'];
                     } else {
                         $from[] = $table['name'];

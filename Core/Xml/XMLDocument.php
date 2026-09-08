@@ -58,7 +58,7 @@ class XMLDocument
         return $this;
     }
 
-    public function hasNode($path, DOMNode $context = null): bool
+    public function hasNode($path, ?DOMNode $context = null): bool
     {
         $this->xml->preserveWhiteSpace = false;
         $xp = new DOMXPath($this->xml);
@@ -72,7 +72,7 @@ class XMLDocument
      * @param \DOMNode|null $context
      * @return \DOMNode
      */
-    public function getFirstNode(string $path, DOMNode $context = null): ?DOMNode
+    public function getFirstNode(string $path, ?DOMNode $context = null): ?DOMNode
     {
         $xp = new DOMXPath($this->xml);
         $list = $xp->query($path, $context);

@@ -16,7 +16,7 @@ abstract class BaseHelper
     public function __construct()
     {
         $className = get_class($this);
-        if (file_exists(ANALIB_DIR_SELF_HELPER_TEMPLATE . DIRECTORY_SEPARATOR . $className . ANALIB_EXT_HELPER_VIEW)) {
+        if (defined('ANALIB_DIR_SELF_HELPER_TEMPLATE') && file_exists(ANALIB_DIR_SELF_HELPER_TEMPLATE . DIRECTORY_SEPARATOR . $className . ANALIB_EXT_HELPER_VIEW)) {
             $this->view_dir = ANALIB_DIR_SELF_HELPER_TEMPLATE;
         } elseif (file_exists(ANALIB_DIR_LIB_HELPER_TEMPLATE . DIRECTORY_SEPARATOR . $className . ANALIB_EXT_HELPER_VIEW)) {
             $this->view_dir = ANALIB_DIR_LIB_HELPER_TEMPLATE;

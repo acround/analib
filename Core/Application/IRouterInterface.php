@@ -11,5 +11,5 @@ interface IRouterInterface
 
     public function route();
 
-    public function makeUrl($controller = null, $action = null, array $params = null, $anchor = null);
+    public function makeUrl($controller = null, $action = null, ?array $params = null, $anchor = null);
 }

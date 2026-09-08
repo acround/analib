@@ -53,7 +53,7 @@ abstract class BaseResource
      * BaseResource constructor.
      * @param array|null $row
      */
-    public function __construct(array $row = null)
+    public function __construct(?array $row = null)
     {
         $this->describe();
         foreach ($this->content as $key => $value) {

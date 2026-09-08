@@ -924,6 +924,7 @@ class FB2Tools
             return;
         } elseif (substr($this->params, 0, 1) == '-') {
             $sequenceName = '';
+            $number       = 0;
             $this->dropSequenceFile($file);
         } else {
             $sequenceName = $this->params;
@@ -948,7 +949,7 @@ class FB2Tools
                     'Number'   => $fb2->sequence()->getNumber(),
                 );
             }
-        } catch (BaseException $e) {
+        } catch (\analib\Core\Exceptions\BaseException $e) {
             echo $e->getMessage();
         }
     }
@@ -999,9 +1000,11 @@ class FB2Tools
             $sequenceName  = $sequenceOther->getName();
             $number        = $sequenceOther->getNumber();
         } elseif (substr($this->params, 0, strlen(self::MODE_AUTO_SEQUENCE_TREE)) == self::MODE_AUTO_SEQUENCE_TREE) {
-
+            $sequenceName = '';
+            $number       = 0;
         } elseif (substr($this->params, 0, 1) == '-') {
             $sequenceName = '';
+            $number       = 0;
             $this->dropPublishSequenceFile($file);
         } else {
             $sequenceName = $this->params;
@@ -1026,7 +1029,7 @@ class FB2Tools
                     'Number'   => $fb2->sequencePublish()->getNumber(),
                 );
             }
-        } catch (BaseException $e) {
+        } catch (\analib\Core\Exceptions\BaseException $e) {
             echo $e->getMessage();
         }
     }
@@ -1170,7 +1173,7 @@ class FB2Tools
             $symbol = mb_substr($string, $i, 1, 'utf-8');
             if (isset(self::$translitMap[$symbol])) {
                 $out .= self::$translitMap[$symbol];
-            } elseif (mb_strpos(self::$translitAllow, $symbol, null, 'utf-8') !== false) {
+            } elseif (mb_strpos(self::$translitAllow, $symbol, 0, 'utf-8') !== false) {
                 $out .= $symbol;
             }
         }

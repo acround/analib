@@ -95,7 +95,7 @@ class PhotoRenamer
                     $exif = null;
                     $info = null;
                     try {
-                        $exif = exif_read_data($fullName, 0, true);
+                        $exif = exif_read_data($fullName, null, true);
                         getimagesize($fullName, $info);
                     } catch (Exception $e) {
                         list($date, $time) = self::getInfoFromFileName($file);

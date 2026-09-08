@@ -51,6 +51,8 @@ class DadataClient
             case self::CHANNEL_NOSS:
                 $url = self::URL_SUGGESTION_ADDRESS_PAY;
                 break;
+            default:
+                $url = self::URL_SUGGESTION_ADDRESS_FREE;
         }
         $curlCommand = 'curl '
             . '-X POST '
@@ -74,6 +76,8 @@ class DadataClient
             case self::CHANNEL_NOSS:
                 $url = self::URL_LOCATION_PAY;
                 break;
+            default:
+                $url = self::URL_LOCATION_FREE;
         }
         $curlCommand = 'curl '
             . '-X GET '

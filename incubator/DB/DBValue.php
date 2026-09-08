@@ -22,7 +22,7 @@ class DBValue implements DialectString
         return $this->value;
     }
 
-    public function create($value)
+    public static function create($value)
     {
         return new self($value);
     }

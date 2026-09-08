@@ -80,7 +80,7 @@ class FB2TitleInfo
                 }
                 $name             = isset($ret['name']) ? $ret['name'] : null;
                 $number           = isset($ret['number']) ? $ret['number'] : null;
-                $this->sequence[] = FB2Sequence::create(array(
+                $this->sequences[] = FB2Sequence::create(array(
                         'name'   => $name,
                         'number' => $number
                 ));

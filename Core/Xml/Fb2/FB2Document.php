@@ -182,6 +182,8 @@ class FB2Document extends XMLDocument
         }
         if (!$this->hasNode(self::PATH_TO_TITLEINFO . '/coverpage')) {
             $coverpage = $this->insertAfter($this->makeNode('coverpage'), $this->getFirstNode(self::PATH_TO_TITLEINFO . '/date'));
+        } else {
+            $coverpage = $this->getFirstNode(self::PATH_TO_TITLEINFO . '/coverpage');
         }
         if (!$this->hasNode(self::PATH_TO_TITLEINFO . '/coverpage/image')) {
             $this->appendChild($this->makeNode('image', array('l:href' => '#cover.jpg')), $coverpage);
@@ -435,7 +437,7 @@ class FB2Document extends XMLDocument
         $xp   = new DOMXPath($this->xml);
         $lang = $xp->query(self::PATH_TO_LANG);
         if ($lang->length) {
-            $text = $lang->item(0)->firstChild->wholeText;
+            $text = $lang->item(0)->nodeValue;
         } else {
             $text = '';
         }

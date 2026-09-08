@@ -102,7 +102,7 @@ class Translit
             $symbol = mb_substr($text, $i, 1, 'utf-8');
             if (isset(self::$translitMap[$symbol])) {
                 $out .= self::$translitMap[$symbol];
-            } elseif (mb_strpos(self::$translitAllow, $symbol, null, 'utf-8') !== false) {
+            } elseif (mb_strpos(self::$translitAllow, $symbol, 0, 'utf-8') !== false) {
                 $out .= $symbol;
             }
         }

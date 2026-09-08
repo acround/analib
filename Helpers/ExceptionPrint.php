@@ -2,6 +2,8 @@
 
 namespace analib\Helpers;
 
+use analib\Core\Exceptions\BaseException;
+
 /**
  * Description of ExceptionPrint
  *

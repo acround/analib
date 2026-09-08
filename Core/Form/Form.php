@@ -94,7 +94,7 @@ class Form
     /**
      * @throws \analib\Core\Exceptions\MissingElementException
      */
-    public function getValue($name): string
+    public function getValue($name): string|array
     {
         return $this->get($name)->getValue();
     }
@@ -115,7 +115,7 @@ class Form
     /**
      * @throws \analib\Core\Exceptions\MissingElementException
      */
-    public function getRawValue($name): string
+    public function getRawValue($name): string|array
     {
         return $this->get($name)->getRawValue();
     }
@@ -123,7 +123,7 @@ class Form
     /**
      * @throws \analib\Core\Exceptions\MissingElementException
      */
-    public function getFormValue($name): ?string
+    public function getFormValue($name): string|array|null
     {
         return $this->get($name)->getFormValue();
     }

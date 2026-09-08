@@ -36,9 +36,9 @@ class FB2Author
 
     /**
      *
-     * @param null $lastName
-     * @param null $firstName
-     * @param null $middleName
+     * @param string|null $lastName
+     * @param string|null $firstName
+     * @param string|null $middleName
      * @param string $encoding
      * @return FB2Author
      */
@@ -95,10 +95,10 @@ class FB2Author
 
     /**
      *
-     * @param string $value
+     * @param string|null $value
      * @return FB2Author
      */
-    public function setFirstName(string $value): FB2Author
+    public function setFirstName(?string $value): FB2Author
     {
         switch ($this->encoding) {
 //			case FB2Informer::UTF8_ENCODING:
@@ -125,10 +125,10 @@ class FB2Author
 
     /**
      *
-     * @param string $value
+     * @param string|null $value
      * @return FB2Author
      */
-    public function setMiddleName(string $value): FB2Author
+    public function setMiddleName(?string $value): FB2Author
     {
         switch ($this->encoding) {
 //			case FB2Informer::UTF8_ENCODING:
@@ -155,10 +155,10 @@ class FB2Author
 
     /**
      *
-     * @param string $value
+     * @param string|null $value
      * @return FB2Author
      */
-    public function setLastName(string $value): FB2Author
+    public function setLastName(?string $value): FB2Author
     {
         switch ($this->encoding) {
 //			case FB2Informer::UTF8_ENCODING:

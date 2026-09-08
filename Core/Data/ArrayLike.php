@@ -57,7 +57,7 @@ class ArrayLike implements IArrayLike
      * @throws ReflectionException
      * @throws PropertyNotFoundException
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         if ($this->offsetExists($offset)) {
             return $this->{$offset};
@@ -66,12 +66,12 @@ class ArrayLike implements IArrayLike
         throw new PropertyNotFoundException();
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
 
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
 
     }

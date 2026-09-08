@@ -71,10 +71,10 @@ class FormFieldLogical extends BaseFormField
 
     /**
      *
-     * @param string $value
+     * @param string|array $value
      * @return FormFieldLogical
      */
-    public function setValue(string $value):BaseFormField
+    public function setValue(string|array $value): BaseFormField
     {
         if (
             $value === false ||

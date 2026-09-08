@@ -6,7 +6,7 @@ require_once ANALIB_DIR_LIB_EXCEPTIONS . DIRECTORY_SEPARATOR . 'BaseException' .
 require_once ANALIB_DIR_LIB_EXCEPTIONS . DIRECTORY_SEPARATOR . 'NotFoundException' . ANALIB_EXT_EXCEPTION;
 require_once ANALIB_DIR_LIB_EXCEPTIONS . DIRECTORY_SEPARATOR . 'ClassNotFoundException' . ANALIB_EXT_EXCEPTION;
 
-function error2Exception($code, $string, $file, $line, $context)
+function error2Exception($code, $string, $file, $line, $context = null)
 {
     throw new \analib\Core\Exceptions\BaseException($string, $code, 1, $file, $line);
 }
@@ -29,4 +29,4 @@ function analibAutoload($className)
 }
 
 spl_autoload_register('analibAutoload');
-set_error_handler('error2Exception', E_ALL | E_STRICT);
+set_error_handler('error2Exception', E_ALL);

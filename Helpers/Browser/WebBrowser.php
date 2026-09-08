@@ -7,7 +7,7 @@ abstract class WebBrowser
 
     protected $userAgent;
 
-    public function __construct(string $userAgent = null)
+    public function __construct(?string $userAgent = null)
     {
         $userAgent = $userAgent ?: $_SERVER['HTTP_USER_AGENT'];
         $this->userAgent = $userAgent;

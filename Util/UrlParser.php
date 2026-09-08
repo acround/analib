@@ -83,7 +83,7 @@ class UrlParser
     /**
      *
      * @param string $value
-     * @return \UrlParser
+     * @return UrlParser
      */
     public function setProtocol($value = 'http')
     {
@@ -99,7 +99,7 @@ class UrlParser
     /**
      *
      * @param string $value
-     * @return \UrlParser
+     * @return UrlParser
      */
     public function setHost($value = '')
     {
@@ -115,7 +115,7 @@ class UrlParser
     /**
      *
      * @param string $value
-     * @return \UrlParser
+     * @return UrlParser
      */
     public function setPort($value = '')
     {
@@ -131,7 +131,7 @@ class UrlParser
     /**
      *
      * @param string $value
-     * @return \UrlParser
+     * @return UrlParser
      */
     public function setPath($value = '/')
     {

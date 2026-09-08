@@ -158,7 +158,7 @@ class BusinessBuilder
              * Class
              */
             $fileOutName = $this->businessOut . DIRECTORY_SEPARATOR . $class->getName() . '.class.php';
-            if (DEBUG || !file_exists($fileOutName)) {
+            if ((defined('DEBUG') && DEBUG) || !file_exists($fileOutName)) {
                 echo 'Class ' . $class->getName() . "\n";
                 file_put_contents($fileOutName, $class->dump());
             }

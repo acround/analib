@@ -2,6 +2,8 @@
 
 namespace analib\Util;
 
+use analib\Core\Application\Application;
+
 /**
  * Description of Notification
  *

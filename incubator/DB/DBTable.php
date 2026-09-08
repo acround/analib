@@ -11,7 +11,7 @@ class DBTable implements DialectString
 {
 
     private string $name;
-    private string $alias;
+    private ?string $alias;
 
     public function __construct($name, $alias = null)
     {

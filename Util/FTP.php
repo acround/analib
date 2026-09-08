@@ -29,7 +29,7 @@ class FTP
      * @param string $path
      * @param string $login
      * @param string $password
-     * @return \FTP
+     * @return FTP
      */
     public static function create($server, $path = null, $login = null, $password = null)
     {
@@ -39,7 +39,7 @@ class FTP
     /**
      *
      * @param string $server
-     * @return \FTP
+     * @return FTP
      */
     public function setServer($server)
     {
@@ -50,7 +50,7 @@ class FTP
     /**
      *
      * @param string $path
-     * @return \FTP
+     * @return FTP
      */
     public function setPath($path)
     {
@@ -61,7 +61,7 @@ class FTP
     /**
      *
      * @param string $login
-     * @return \FTP
+     * @return FTP
      */
     public function setLogin($login)
     {
@@ -72,7 +72,7 @@ class FTP
     /**
      *
      * @param string $password
-     * @return \FTP
+     * @return FTP
      */
     public function setPassword($password)
     {
@@ -118,8 +118,8 @@ class FTP
 
     /**
      *
-     * @return \FTP
-     * @throws FTPException
+     * @return FTP
+     * @throws \analib\Core\Exceptions\FTPException
      */
     public function connect()
     {
@@ -134,8 +134,8 @@ class FTP
      *
      * @param string $login
      * @param string $password
-     * @return \FTP
-     * @throws FTPException
+     * @return FTP
+     * @throws \analib\Core\Exceptions\FTPException
      */
     public function login($login = null, $password = null)
     {
@@ -155,8 +155,8 @@ class FTP
     /**
      *
      * @param string $path
-     * @return \FTP
-     * @throws FTPException
+     * @return FTP
+     * @throws \analib\Core\Exceptions\FTPException
      */
     public function chdir($path = null)
     {
@@ -172,7 +172,7 @@ class FTP
 
     /**
      *
-     * @return \FTP
+     * @return FTP
      */
     public function open()
     {
@@ -188,7 +188,7 @@ class FTP
 
     /**
      *
-     * @return \FTP
+     * @return FTP
      */
     public function close()
     {

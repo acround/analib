@@ -33,12 +33,12 @@ class MySQLConnection extends DBConnection
         $this->connection = mysqli_connect($this->host, $this->user, $this->password);
         if ($this->connection) {
             if ($this->base) {
-                mysqli_selectdb($this->base, $this->connection);
+                mysqli_select_db($this->connection, $this->base);
             }
             $this->opened = true;
         } else {
             $this->opened = false;
-            throw new DBException(mysqli_error(), mysqli_errno());
+            throw new DBException(mysqli_connect_error(), mysqli_connect_errno());
         }
         return $this;
     }

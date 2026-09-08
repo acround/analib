@@ -46,12 +46,12 @@ class MySQLDao extends DBDao
 
     public function getById($id)
     {
-        $result      = null;
+        $result      = array();
         $query       = 'select * from `' . $this->getTableName() . '` where `id` = ' . $id;
-        $r           = mysqli_query($query, $this->connection);
-        $this->errno = mysqli_errno($this->connection);
+        $r           = mysqli_query($this->connection->getConnection(), $query);
+        $this->errno = mysqli_errno($this->connection->getConnection());
         if ($this->errno) {
-            $this->error = mysqli_error($this->connection);
+            $this->error = mysqli_error($this->connection->getConnection());
         } else {
             $tn  = $this->getTableNamePhp();
             while ($row = mysqli_fetch_assoc($r)) {
@@ -89,14 +89,14 @@ class MySQLDao extends DBDao
     public function selectByString($query)
     {
         $result      = array();
-        $r           = mysqli_query($query, $this->connection);
-        $this->errno = mysqli_errno($this->connection);
+        $r           = mysqli_query($this->connection->getConnection(), $query);
+        $this->errno = mysqli_errno($this->connection->getConnection());
         if ($this->errno) {
-            $this->error = mysqli_error($this->connection);
+            $this->error = mysqli_error($this->connection->getConnection());
         } else {
             $tn  = $this->getTableNamePhp();
             while ($row = mysqli_fetch_assoc($r)) {
-                $result[] = $tn - create($row);
+                $result[] = $tn::create($row);
             }
         }
         return $result;
@@ -104,7 +104,7 @@ class MySQLDao extends DBDao
 
     public function queryByString($query)
     {
-        $r = mysqli_query($query, $this->connection);
+        $r = mysqli_query($this->connection->getConnection(), $query);
         return $this;
     }
 

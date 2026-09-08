@@ -17,8 +17,8 @@ abstract class BaseFormField
 
     protected string $name = '';
     protected string $title = '';
-    protected string $raw = '';
-    protected string $value = '';
+    protected string|array $raw = '';
+    protected string|array $value = '';
     protected string $defaultValue = '';
     protected bool $required = false;
     protected bool $imported = false;
@@ -67,17 +67,17 @@ abstract class BaseFormField
         return $this->title;
     }
 
-    public function getValue(): string
+    public function getValue(): string|array
     {
         return $this->value;
     }
 
-    public function getRawValue(): string
+    public function getRawValue(): string|array
     {
         return $this->raw;
     }
 
-    public function getFormValue(): ?string
+    public function getFormValue(): string|array|null
     {
         if (!$this->imported) {
             if ($this->value === null) {
@@ -92,10 +92,10 @@ abstract class BaseFormField
 
     /**
      *
-     * @param string $value
+     * @param string|array $value
      * @return BaseFormField
      */
-    public function setValue(string $value): BaseFormField
+    public function setValue(string|array $value): BaseFormField
     {
         $this->value = $value;
         return $this;
@@ -113,10 +113,10 @@ abstract class BaseFormField
 
     /**
      *
-     * @param string $raw
+     * @param string|array $raw
      * @return BaseFormField
      */
-    public function setRawValue(string $raw): BaseFormField
+    public function setRawValue(string|array $raw): BaseFormField
     {
         $this->raw = $raw;
         return $this;
@@ -129,7 +129,7 @@ abstract class BaseFormField
 
     /**
      *
-     * @param string $really
+     * @param bool $really
      * @return BaseFormField
      */
     public function setRequired($really = true): BaseFormField
@@ -191,7 +191,7 @@ abstract class BaseFormField
         return $this->import(array($this->getName() => $value));
     }
 
-    public function exportValue(): string
+    public function exportValue(): string|array
     {
         return $this->value;
     }
@@ -203,10 +203,10 @@ abstract class BaseFormField
 
     /**
      *
-     * @param string $error
+     * @param int $error
      * @return BaseFormField
      */
-    public function setError(string $error): BaseFormField
+    public function setError(int $error): BaseFormField
     {
         $this->error = $error;
         return $this;
@@ -224,11 +224,11 @@ abstract class BaseFormField
 
     /**
      *
-     * @param string $error
+     * @param int $error
      * @param string $message
      * @return BaseFormField
      */
-    public function setErrorMessage(string $error, string $message): BaseFormField
+    public function setErrorMessage(int $error, string $message): BaseFormField
     {
         $this->errorMessages[$error] = $message;
         return $this;

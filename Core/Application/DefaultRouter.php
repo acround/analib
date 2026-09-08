@@ -77,7 +77,7 @@ class DefaultRouter extends BaseRouter
             setAddressRow($address);
     }
 
-    public function makeUrl($controller = null, $action = null, array $params = null, $anchor = null)
+    public function makeUrl($controller = null, $action = null, ?array $params = null, $anchor = null)
     {
         $action     = ($action === BaseController::DEFAULT_ACTION) ? '' : $action;
         $controller = trim($controller, '/');

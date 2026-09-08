@@ -1,7 +1,5 @@
 <?php
 
-namespace analib\Old;
-
 namespace analib\tmplnamespace {
 
     class AutoloaderTmpl
@@ -21,18 +19,18 @@ namespace analib\tmplnamespace {
             $filepath = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/classes/' . $file . '.php';
 
             if (file_exists($filepath)) {
-                if (Autoloader::debug)
-                    Autoloader::StPutFile(('подключили ' . $filepath));
+                if (self::debug)
+                    self::StPutFile(('подключили ' . $filepath));
                 require_once($filepath);
             } else {
                 $flag = true;
-                if (Autoloader::debug)
-                    Autoloader::StPutFile(('начинаем рекурсивный поиск'));
-                Autoloader::recursive_autoload($file, $path, &$flag);
+                if (self::debug)
+                    self::StPutFile(('начинаем рекурсивный поиск'));
+                self::recursive_autoload($file, $path, $flag);
             }
         }
 
-        public static function recursive_autoload($file, $path, $flag)
+        public static function recursive_autoload($file, $path, &$flag)
         {
             if (FALSE !== ($handle = opendir($path)) && $flag) {
                 while (FAlSE !== ($dir = readdir($handle)) && $flag) {
@@ -40,16 +38,16 @@ namespace analib\tmplnamespace {
                     if (strpos($dir, '.') === FALSE) {
                         $path2    = $path . '/' . $dir;
                         $filepath = $path2 . '/' . $file . '.php';
-                        if (Autoloader::debug)
-                            Autoloader::StPutFile(('ищем файл <b>' . $file . '</b> in ' . $filepath));
+                        if (self::debug)
+                            self::StPutFile(('ищем файл <b>' . $file . '</b> in ' . $filepath));
                         if (file_exists($filepath)) {
-                            if (Autoloader::debug)
-                                Autoloader::StPutFile(('подключили ' . $filepath));
+                            if (self::debug)
+                                self::StPutFile(('подключили ' . $filepath));
                             $flag = FALSE;
                             require_once($filepath);
                             break;
                         }
-                        Autoloader::recursive_autoload($file, $path2, &$flag);
+                        self::recursive_autoload($file, $path2, $flag);
                     }
                 }
                 closedir($handle);
@@ -68,5 +66,5 @@ namespace analib\tmplnamespace {
 
     }
 
-    \spl_autoload_register('yourNameSpace\Autoloader::autoload');
+    \spl_autoload_register('analib\tmplnamespace\AutoloaderTmpl::autoload');
 }

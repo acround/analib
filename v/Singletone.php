@@ -15,7 +15,7 @@ class Singletone {
 
     private static $instance = null;
 
-    final protected function __construct($param) {
+    final protected function __construct($param = null) {
         // 
     }
 
